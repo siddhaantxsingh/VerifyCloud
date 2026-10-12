@@ -1,0 +1,53 @@
+# VerifyCloud project configuration for the AXI4-Lite demo.
+version: 1
+
+project:
+  name: axi4lite-demo
+
+rtl:
+  sources:
+    - rtl/**/*.sv
+
+testbench:
+  sources:
+    - tb/axil_checker.sv
+    - tb/tb_top.sv
+  top: tb_top
+
+simulator:
+  engine: verilator
+  timing: true          # SystemVerilog timing (delays, @, fork) in the testbench
+  assertions: true      # SVA assertions (--assert)
+  flags: []
+  coverage:
+    line: true
+    branch: true
+    toggle: true
+    functional: true    # SVA cover properties
+  waveform: on_failure  # never | on_failure | always
+
+coverage:
+  include:
+    - rtl/**              # code coverage is reported for the DUT only
+
+tests:
+  smoke:            { plusargs: { TEST: smoke } }
+  reset:            { plusargs: { TEST: reset } }
+  wstrb:            { plusargs: { TEST: wstrb } }
+  error_injection:  { plusargs: { TEST: error_injection } }
+  rw_overlap:       { plusargs: { TEST: rw_overlap } }
+  random:
+    plusargs: { TEST: random, OPS: "400" }
+    seeds: { range: [1, 8] }
+
+regressions:
+  smoke:
+    tests: [smoke, reset]
+  full:
+    tests: [smoke, reset, wstrb, error_injection, rw_overlap, random]
+
+resources:
+  cpu: 2
+  memory_mb: 2048
+  timeout_seconds: 300        # per test (compile has its own budget below)
+  compile_timeout_seconds: 600

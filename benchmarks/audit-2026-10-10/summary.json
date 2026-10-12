@@ -1,0 +1,866 @@
+{
+ "scheduler": {
+  "runs": 5,
+  "byWorkers": {
+   "1": {
+    "tasksPerSecond": {
+     "n": 5,
+     "mean": 46.42,
+     "stdev": 1.96,
+     "ci95": [
+      43.99,
+      48.85
+     ],
+     "cv_pct": 4.2,
+     "min": 43.9,
+     "max": 49.4
+    },
+    "claimP95Ms": {
+     "n": 5,
+     "mean": 17.87,
+     "stdev": 0.9,
+     "ci95": [
+      16.75,
+      18.99
+     ],
+     "cv_pct": 5.0,
+     "min": 16.96,
+     "max": 19.28
+    },
+    "completeP95Ms": {
+     "n": 5,
+     "mean": 13.5,
+     "stdev": 0.81,
+     "ci95": [
+      12.5,
+      14.5
+     ],
+     "cv_pct": 6.0,
+     "min": 12.47,
+     "max": 14.63
+    },
+    "tasksClaimed": 2020,
+    "tasksExecutedTwice": 0,
+    "allPassed": true
+   },
+   "5": {
+    "tasksPerSecond": {
+     "n": 5,
+     "mean": 65.54,
+     "stdev": 1.97,
+     "ci95": [
+      63.09,
+      67.99
+     ],
+     "cv_pct": 3.0,
+     "min": 63.3,
+     "max": 68.1
+    },
+    "claimP95Ms": {
+     "n": 5,
+     "mean": 84.02,
+     "stdev": 3.4,
+     "ci95": [
+      79.8,
+      88.24
+     ],
+     "cv_pct": 4.0,
+     "min": 78.79,
+     "max": 87.96
+    },
+    "completeP95Ms": {
+     "n": 5,
+     "mean": 22.06,
+     "stdev": 1.38,
+     "ci95": [
+      20.35,
+      23.78
+     ],
+     "cv_pct": 6.3,
+     "min": 20.25,
+     "max": 24.1
+    },
+    "tasksClaimed": 2020,
+    "tasksExecutedTwice": 0,
+    "allPassed": true
+   },
+   "10": {
+    "tasksPerSecond": {
+     "n": 5,
+     "mean": 68.84,
+     "stdev": 3.77,
+     "ci95": [
+      64.16,
+      73.52
+     ],
+     "cv_pct": 5.5,
+     "min": 62.7,
+     "max": 72.3
+    },
+    "claimP95Ms": {
+     "n": 5,
+     "mean": 168.62,
+     "stdev": 13.37,
+     "ci95": [
+      152.02,
+      185.22
+     ],
+     "cv_pct": 7.9,
+     "min": 149.61,
+     "max": 184.17
+    },
+    "completeP95Ms": {
+     "n": 5,
+     "mean": 21.29,
+     "stdev": 2.06,
+     "ci95": [
+      18.73,
+      23.85
+     ],
+     "cv_pct": 9.7,
+     "min": 18.9,
+     "max": 23.77
+    },
+    "tasksClaimed": 2020,
+    "tasksExecutedTwice": 0,
+    "allPassed": true
+   },
+   "25": {
+    "tasksPerSecond": {
+     "n": 5,
+     "mean": 64.44,
+     "stdev": 4.72,
+     "ci95": [
+      58.59,
+      70.29
+     ],
+     "cv_pct": 7.3,
+     "min": 56.9,
+     "max": 69.8
+    },
+    "claimP95Ms": {
+     "n": 5,
+     "mean": 367.83,
+     "stdev": 29.87,
+     "ci95": [
+      330.75,
+      404.91
+     ],
+     "cv_pct": 8.1,
+     "min": 338.38,
+     "max": 418.07
+    },
+    "completeP95Ms": {
+     "n": 5,
+     "mean": 100.22,
+     "stdev": 8.5,
+     "ci95": [
+      89.68,
+      110.77
+     ],
+     "cv_pct": 8.5,
+     "min": 91.42,
+     "max": 114.13
+    },
+    "tasksClaimed": 2020,
+    "tasksExecutedTwice": 0,
+    "allPassed": true
+   }
+  }
+ },
+ "api": {
+  "runs": 3,
+  "byScenario": {
+   "GET /health c=1": {
+    "rps": {
+     "n": 3,
+     "mean": 3566.97,
+     "stdev": 128.68,
+     "ci95": [
+      3247.29,
+      3886.64
+     ],
+     "cv_pct": 3.6,
+     "min": 3441.7,
+     "max": 3698.8
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 0.44,
+     "stdev": 0.02,
+     "ci95": [
+      0.4,
+      0.47
+     ],
+     "cv_pct": 3.5,
+     "min": 0.42,
+     "max": 0.45
+    },
+    "errors": 0
+   },
+   "GET /health c=10": {
+    "rps": {
+     "n": 3,
+     "mean": 4077.03,
+     "stdev": 266.73,
+     "ci95": [
+      3414.38,
+      4739.69
+     ],
+     "cv_pct": 6.5,
+     "min": 3771.6,
+     "max": 4264.1
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 5.83,
+     "stdev": 0.13,
+     "ci95": [
+      5.51,
+      6.15
+     ],
+     "cv_pct": 2.2,
+     "min": 5.74,
+     "max": 5.98
+    },
+    "errors": 0
+   },
+   "GET /health c=50": {
+    "rps": {
+     "n": 3,
+     "mean": 3783.37,
+     "stdev": 333.21,
+     "ci95": [
+      2955.56,
+      4611.17
+     ],
+     "cv_pct": 8.8,
+     "min": 3406.6,
+     "max": 4039.3
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 20.2,
+     "stdev": 2.77,
+     "ci95": [
+      13.31,
+      27.08
+     ],
+     "cv_pct": 13.7,
+     "min": 17.97,
+     "max": 23.3
+    },
+    "errors": 0
+   },
+   "GET /api/v1/projects/:id/jobs c=1": {
+    "rps": {
+     "n": 3,
+     "mean": 327.5,
+     "stdev": 43.44,
+     "ci95": [
+      219.58,
+      435.42
+     ],
+     "cv_pct": 13.3,
+     "min": 286.2,
+     "max": 372.8
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 4.5,
+     "stdev": 0.64,
+     "ci95": [
+      2.92,
+      6.08
+     ],
+     "cv_pct": 14.1,
+     "min": 3.86,
+     "max": 5.13
+    },
+    "errors": 0
+   },
+   "GET /api/v1/projects/:id/jobs c=10": {
+    "rps": {
+     "n": 3,
+     "mean": 621.0,
+     "stdev": 50.92,
+     "ci95": [
+      494.5,
+      747.5
+     ],
+     "cv_pct": 8.2,
+     "min": 580.3,
+     "max": 678.1
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 24.3,
+     "stdev": 2.51,
+     "ci95": [
+      18.05,
+      30.54
+     ],
+     "cv_pct": 10.3,
+     "min": 21.57,
+     "max": 26.52
+    },
+    "errors": 0
+   },
+   "GET /api/v1/projects/:id/jobs c=50": {
+    "rps": {
+     "n": 3,
+     "mean": 585.9,
+     "stdev": 23.49,
+     "ci95": [
+      527.54,
+      644.26
+     ],
+     "cv_pct": 4.0,
+     "min": 568,
+     "max": 612.5
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 116.99,
+     "stdev": 9.35,
+     "ci95": [
+      93.76,
+      140.22
+     ],
+     "cv_pct": 8.0,
+     "min": 107.6,
+     "max": 126.3
+    },
+    "errors": 0
+   },
+   "GET /api/v1/jobs/:id c=1": {
+    "rps": {
+     "n": 3,
+     "mean": 445.3,
+     "stdev": 26.42,
+     "ci95": [
+      379.65,
+      510.95
+     ],
+     "cv_pct": 5.9,
+     "min": 414.8,
+     "max": 461.3
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 3.22,
+     "stdev": 0.25,
+     "ci95": [
+      2.61,
+      3.83
+     ],
+     "cv_pct": 7.7,
+     "min": 2.99,
+     "max": 3.48
+    },
+    "errors": 0
+   },
+   "GET /api/v1/jobs/:id c=10": {
+    "rps": {
+     "n": 3,
+     "mean": 783.8,
+     "stdev": 28.27,
+     "ci95": [
+      713.56,
+      854.04
+     ],
+     "cv_pct": 3.6,
+     "min": 756.2,
+     "max": 812.7
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 19.04,
+     "stdev": 0.91,
+     "ci95": [
+      16.79,
+      21.3
+     ],
+     "cv_pct": 4.8,
+     "min": 18.26,
+     "max": 20.04
+    },
+    "errors": 0
+   },
+   "GET /api/v1/jobs/:id c=50": {
+    "rps": {
+     "n": 3,
+     "mean": 715.13,
+     "stdev": 23.15,
+     "ci95": [
+      657.62,
+      772.65
+     ],
+     "cv_pct": 3.2,
+     "min": 694.2,
+     "max": 740
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 96.58,
+     "stdev": 2.53,
+     "ci95": [
+      90.29,
+      102.86
+     ],
+     "cv_pct": 2.6,
+     "min": 93.71,
+     "max": 98.5
+    },
+    "errors": 0
+   },
+   "GET /api/v1/jobs/:id/tasks c=1": {
+    "rps": {
+     "n": 3,
+     "mean": 425.67,
+     "stdev": 1.17,
+     "ci95": [
+      422.77,
+      428.57
+     ],
+     "cv_pct": 0.3,
+     "min": 424.4,
+     "max": 426.7
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 3.5,
+     "stdev": 0.13,
+     "ci95": [
+      3.19,
+      3.82
+     ],
+     "cv_pct": 3.6,
+     "min": 3.43,
+     "max": 3.65
+    },
+    "errors": 0
+   },
+   "GET /api/v1/jobs/:id/tasks c=10": {
+    "rps": {
+     "n": 3,
+     "mean": 750.5,
+     "stdev": 47.93,
+     "ci95": [
+      631.44,
+      869.56
+     ],
+     "cv_pct": 6.4,
+     "min": 695.3,
+     "max": 781.5
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 20.24,
+     "stdev": 1.46,
+     "ci95": [
+      16.61,
+      23.88
+     ],
+     "cv_pct": 7.2,
+     "min": 18.88,
+     "max": 21.79
+    },
+    "errors": 0
+   },
+   "GET /api/v1/jobs/:id/tasks c=50": {
+    "rps": {
+     "n": 3,
+     "mean": 682.8,
+     "stdev": 63.24,
+     "ci95": [
+      525.69,
+      839.91
+     ],
+     "cv_pct": 9.3,
+     "min": 609.9,
+     "max": 722.9
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 98.33,
+     "stdev": 11.32,
+     "ci95": [
+      70.21,
+      126.46
+     ],
+     "cv_pct": 11.5,
+     "min": 91.1,
+     "max": 111.38
+    },
+    "errors": 0
+   },
+   "GET /api/v1/orgs/:org/dashboard c=1": {
+    "rps": {
+     "n": 3,
+     "mean": 208.6,
+     "stdev": 26.43,
+     "ci95": [
+      142.94,
+      274.26
+     ],
+     "cv_pct": 12.7,
+     "min": 178.5,
+     "max": 228
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 6.79,
+     "stdev": 0.65,
+     "ci95": [
+      5.16,
+      8.41
+     ],
+     "cv_pct": 9.6,
+     "min": 6.18,
+     "max": 7.48
+    },
+    "errors": 0
+   },
+   "GET /api/v1/orgs/:org/dashboard c=10": {
+    "rps": {
+     "n": 3,
+     "mean": 412.43,
+     "stdev": 28.77,
+     "ci95": [
+      340.96,
+      483.91
+     ],
+     "cv_pct": 7.0,
+     "min": 386.2,
+     "max": 443.2
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 36.0,
+     "stdev": 4.04,
+     "ci95": [
+      25.96,
+      46.05
+     ],
+     "cv_pct": 11.2,
+     "min": 31.65,
+     "max": 39.64
+    },
+    "errors": 0
+   },
+   "GET /api/v1/orgs/:org/dashboard c=50": {
+    "rps": {
+     "n": 3,
+     "mean": 400.8,
+     "stdev": 12.99,
+     "ci95": [
+      368.52,
+      433.08
+     ],
+     "cv_pct": 3.2,
+     "min": 386.6,
+     "max": 412.1
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 157.1,
+     "stdev": 13.37,
+     "ci95": [
+      123.9,
+      190.31
+     ],
+     "cv_pct": 8.5,
+     "min": 148.6,
+     "max": 172.51
+    },
+    "errors": 0
+   },
+   "POST /api/v1/projects/:id/jobs (create, 13 tasks) c=1": {
+    "rps": {
+     "n": 3,
+     "mean": 99.4,
+     "stdev": 4.55,
+     "ci95": [
+      88.09,
+      110.71
+     ],
+     "cv_pct": 4.6,
+     "min": 94.4,
+     "max": 103.3
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 13.35,
+     "stdev": 0.63,
+     "ci95": [
+      11.78,
+      14.93
+     ],
+     "cv_pct": 4.7,
+     "min": 12.81,
+     "max": 14.05
+    },
+    "errors": 0
+   },
+   "POST /api/v1/projects/:id/jobs (create, 13 tasks) c=10": {
+    "rps": {
+     "n": 3,
+     "mean": 139.6,
+     "stdev": 4.66,
+     "ci95": [
+      128.02,
+      151.18
+     ],
+     "cv_pct": 3.3,
+     "min": 134.4,
+     "max": 143.4
+    },
+    "p95Ms": {
+     "n": 3,
+     "mean": 93.27,
+     "stdev": 4.85,
+     "ci95": [
+      81.22,
+      105.31
+     ],
+     "cv_pct": 5.2,
+     "min": 88.51,
+     "max": 98.2
+    },
+    "errors": 0
+   }
+  }
+ },
+ "sandbox": {
+  "runs": 3,
+  "bySlots": {
+   "1": {
+    "runsPerMinute": {
+     "n": 3,
+     "mean": 119.27,
+     "stdev": 4.67,
+     "ci95": [
+      107.68,
+      130.86
+     ],
+     "cv_pct": 3.9,
+     "min": 114.4,
+     "max": 123.7
+    },
+    "perRunP50s": {
+     "n": 3,
+     "mean": 0.42,
+     "stdev": 0.01,
+     "ci95": [
+      0.39,
+      0.45
+     ],
+     "cv_pct": 2.8,
+     "min": 0.41,
+     "max": 0.43
+    },
+    "passed": "150/150",
+    "states": [
+     "SUCCEEDED"
+    ]
+   },
+   "5": {
+    "runsPerMinute": {
+     "n": 3,
+     "mean": 208.3,
+     "stdev": 12.96,
+     "ci95": [
+      176.11,
+      240.49
+     ],
+     "cv_pct": 6.2,
+     "min": 195.1,
+     "max": 221
+    },
+    "perRunP50s": {
+     "n": 3,
+     "mean": 1.13,
+     "stdev": 0.07,
+     "ci95": [
+      0.96,
+      1.31
+     ],
+     "cv_pct": 6.3,
+     "min": 1.07,
+     "max": 1.21
+    },
+    "passed": "150/150",
+    "states": [
+     "SUCCEEDED"
+    ]
+   },
+   "10": {
+    "runsPerMinute": {
+     "n": 3,
+     "mean": 206.33,
+     "stdev": 7.42,
+     "ci95": [
+      187.9,
+      224.76
+     ],
+     "cv_pct": 3.6,
+     "min": 202,
+     "max": 214.9
+    },
+    "perRunP50s": {
+     "n": 3,
+     "mean": 1.53,
+     "stdev": 0.07,
+     "ci95": [
+      1.34,
+      1.71
+     ],
+     "cv_pct": 4.8,
+     "min": 1.47,
+     "max": 1.61
+    },
+    "passed": "150/150",
+    "states": [
+     "SUCCEEDED"
+    ]
+   },
+   "25": {
+    "runsPerMinute": {
+     "n": 3,
+     "mean": 214.7,
+     "stdev": 6.0,
+     "ci95": [
+      199.79,
+      229.61
+     ],
+     "cv_pct": 2.8,
+     "min": 208.8,
+     "max": 220.8
+    },
+    "perRunP50s": {
+     "n": 3,
+     "mean": 1.57,
+     "stdev": 0.06,
+     "ci95": [
+      1.43,
+      1.71
+     ],
+     "cv_pct": 3.6,
+     "min": 1.52,
+     "max": 1.63
+    },
+    "passed": "150/150",
+    "states": [
+     "SUCCEEDED"
+    ]
+   }
+  }
+ },
+ "costs": {
+  "containerStartTeardownSeconds": {
+   "n": 20,
+   "p50": 0.23,
+   "p95": 0.27,
+   "p99": 0.27,
+   "max": 0.27,
+   "mean": 0.24
+  },
+  "coldBuildSeconds": {
+   "n": 5,
+   "p50": 17.58,
+   "p95": 17.96,
+   "p99": 17.96,
+   "max": 17.96,
+   "mean": 17.67
+  },
+  "cacheHitBuildSeconds": {
+   "n": 5,
+   "p50": 0.01,
+   "p95": 0.02,
+   "p99": 0.02,
+   "max": 0.02,
+   "mean": 0.01
+  }
+ },
+ "process": {
+  "api-1": {
+   "wallSeconds": 184.2,
+   "cpuPercentOfOneCore": "68%",
+   "maxRssMiB": 309.2,
+   "exit": 0
+  },
+  "api-2": {
+   "wallSeconds": 182.9,
+   "cpuPercentOfOneCore": "70%",
+   "maxRssMiB": 310.5,
+   "exit": 0
+  },
+  "api-3": {
+   "wallSeconds": 183.6,
+   "cpuPercentOfOneCore": "69%",
+   "maxRssMiB": 308.3,
+   "exit": 0
+  },
+  "costs": {
+   "wallSeconds": 103.6,
+   "cpuPercentOfOneCore": "11%",
+   "maxRssMiB": 212.3,
+   "exit": 0
+  },
+  "sandbox-1": {
+   "wallSeconds": 116.6,
+   "cpuPercentOfOneCore": "49%",
+   "maxRssMiB": 190.7,
+   "exit": 0
+  },
+  "sandbox-2": {
+   "wallSeconds": 122.1,
+   "cpuPercentOfOneCore": "48%",
+   "maxRssMiB": 193.4,
+   "exit": 0
+  },
+  "sandbox-3": {
+   "wallSeconds": 123.7,
+   "cpuPercentOfOneCore": "50%",
+   "maxRssMiB": 203.4,
+   "exit": 0
+  },
+  "scheduler-1": {
+   "wallSeconds": 31.8,
+   "cpuPercentOfOneCore": "48%",
+   "maxRssMiB": 273.3,
+   "exit": 0
+  },
+  "scheduler-2": {
+   "wallSeconds": 31.9,
+   "cpuPercentOfOneCore": "49%",
+   "maxRssMiB": 268.9,
+   "exit": 0
+  },
+  "scheduler-3": {
+   "wallSeconds": 31.9,
+   "cpuPercentOfOneCore": "48%",
+   "maxRssMiB": 267.0,
+   "exit": 0
+  },
+  "scheduler-4": {
+   "wallSeconds": 33.0,
+   "cpuPercentOfOneCore": "50%",
+   "maxRssMiB": 266.9,
+   "exit": 0
+  },
+  "scheduler-5": {
+   "wallSeconds": 32.2,
+   "cpuPercentOfOneCore": "49%",
+   "maxRssMiB": 262.8,
+   "exit": 0
+  }
+ },
+ "hostCpu": {
+  "samples": 215,
+  "meanIdlePct": 32.6,
+  "meanIowaitPct": 1.1,
+  "minFreeMiB": 5733
+ }
+}

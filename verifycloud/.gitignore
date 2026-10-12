@@ -1,0 +1,11 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.env
+coverage/
+obj_dir/
+/tmp/
+test-results/
+playwright-report/
+packages/web/test-results/
+packages/web/playwright-report/

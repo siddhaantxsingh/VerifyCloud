@@ -1,0 +1,23 @@
+# Example workflow for a repository that contains verifycloud.yaml.
+# Alternative to the VerifyCloud GitHub App (which reports checks without any
+# workflow). Store the project API key as the secret VERIFYCLOUD_TOKEN.
+name: RTL regression
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - id: vc
+        uses: <your-github-user>/verifycloud/action@main
+        with:
+          api-url: https://verifycloud.example.com
+          token: ${{ secrets.VERIFYCLOUD_TOKEN }}
+          project: my-org/my-ip
+          regression: smoke

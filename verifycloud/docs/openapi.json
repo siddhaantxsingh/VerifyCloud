@@ -1,0 +1,3077 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "VerifyCloud API",
+        "version": "1.0.0",
+        "description": "CI/CD, regression testing, coverage, and AI-assisted debugging for RTL. See docs/api.md."
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer": {
+                "type": "http",
+                "scheme": "bearer",
+                "description": "Personal access token (vc_pat_\u2026) or organization API key (vc_key_\u2026)"
+            },
+            "session": {
+                "type": "apiKey",
+                "in": "cookie",
+                "name": "vc_session"
+            }
+        },
+        "schemas": {}
+    },
+    "paths": {
+        "/api/v1/auth/register": {
+            "post": {
+                "summary": "Create an account",
+                "tags": [
+                    "auth"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "email",
+                                    "password",
+                                    "name"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "format": "email",
+                                        "maxLength": 254,
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "minLength": 10,
+                                        "maxLength": 200,
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "minLength": 1,
+                                        "maxLength": 100,
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/login": {
+            "post": {
+                "summary": "Log in (sets a session cookie)",
+                "tags": [
+                    "auth"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "format": "email",
+                                        "maxLength": 254,
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "maxLength": 200,
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/logout": {
+            "post": {
+                "summary": "Log out (deletes the session)",
+                "tags": [
+                    "auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/verify-email": {
+            "post": {
+                "summary": "Confirm an email address with the emailed token",
+                "tags": [
+                    "auth"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "token"
+                                ],
+                                "properties": {
+                                    "token": {
+                                        "minLength": 20,
+                                        "maxLength": 200,
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/resend-verification": {
+            "post": {
+                "summary": "Send the verification email again",
+                "tags": [
+                    "auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/me": {
+            "get": {
+                "summary": "Current user and organizations",
+                "tags": [
+                    "auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/me/tokens": {
+            "get": {
+                "summary": "List personal access tokens",
+                "tags": [
+                    "auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a personal access token (shown once)",
+                "tags": [
+                    "auth"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "name",
+                                    "scopes"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "minLength": 1,
+                                        "maxLength": 100,
+                                        "type": "string"
+                                    },
+                                    "scopes": {
+                                        "minItems": 1,
+                                        "maxItems": 3,
+                                        "type": "array",
+                                        "items": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "read"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "write"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "admin"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "expiresInDays": {
+                                        "minimum": 1,
+                                        "maximum": 365,
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/me/tokens/{id}": {
+            "delete": {
+                "summary": "Revoke a personal access token",
+                "tags": [
+                    "auth"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/github/start": {
+            "get": {
+                "summary": "Start GitHub login (redirect)",
+                "tags": [
+                    "auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/github/callback": {
+            "get": {
+                "summary": "GitHub OAuth callback",
+                "tags": [
+                    "auth"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "maxLength": 200,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "code",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "maxLength": 200,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "state",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/orgs": {
+            "get": {
+                "summary": "Organizations of the caller",
+                "tags": [
+                    "organizations"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create an organization (caller becomes owner)",
+                "tags": [
+                    "organizations"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "name",
+                                    "slug"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "minLength": 1,
+                                        "maxLength": 100,
+                                        "type": "string"
+                                    },
+                                    "slug": {
+                                        "pattern": "^[a-z0-9][a-z0-9-]{1,38}[a-z0-9]$",
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/orgs/{org}": {
+            "get": {
+                "summary": "Organization details, plan and quotas",
+                "tags": [
+                    "organizations"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "maxLength": 64,
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "org",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/orgs/{org}/members": {
+            "get": {
+                "summary": "List members",
+                "tags": [
+                    "organizations"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "maxLength": 64,
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "org",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add an existing user by email",
+                "tags": [
+                    "organizations"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "email",
+                                    "role"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "format": "email",
+                                        "type": "string"
+                                    },
+                                    "role": {
+                                        "anyOf": [
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "owner"
+                                                ]
+                                            },
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "admin"
+                                                ]
+                                            },
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "engineer"
+                                                ]
+                                            },
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "viewer"
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "maxLength": 64,
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "org",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/orgs/{org}/members/{userId}": {
+            "patch": {
+                "summary": "Change a member's role",
+                "tags": [
+                    "organizations"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "role"
+                                ],
+                                "properties": {
+                                    "role": {
+                                        "anyOf": [
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "owner"
+                                                ]
+                                            },
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "admin"
+                                                ]
+                                            },
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "engineer"
+                                                ]
+                                            },
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "viewer"
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "org",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "userId",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Remove a member",
+                "tags": [
+                    "organizations"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "org",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "userId",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/orgs/{org}/api-keys": {
+            "get": {
+                "summary": "List organization API keys",
+                "tags": [
+                    "organizations"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "maxLength": 64,
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "org",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create an organization API key for CI (shown once)",
+                "tags": [
+                    "organizations"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "name",
+                                    "role",
+                                    "scopes"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "minLength": 1,
+                                        "maxLength": 100,
+                                        "type": "string"
+                                    },
+                                    "role": {
+                                        "anyOf": [
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "admin"
+                                                ]
+                                            },
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "engineer"
+                                                ]
+                                            },
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "viewer"
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "scopes": {
+                                        "minItems": 1,
+                                        "maxItems": 3,
+                                        "type": "array",
+                                        "items": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "read"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "write"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "admin"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "expiresInDays": {
+                                        "minimum": 1,
+                                        "maximum": 365,
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "maxLength": 64,
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "org",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/orgs/{org}/api-keys/{id}": {
+            "delete": {
+                "summary": "Revoke an organization API key",
+                "tags": [
+                    "organizations"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "org",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/orgs/{org}/usage": {
+            "get": {
+                "summary": "Usage ledger aggregated by kind and day",
+                "tags": [
+                    "organizations"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "minimum": 1,
+                            "maximum": 365,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "days",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "maxLength": 64,
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "org",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/orgs/{org}/audit": {
+            "get": {
+                "summary": "Audit log (owners and admins)",
+                "tags": [
+                    "organizations"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "before",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "minimum": 1,
+                            "maximum": 200,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "limit",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "maxLength": 64,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "action",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "maxLength": 64,
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "org",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/orgs/{org}/projects": {
+            "get": {
+                "summary": "List projects",
+                "tags": [
+                    "projects"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "org",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a project",
+                "tags": [
+                    "projects"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "name",
+                                    "slug"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "minLength": 1,
+                                        "maxLength": 100,
+                                        "type": "string"
+                                    },
+                                    "slug": {
+                                        "pattern": "^[a-z0-9][a-z0-9-]{0,62}$",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "maxLength": 2000,
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "org",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/projects/{id}": {
+            "get": {
+                "summary": "Project details",
+                "tags": [
+                    "projects"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update project settings (admin)",
+                "tags": [
+                    "projects"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "minLength": 1,
+                                        "maxLength": 100,
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "maxLength": 2000,
+                                        "type": "string"
+                                    },
+                                    "state": {
+                                        "anyOf": [
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "active"
+                                                ]
+                                            },
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "paused"
+                                                ]
+                                            },
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "archived"
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "branch": {
+                                        "pattern": "^[A-Za-z0-9._/-]{1,200}$",
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "configPath": {
+                                        "pattern": "^[A-Za-z0-9._/-]{1,200}$",
+                                        "type": "string"
+                                    },
+                                    "maxConcurrency": {
+                                        "minimum": 1,
+                                        "maximum": 256,
+                                        "type": "integer"
+                                    },
+                                    "retention": {
+                                        "additionalProperties": false,
+                                        "type": "object",
+                                        "required": [
+                                            "logs",
+                                            "waveforms",
+                                            "coverage",
+                                            "models",
+                                            "sources"
+                                        ],
+                                        "properties": {
+                                            "logs": {
+                                                "minimum": 1,
+                                                "maximum": 3650,
+                                                "type": "integer"
+                                            },
+                                            "waveforms": {
+                                                "minimum": 1,
+                                                "maximum": 3650,
+                                                "type": "integer"
+                                            },
+                                            "coverage": {
+                                                "minimum": 1,
+                                                "maximum": 3650,
+                                                "type": "integer"
+                                            },
+                                            "models": {
+                                                "minimum": 1,
+                                                "maximum": 3650,
+                                                "type": "integer"
+                                            },
+                                            "sources": {
+                                                "minimum": 1,
+                                                "maximum": 3650,
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "aiSettings": {
+                                        "additionalProperties": false,
+                                        "type": "object",
+                                        "required": [
+                                            "provider",
+                                            "allowExternal"
+                                        ],
+                                        "properties": {
+                                            "provider": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "heuristic"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "openai"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "local"
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "allowExternal": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    },
+                                    "prChecks": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a project and all its data (owner/admin)",
+                "tags": [
+                    "projects"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/projects/{id}/config/validate": {
+            "post": {
+                "summary": "Validate a verifycloud.yaml",
+                "tags": [
+                    "projects"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "text"
+                                ],
+                                "properties": {
+                                    "text": {
+                                        "maxLength": 262144,
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/projects/{id}/detect": {
+            "post": {
+                "summary": "Detect HDL project structure and propose a configuration",
+                "tags": [
+                    "projects"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "files"
+                                ],
+                                "properties": {
+                                    "files": {
+                                        "maxItems": 5000,
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "required": [
+                                                "path"
+                                            ],
+                                            "properties": {
+                                                "path": {
+                                                    "maxLength": 400,
+                                                    "type": "string"
+                                                },
+                                                "content": {
+                                                    "maxLength": 65536,
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/projects/{id}/snapshots": {
+            "post": {
+                "summary": "Upload a source snapshot (tar.gz body, Content-Type: application/gzip)",
+                "tags": [
+                    "projects"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            },
+            "get": {
+                "summary": "List source snapshots",
+                "tags": [
+                    "projects"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/projects/{id}/repository": {
+            "post": {
+                "summary": "Connect a GitHub repository through a GitHub App installation of this organization",
+                "tags": [
+                    "projects",
+                    "github"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "fullName",
+                                    "installationId"
+                                ],
+                                "properties": {
+                                    "fullName": {
+                                        "pattern": "^[A-Za-z0-9_.-]{1,100}/[A-Za-z0-9_.-]{1,100}$",
+                                        "type": "string"
+                                    },
+                                    "installationId": {
+                                        "minimum": 1,
+                                        "type": "integer"
+                                    },
+                                    "defaultBranch": {
+                                        "pattern": "^[A-Za-z0-9._/-]{1,200}$",
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Disconnect the repository",
+                "tags": [
+                    "projects",
+                    "github"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/orgs/{org}/github/installations": {
+            "get": {
+                "summary": "GitHub App installations of the organization",
+                "tags": [
+                    "github"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "org",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/orgs/{org}/github/installations/claim": {
+            "post": {
+                "summary": "Bind a GitHub App installation you created to this organization",
+                "tags": [
+                    "github"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "installationId"
+                                ],
+                                "properties": {
+                                    "installationId": {
+                                        "minimum": 1,
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "org",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/projects/{id}/secrets": {
+            "get": {
+                "summary": "List secret names (values are never returned)",
+                "tags": [
+                    "projects"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/projects/{id}/secrets/{name}": {
+            "put": {
+                "summary": "Create or replace a secret",
+                "tags": [
+                    "projects"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "value"
+                                ],
+                                "properties": {
+                                    "value": {
+                                        "minLength": 1,
+                                        "maxLength": 8192,
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "pattern": "^[A-Z_][A-Z0-9_]{0,63}$",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "name",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a secret",
+                "tags": [
+                    "projects"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "name",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/projects/{id}/notifications": {
+            "get": {
+                "summary": "Notification channels",
+                "tags": [
+                    "projects"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add a notification channel",
+                "tags": [
+                    "projects"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "kind",
+                                    "target",
+                                    "events"
+                                ],
+                                "properties": {
+                                    "kind": {
+                                        "anyOf": [
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "email"
+                                                ]
+                                            },
+                                            {
+                                                "type": "string",
+                                                "enum": [
+                                                    "webhook"
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "target": {
+                                        "minLength": 3,
+                                        "maxLength": 500,
+                                        "type": "string"
+                                    },
+                                    "events": {
+                                        "minItems": 1,
+                                        "type": "array",
+                                        "items": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "regression_failed"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "regression_passed"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "coverage_dropped"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "worker_failure"
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "quota_exceeded"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "secret": {
+                                        "minLength": 16,
+                                        "maxLength": 200,
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/projects/{id}/notifications/{channel}": {
+            "delete": {
+                "summary": "Remove a notification channel",
+                "tags": [
+                    "projects"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "channel",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/projects/{id}/regressions": {
+            "get": {
+                "summary": "Regressions with their latest result",
+                "tags": [
+                    "regressions"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/projects/{id}/tests/{name}/history": {
+            "get": {
+                "summary": "Recent results of one test",
+                "tags": [
+                    "regressions"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "minimum": 1,
+                            "maximum": 200,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "limit",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "maxLength": 64,
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "name",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/projects/{id}/coverage": {
+            "get": {
+                "summary": "Coverage history (merged per job) for a branch/regression",
+                "tags": [
+                    "coverage"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "maxLength": 200,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "branch",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "maxLength": 64,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "regression",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "minimum": 1,
+                            "maximum": 500,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "limit",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/orgs/{org}/dashboard": {
+            "get": {
+                "summary": "Dashboard data: recent runs, rates, coverage, workers, queue",
+                "tags": [
+                    "organizations"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "org",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/projects/{id}/jobs": {
+            "post": {
+                "summary": "Start a verification job (regression)",
+                "tags": [
+                    "jobs"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "properties": {
+                                    "regression": {
+                                        "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$",
+                                        "type": "string"
+                                    },
+                                    "snapshotId": {
+                                        "format": "uuid",
+                                        "type": "string"
+                                    },
+                                    "ref": {
+                                        "pattern": "^[A-Za-z0-9._/-]{1,200}$",
+                                        "type": "string"
+                                    },
+                                    "tests": {
+                                        "maxItems": 500,
+                                        "type": "array",
+                                        "items": {
+                                            "maxLength": 64,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "idempotencyKey": {
+                                        "pattern": "^[A-Za-z0-9_.:-]{8,128}$",
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            },
+            "get": {
+                "summary": "List jobs (newest first, cursor pagination)",
+                "tags": [
+                    "jobs"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "before",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "minimum": 1,
+                            "maximum": 100,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "limit",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "maxLength": 20,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "state",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "maxLength": 200,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "branch",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "maxLength": 64,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "regression",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/jobs": {
+            "post": {
+                "summary": "Start a verification job (project in body)",
+                "tags": [
+                    "jobs"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "allOf": [
+                                    {
+                                        "type": "object",
+                                        "required": [
+                                            "projectId"
+                                        ],
+                                        "properties": {
+                                            "projectId": {
+                                                "format": "uuid",
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "additionalProperties": false,
+                                        "type": "object",
+                                        "properties": {
+                                            "regression": {
+                                                "pattern": "^[A-Za-z][A-Za-z0-9_.-]{0,63}$",
+                                                "type": "string"
+                                            },
+                                            "snapshotId": {
+                                                "format": "uuid",
+                                                "type": "string"
+                                            },
+                                            "ref": {
+                                                "pattern": "^[A-Za-z0-9._/-]{1,200}$",
+                                                "type": "string"
+                                            },
+                                            "tests": {
+                                                "maxItems": 500,
+                                                "type": "array",
+                                                "items": {
+                                                    "maxLength": 64,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "idempotencyKey": {
+                                                "pattern": "^[A-Za-z0-9_.:-]{8,128}$",
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/jobs/{id}": {
+            "get": {
+                "summary": "Job details",
+                "tags": [
+                    "jobs"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/jobs/{id}/config": {
+            "get": {
+                "summary": "The resolved configuration recorded for the job",
+                "tags": [
+                    "jobs"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/jobs/{id}/cancel": {
+            "post": {
+                "summary": "Cancel a job (running tests are stopped)",
+                "tags": [
+                    "jobs"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/jobs/{id}/rerun": {
+            "post": {
+                "summary": "Re-run with the exact recorded source and configuration (new job)",
+                "tags": [
+                    "jobs"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "properties": {
+                                    "tests": {
+                                        "maxItems": 500,
+                                        "type": "array",
+                                        "items": {
+                                            "maxLength": 64,
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/jobs/{id}/tasks": {
+            "get": {
+                "summary": "Test runs of a job",
+                "tags": [
+                    "jobs"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "maxLength": 20,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "state",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "offset",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "minimum": 1,
+                            "maximum": 500,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "limit",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{id}": {
+            "get": {
+                "summary": "One test run (or build) with results, artifacts, assertions, coverage",
+                "tags": [
+                    "jobs"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{id}/log": {
+            "get": {
+                "summary": "Search and page through a run's log (server-side filtering)",
+                "tags": [
+                    "jobs"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "maxLength": 200,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "q",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "string",
+                                    "enum": [
+                                        "error"
+                                    ]
+                                },
+                                {
+                                    "type": "string",
+                                    "enum": [
+                                        "warning"
+                                    ]
+                                }
+                            ]
+                        },
+                        "in": "query",
+                        "name": "severity",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "offset",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "minimum": 1,
+                            "maximum": 2000,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "limit",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/jobs/{id}/assertions": {
+            "get": {
+                "summary": "Assertion failures of a job",
+                "tags": [
+                    "jobs"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/jobs/{id}/coverage": {
+            "get": {
+                "summary": "Merged coverage of a job: summary, per file, functional points, delta vs previous",
+                "tags": [
+                    "coverage"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/jobs/{id}/compare": {
+            "get": {
+                "summary": "Compare with another job (default: previous run of the same regression and branch)",
+                "tags": [
+                    "jobs"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "with",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/projects/{id}/compare": {
+            "get": {
+                "summary": "Compare the latest runs of two branches (or two jobs)",
+                "tags": [
+                    "jobs"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "maxLength": 200,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "base",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "maxLength": 200,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "head",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "maxLength": 64,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "regression",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/jobs/{id}/source/index": {
+            "get": {
+                "summary": "SystemVerilog symbols of the job's sources (partial parser)",
+                "tags": [
+                    "source"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "maxLength": 100,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "q",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "maxLength": 100,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "module",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/jobs/{id}/source/file": {
+            "get": {
+                "summary": "A source file (or line range) of the job",
+                "tags": [
+                    "source"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "maxLength": 400,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "path",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "from",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "to",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{id}/reproduce": {
+            "get": {
+                "summary": "Everything needed to reproduce a test run locally",
+                "tags": [
+                    "jobs"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/projects/{id}/artifacts": {
+            "get": {
+                "summary": "List artifacts",
+                "tags": [
+                    "artifacts"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "maxLength": 20,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "kind",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "job",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "before",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "minimum": 1,
+                            "maximum": 200,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "limit",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/artifacts/{id}": {
+            "get": {
+                "summary": "Artifact metadata",
+                "tags": [
+                    "artifacts"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete an artifact (admin); the stored object is deleted by the retention loop",
+                "tags": [
+                    "artifacts"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/artifacts/{id}/download": {
+            "get": {
+                "summary": "Download (supports Range). Compressed artifacts are served as stored (gzip), with a .gz file name",
+                "tags": [
+                    "artifacts"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/artifacts/{id}/waveform/signals": {
+            "get": {
+                "summary": "Waveform metadata and signal search",
+                "tags": [
+                    "waveforms"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "maxLength": 200,
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "q",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "minimum": 1,
+                            "maximum": 2000,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "limit",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/artifacts/{id}/waveform/values": {
+            "get": {
+                "summary": "Value changes of selected signals in a time window (downsampled to maxPoints)",
+                "tags": [
+                    "waveforms"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "pattern": "^\\d+(,\\d+){0,63}$",
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "ids",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "from",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "to",
+                        "required": true
+                    },
+                    {
+                        "schema": {
+                            "minimum": 10,
+                            "maximum": 5000,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "maxPoints",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{id}/analysis/preview": {
+            "get": {
+                "summary": "Exactly what an analysis would include and where it would go (nothing is sent)",
+                "tags": [
+                    "ai"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{id}/analyze": {
+            "post": {
+                "summary": "Analyze a failed run",
+                "tags": [
+                    "ai"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/analyses/{id}": {
+            "get": {
+                "summary": "An analysis with its context manifest",
+                "tags": [
+                    "ai"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/analyses/{id}/patch": {
+            "post": {
+                "summary": "Generate a patch suggestion (LLM providers only; AI-generated, never applied automatically)",
+                "tags": [
+                    "ai"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/jobs/{id}/patches": {
+            "post": {
+                "summary": "Submit your own patch for verification against this job's sources",
+                "tags": [
+                    "ai"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "additionalProperties": false,
+                                "type": "object",
+                                "required": [
+                                    "diff"
+                                ],
+                                "properties": {
+                                    "diff": {
+                                        "minLength": 10,
+                                        "maxLength": 1000000,
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            },
+            "get": {
+                "summary": "Patches proposed for this job and their verification jobs",
+                "tags": [
+                    "ai"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/patches/{id}/verify": {
+            "post": {
+                "summary": "Run the regression with the patch applied, in a fresh isolated job",
+                "tags": [
+                    "ai"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/events": {
+            "get": {
+                "summary": "Real-time job events (Server-Sent Events)",
+                "tags": [
+                    "events"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "project",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "in": "query",
+                        "name": "job",
+                        "required": false
+                    },
+                    {
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "name": "lastEventId",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/webhooks/github": {
+            "post": {
+                "summary": "GitHub App webhook receiver (signature required)",
+                "tags": [
+                    "github"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/workers": {
+            "get": {
+                "summary": "Worker pool status",
+                "tags": [
+                    "workers"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/demo": {
+            "post": {
+                "summary": "Start a public demo session (only when PUBLIC_DEMO=true)",
+                "tags": [
+                    "auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        },
+        "/api/v1/jobs/{id}/demo-patch": {
+            "post": {
+                "summary": "Demo organizations only: attach the shipped reference fix as a patch",
+                "tags": [
+                    "ai"
+                ],
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "in": "path",
+                        "name": "id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default Response"
+                    }
+                }
+            }
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080"
+        }
+    ],
+    "security": [
+        {
+            "bearer": []
+        },
+        {
+            "session": []
+        }
+    ]
+}

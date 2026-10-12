@@ -1,0 +1,124 @@
+{
+  "benchmark": "scheduler (fake workers, no simulation)",
+  "environment": {
+    "date": "2026-10-10T06:33:41.452Z",
+    "cpuModel": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+    "logicalCpus": 2,
+    "memoryGiB": 7.8,
+    "kernel": "6.18.44-fc-v114",
+    "node": "v22.22.0",
+    "postgres": "psql (PostgreSQL) 16.15 (Ubuntu 16.15-0ubuntu0.24.04.1)",
+    "docker": "29.8.2",
+    "verilator": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+    "objectStorage": "http://127.0.0.1:9000 (moto S3 emulator)",
+    "note": "API, PostgreSQL, object storage, workers and load generator all ran on this single host"
+  },
+  "jobs": 4,
+  "tasksPerJob": 101,
+  "results": [
+    {
+      "workers": 1,
+      "tasks": 404,
+      "seconds": 12.72,
+      "tasksPerSecond": 31.8,
+      "claimLatencyMs": {
+        "n": 405,
+        "p50": 17.95,
+        "p95": 25.18,
+        "p99": 28.74,
+        "max": 35.95,
+        "mean": 18.32
+      },
+      "completeLatencyMs": {
+        "n": 404,
+        "p50": 12.48,
+        "p95": 18.54,
+        "p99": 29.2,
+        "max": 41.92,
+        "mean": 13.1
+      },
+      "allTasksPassed": true,
+      "jobsSucceeded": 4,
+      "tasksExecutedTwice": 0,
+      "tasksRetried": 0
+    },
+    {
+      "workers": 5,
+      "tasks": 404,
+      "seconds": 7.14,
+      "tasksPerSecond": 56.6,
+      "claimLatencyMs": {
+        "n": 412,
+        "p50": 64.57,
+        "p95": 85.37,
+        "p99": 94.22,
+        "max": 106.56,
+        "mean": 64.94
+      },
+      "completeLatencyMs": {
+        "n": 404,
+        "p50": 17.94,
+        "p95": 47.76,
+        "p99": 67.11,
+        "max": 78.68,
+        "mean": 21.73
+      },
+      "allTasksPassed": true,
+      "jobsSucceeded": 4,
+      "tasksExecutedTwice": 0,
+      "tasksRetried": 0
+    },
+    {
+      "workers": 10,
+      "tasks": 404,
+      "seconds": 6.89,
+      "tasksPerSecond": 58.7,
+      "claimLatencyMs": {
+        "n": 419,
+        "p50": 139.55,
+        "p95": 180.31,
+        "p99": 193.69,
+        "max": 225.09,
+        "mean": 140.69
+      },
+      "completeLatencyMs": {
+        "n": 404,
+        "p50": 16.47,
+        "p95": 61.16,
+        "p99": 84.21,
+        "max": 114.85,
+        "mean": 23.66
+      },
+      "allTasksPassed": true,
+      "jobsSucceeded": 4,
+      "tasksExecutedTwice": 0,
+      "tasksRetried": 0
+    },
+    {
+      "workers": 25,
+      "tasks": 404,
+      "seconds": 7.5,
+      "tasksPerSecond": 53.9,
+      "claimLatencyMs": {
+        "n": 456,
+        "p50": 325.16,
+        "p95": 436.97,
+        "p99": 457.09,
+        "max": 465.6,
+        "mean": 330.06
+      },
+      "completeLatencyMs": {
+        "n": 404,
+        "p50": 79.23,
+        "p95": 127.48,
+        "p99": 161.3,
+        "max": 267.29,
+        "mean": 83.58
+      },
+      "allTasksPassed": true,
+      "jobsSucceeded": 4,
+      "tasksExecutedTwice": 0,
+      "tasksRetried": 0
+    }
+  ]
+}

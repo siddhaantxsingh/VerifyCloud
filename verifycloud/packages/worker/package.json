@@ -1,0 +1,22 @@
+{
+  "name": "@verifycloud/worker",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -b",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "@verifycloud/shared": "0.1.0",
+    "tar": "^7.4.0",
+    "picomatch": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/picomatch": "^3.0.1"
+  },
+  "exports": {
+    ".": "./dist/main.js",
+    "./dist/*": "./dist/*"
+  }
+}

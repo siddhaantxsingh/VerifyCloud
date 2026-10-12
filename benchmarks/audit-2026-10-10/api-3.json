@@ -1,0 +1,325 @@
+{
+  "benchmark": "API latency (closed-loop clients, same host)",
+  "environment": {
+    "date": "2026-10-10T06:52:59.135Z",
+    "cpuModel": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+    "logicalCpus": 2,
+    "memoryGiB": 7.8,
+    "kernel": "6.18.44-fc-v114",
+    "node": "v22.22.0",
+    "postgres": "psql (PostgreSQL) 16.15 (Ubuntu 16.15-0ubuntu0.24.04.1)",
+    "docker": "29.8.2",
+    "verilator": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+    "objectStorage": "http://127.0.0.1:9000 (moto S3 emulator)",
+    "note": "API, PostgreSQL, object storage, workers and load generator all ran on this single host"
+  },
+  "durationSecondsPerScenario": 10,
+  "results": [
+    {
+      "endpoint": "GET /health",
+      "concurrency": 1,
+      "requests": 36988,
+      "rps": 3698.8,
+      "errors": 0,
+      "statuses": {
+        "200": 36988
+      },
+      "latencyMs": {
+        "n": 36988,
+        "p50": 0.21,
+        "p95": 0.45,
+        "p99": 0.73,
+        "max": 13.13,
+        "mean": 0.27
+      }
+    },
+    {
+      "endpoint": "GET /health",
+      "concurrency": 10,
+      "requests": 42641,
+      "rps": 4264.1,
+      "errors": 0,
+      "statuses": {
+        "200": 42641
+      },
+      "latencyMs": {
+        "n": 42641,
+        "p50": 1.92,
+        "p95": 5.78,
+        "p99": 8.48,
+        "max": 27.15,
+        "mean": 2.34
+      }
+    },
+    {
+      "endpoint": "GET /health",
+      "concurrency": 50,
+      "requests": 39042,
+      "rps": 3904.2,
+      "errors": 0,
+      "statuses": {
+        "200": 39042
+      },
+      "latencyMs": {
+        "n": 39042,
+        "p50": 10.88,
+        "p95": 19.32,
+        "p99": 26.19,
+        "max": 182.15,
+        "mean": 12.81
+      }
+    },
+    {
+      "endpoint": "GET /api/v1/projects/:id/jobs",
+      "concurrency": 1,
+      "requests": 3235,
+      "rps": 323.5,
+      "errors": 0,
+      "statuses": {
+        "200": 3235
+      },
+      "latencyMs": {
+        "n": 3235,
+        "p50": 2.88,
+        "p95": 4.51,
+        "p99": 6.14,
+        "max": 19.59,
+        "mean": 3.09
+      }
+    },
+    {
+      "endpoint": "GET /api/v1/projects/:id/jobs",
+      "concurrency": 10,
+      "requests": 5803,
+      "rps": 580.3,
+      "errors": 0,
+      "statuses": {
+        "200": 5803
+      },
+      "latencyMs": {
+        "n": 5803,
+        "p50": 16.28,
+        "p95": 26.52,
+        "p99": 32.57,
+        "max": 61.12,
+        "mean": 17.24
+      }
+    },
+    {
+      "endpoint": "GET /api/v1/projects/:id/jobs",
+      "concurrency": 50,
+      "requests": 5772,
+      "rps": 577.2,
+      "errors": 0,
+      "statuses": {
+        "200": 5772
+      },
+      "latencyMs": {
+        "n": 5772,
+        "p50": 83.97,
+        "p95": 126.3,
+        "p99": 141.82,
+        "max": 159.56,
+        "mean": 86.92
+      }
+    },
+    {
+      "endpoint": "GET /api/v1/jobs/:id",
+      "concurrency": 1,
+      "requests": 4148,
+      "rps": 414.8,
+      "errors": 0,
+      "statuses": {
+        "200": 4148
+      },
+      "latencyMs": {
+        "n": 4148,
+        "p50": 2.23,
+        "p95": 3.48,
+        "p99": 6.05,
+        "max": 24.72,
+        "mean": 2.41
+      }
+    },
+    {
+      "endpoint": "GET /api/v1/jobs/:id",
+      "concurrency": 10,
+      "requests": 7825,
+      "rps": 782.5,
+      "errors": 0,
+      "statuses": {
+        "200": 7825
+      },
+      "latencyMs": {
+        "n": 7825,
+        "p50": 12.2,
+        "p95": 18.83,
+        "p99": 24.89,
+        "max": 50.08,
+        "mean": 12.78
+      }
+    },
+    {
+      "endpoint": "GET /api/v1/jobs/:id",
+      "concurrency": 50,
+      "requests": 7400,
+      "rps": 740,
+      "errors": 0,
+      "statuses": {
+        "200": 7400
+      },
+      "latencyMs": {
+        "n": 7400,
+        "p50": 64.87,
+        "p95": 98.5,
+        "p99": 114.4,
+        "max": 124.71,
+        "mean": 67.71
+      }
+    },
+    {
+      "endpoint": "GET /api/v1/jobs/:id/tasks",
+      "concurrency": 1,
+      "requests": 4267,
+      "rps": 426.7,
+      "errors": 0,
+      "statuses": {
+        "200": 4267
+      },
+      "latencyMs": {
+        "n": 4267,
+        "p50": 2.12,
+        "p95": 3.65,
+        "p99": 5.75,
+        "max": 9.38,
+        "mean": 2.34
+      }
+    },
+    {
+      "endpoint": "GET /api/v1/jobs/:id/tasks",
+      "concurrency": 10,
+      "requests": 7747,
+      "rps": 774.7,
+      "errors": 0,
+      "statuses": {
+        "200": 7747
+      },
+      "latencyMs": {
+        "n": 7747,
+        "p50": 12.18,
+        "p95": 20.06,
+        "p99": 26.12,
+        "max": 63.41,
+        "mean": 12.91
+      }
+    },
+    {
+      "endpoint": "GET /api/v1/jobs/:id/tasks",
+      "concurrency": 50,
+      "requests": 7156,
+      "rps": 715.6,
+      "errors": 0,
+      "statuses": {
+        "200": 7156
+      },
+      "latencyMs": {
+        "n": 7156,
+        "p50": 68.02,
+        "p95": 92.52,
+        "p99": 103.47,
+        "max": 133.22,
+        "mean": 70.01
+      }
+    },
+    {
+      "endpoint": "GET /api/v1/orgs/:org/dashboard",
+      "concurrency": 1,
+      "requests": 2280,
+      "rps": 228,
+      "errors": 0,
+      "statuses": {
+        "200": 2280
+      },
+      "latencyMs": {
+        "n": 2280,
+        "p50": 4.09,
+        "p95": 6.18,
+        "p99": 7.54,
+        "max": 10.15,
+        "mean": 4.39
+      }
+    },
+    {
+      "endpoint": "GET /api/v1/orgs/:org/dashboard",
+      "concurrency": 10,
+      "requests": 4079,
+      "rps": 407.9,
+      "errors": 0,
+      "statuses": {
+        "200": 4079
+      },
+      "latencyMs": {
+        "n": 4079,
+        "p50": 23.59,
+        "p95": 36.72,
+        "p99": 44.43,
+        "max": 74.94,
+        "mean": 24.52
+      }
+    },
+    {
+      "endpoint": "GET /api/v1/orgs/:org/dashboard",
+      "concurrency": 50,
+      "requests": 4121,
+      "rps": 412.1,
+      "errors": 0,
+      "statuses": {
+        "200": 4121
+      },
+      "latencyMs": {
+        "n": 4121,
+        "p50": 121.48,
+        "p95": 148.6,
+        "p99": 162.22,
+        "max": 181.18,
+        "mean": 121.69
+      }
+    },
+    {
+      "endpoint": "POST /api/v1/projects/:id/jobs (create, 13 tasks)",
+      "concurrency": 1,
+      "requests": 1033,
+      "rps": 103.3,
+      "errors": 0,
+      "statuses": {
+        "201": 1033
+      },
+      "latencyMs": {
+        "n": 1033,
+        "p50": 9.35,
+        "p95": 12.81,
+        "p99": 15.91,
+        "max": 34.68,
+        "mean": 9.68
+      }
+    },
+    {
+      "endpoint": "POST /api/v1/projects/:id/jobs (create, 13 tasks)",
+      "concurrency": 10,
+      "requests": 1410,
+      "rps": 141,
+      "errors": 0,
+      "statuses": {
+        "201": 1410
+      },
+      "latencyMs": {
+        "n": 1410,
+        "p50": 69.5,
+        "p95": 93.09,
+        "p99": 106.36,
+        "max": 116.03,
+        "mean": 71.05
+      }
+    }
+  ]
+}

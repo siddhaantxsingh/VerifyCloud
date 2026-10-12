@@ -1,0 +1,26 @@
+--- a/rtl/axil_regs.sv
++++ b/rtl/axil_regs.sv
+@@ -116,18 +116,18 @@
+     if (!aresetn) begin
+       rvalid    <= 1'b0;
+       ar_addr_q <= '0;
++      rdata     <= '0;
++      rresp     <= OKAY;
+     end else begin
+       if (arvalid && arready) begin
+         rvalid    <= 1'b1;
+         ar_addr_q <= araddr;
++        // data and response are captured at the AR handshake and held
++        // until RREADY, independent of ARADDR and of later writes
++        {rresp, rdata} <= read_reg(araddr);
+       end else if (rvalid && rready) begin
+         rvalid <= 1'b0;
+       end
+     end
+   end
+-
+-  // read data and response
+-  always_comb begin
+-    {rresp, rdata} = read_reg(araddr);
+-  end
+ endmodule

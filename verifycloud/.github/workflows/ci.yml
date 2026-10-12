@@ -1,0 +1,75 @@
+# CI for this repository. Written for GitHub-hosted runners; it was NOT executed
+# while this project was built (no GitHub access in that environment). The same
+# commands were run locally — see docs/testing.md.
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    services:
+      postgres:
+        image: postgres:16
+        env: { POSTGRES_HOST_AUTH_METHOD: trust }
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      TEST_DATABASE_ADMIN_URL: postgres://postgres@127.0.0.1:5432/postgres
+      TEST_S3_ENDPOINT: http://127.0.0.1:9000
+      S3_ACCESS_KEY_ID: test
+      S3_SECRET_ACCESS_KEY: testtesttest
+    steps:
+      - uses: actions/checkout@v4
+      # MinIO runs as a step, not a service container: services cannot pass the
+      # `server /data` command, which led to an unpinned third-party image with
+      # no readiness check (audit D5). Same pinned tag as docker-compose.yml.
+      - name: Start MinIO and wait until it is ready
+        run: |
+          docker run -d --name minio -p 9000:9000 -e MINIO_ROOT_USER=test -e MINIO_ROOT_PASSWORD=testtesttest minio/minio:RELEASE.2025-04-22T22-12-26Z server /data
+          for i in $(seq 60); do curl -fs http://127.0.0.1:9000/minio/health/ready && exit 0; sleep 1; done
+          docker logs minio; exit 1
+      - uses: actions/setup-node@v4
+        with: { node-version: "22", cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - run: npm audit --omit=dev --audit-level=high
+      - run: npm run typecheck
+      - run: npm run build
+      - name: Build the simulation image (Verilator sandbox)
+        run: docker build -t verifycloud-sim:verilator -f deploy/sim-image/Dockerfile .
+      - name: Unit, API, scheduler, security, integration, sandbox and recovery tests
+        env: { VC_TEST_PG_RESTART: "false" }  # the service container cannot be restarted from inside a step
+        run: npx vitest run
+
+  images-and-e2e:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22", cache: npm }
+      - name: Start the stack (docker compose)
+        run: |
+          cp .env.example .env
+          sed -i "s|CHANGE-ME-base64-32-bytes|$(openssl rand -base64 32)|; s|CHANGE-ME-long-random-worker-token|$(openssl rand -hex 24)|; s|CHANGE-ME-[A-Za-z-]*|ci-$(openssl rand -hex 8)|g" .env
+          sudo mkdir -p /var/lib/verifycloud-worker
+          docker compose up -d --build --wait api
+          docker compose up -d worker
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Browser end-to-end (demo regression → analysis → verified fix)
+        run: |
+          export E2E_PASSWORD=$(grep ^DEMO_ADMIN_PASSWORD= .env | cut -d= -f2)
+          npx playwright test -c packages/web/playwright.config.ts
+      - if: failure()
+        run: docker compose logs --no-color | tail -300

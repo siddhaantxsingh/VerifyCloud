@@ -1,0 +1,4 @@
+VC_TEST_START test=random seed=1
+[75000] %Error: axil_checker.sv:52: Assertion failed in TOP.tb_top.chk.rdata_stable: RDATA/RRESP changed while RVALID was waiting for RREADY
+%Error: tb/axil_checker.sv:52: Verilog $stop
+VC_SIM_END finish=1 error=1 time=80000 timeunit=-12

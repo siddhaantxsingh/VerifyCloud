@@ -1,0 +1,12 @@
+# test-only: see README.md in this directory
+services:
+  postgres:
+    image: vc-sub/postgres:16
+  minio:
+    image: vc-sub/s3:moto
+  sim-image:
+    build: { network: host }
+  api:
+    build: { network: host, args: { NODE_IMAGE: verifycloud-node:22 } }
+  worker:
+    build: { network: host, args: { NODE_IMAGE: verifycloud-node:22 } }

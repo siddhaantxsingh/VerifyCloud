@@ -1,0 +1,95 @@
+{
+  "benchmark": "real Verilator runs in the Docker sandbox",
+  "environment": {
+    "date": "2026-10-10T06:59:01.613Z",
+    "cpuModel": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+    "logicalCpus": 2,
+    "memoryGiB": 7.8,
+    "kernel": "6.18.44-fc-v114",
+    "node": "v22.22.0",
+    "postgres": "psql (PostgreSQL) 16.15 (Ubuntu 16.15-0ubuntu0.24.04.1)",
+    "docker": "29.8.2",
+    "verilator": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+    "objectStorage": "http://127.0.0.1:9000 (moto S3 emulator)",
+    "note": "API, PostgreSQL, object storage, workers and load generator all ran on this single host"
+  },
+  "runsPerJob": 50,
+  "results": [
+    {
+      "sandboxSlots": 1,
+      "jobState": "SUCCEEDED",
+      "testRuns": 50,
+      "passed": 50,
+      "buildCacheHit": true,
+      "testPhaseWallSeconds": 26.22,
+      "runsPerMinute": 114.4,
+      "perRunSeconds": {
+        "n": 50,
+        "p50": 0.43,
+        "p95": 0.52,
+        "p99": 0.53,
+        "max": 0.53,
+        "mean": 0.44
+      },
+      "sumOfRunSeconds": 22.2,
+      "effectiveParallelism": 0.85
+    },
+    {
+      "sandboxSlots": 5,
+      "jobState": "SUCCEEDED",
+      "testRuns": 50,
+      "passed": 50,
+      "buildCacheHit": true,
+      "testPhaseWallSeconds": 15.38,
+      "runsPerMinute": 195.1,
+      "perRunSeconds": {
+        "n": 50,
+        "p50": 1.21,
+        "p95": 1.51,
+        "p99": 1.66,
+        "max": 1.66,
+        "mean": 1.2
+      },
+      "sumOfRunSeconds": 60.1,
+      "effectiveParallelism": 3.91
+    },
+    {
+      "sandboxSlots": 10,
+      "jobState": "SUCCEEDED",
+      "testRuns": 50,
+      "passed": 50,
+      "buildCacheHit": true,
+      "testPhaseWallSeconds": 14.86,
+      "runsPerMinute": 202,
+      "perRunSeconds": {
+        "n": 50,
+        "p50": 1.61,
+        "p95": 2.01,
+        "p99": 2.26,
+        "max": 2.26,
+        "mean": 1.63
+      },
+      "sumOfRunSeconds": 81.6,
+      "effectiveParallelism": 5.49
+    },
+    {
+      "sandboxSlots": 25,
+      "jobState": "SUCCEEDED",
+      "testRuns": 50,
+      "passed": 50,
+      "buildCacheHit": true,
+      "testPhaseWallSeconds": 14.37,
+      "runsPerMinute": 208.8,
+      "perRunSeconds": {
+        "n": 50,
+        "p50": 1.55,
+        "p95": 1.84,
+        "p99": 1.88,
+        "max": 1.88,
+        "mean": 1.54
+      },
+      "sumOfRunSeconds": 77.1,
+      "effectiveParallelism": 5.37
+    }
+  ]
+}

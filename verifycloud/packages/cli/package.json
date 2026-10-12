@@ -1,0 +1,8 @@
+{
+  "name": "@verifycloud/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": { "verifycloud": "dist/main.js" },
+  "scripts": { "build": "tsc -b" },
+  "dependencies": { "@verifycloud/shared": "0.1.0", "tar": "^7.4.0" }
+}

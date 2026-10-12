@@ -1,0 +1,588 @@
+{
+  "environment": {
+    "date": "2026-10-10T05:47:11.098Z",
+    "cpuModel": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+    "logicalCpus": 2,
+    "memoryGiB": 7.8,
+    "kernel": "6.18.44-fc-v114",
+    "node": "v22.22.0",
+    "postgres": "psql (PostgreSQL) 16.15 (Ubuntu 16.15-0ubuntu0.24.04.1)",
+    "docker": "29.8.2",
+    "verilator": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+    "objectStorage": "http://127.0.0.1:9000 (moto S3 emulator)",
+    "note": "API, PostgreSQL, object storage, workers and load generator all ran on this single host"
+  },
+  "generatedAt": "2026-10-10T05:47:11.466Z",
+  "baseline": {
+    "tasks": 14,
+    "failing": []
+  },
+  "cases": [
+    {
+      "name": "original_demo_bug",
+      "category": "protocol/stability",
+      "desc": "RDATA decoded from the live ARADDR (the shipped intentional bug)",
+      "defectLines": [
+        131
+      ],
+      "detected": true,
+      "failingTasks": [
+        "test:rw_overlap:1:FAILED",
+        "test:random:1:FAILED",
+        "test:random:2:FAILED",
+        "test:random:3:FAILED",
+        "test:random:4:FAILED",
+        "test:random:5:FAILED",
+        "test:random:6:FAILED",
+        "test:random:7:FAILED",
+        "test:random:8:FAILED"
+      ],
+      "analyses": [
+        {
+          "task": "test:rw_overlap:1",
+          "state": "FAILED",
+          "verdict": "correct",
+          "localized": true,
+          "confidence": "medium",
+          "summary": "rw_overlap (seed 1): assertion rdata_stable failed — rdata/rresp changed while rdata_stable required them to be stable.",
+          "rootCause": "rdata and rresp are driven combinationally (always_comb) from the module input araddr (rtl/axil_regs.sv:131). When araddr changes while the handshake is pending, the outputs change too, which rdata_stable forbids.",
+          "locations": [
+            "tb/axil_checker.sv:52",
+            "rtl/axil_regs.sv:131"
+          ]
+        },
+        {
+          "task": "test:random:1",
+          "state": "FAILED",
+          "verdict": "correct",
+          "localized": true,
+          "confidence": "high",
+          "summary": "random (seed 1): assertion rdata_stable failed — rdata/rresp changed while rdata_stable required them to be stable.",
+          "rootCause": "rdata and rresp are driven combinationally (always_comb) from the module input araddr (rtl/axil_regs.sv:131). When araddr changes while the handshake is pending, the outputs change too, which rdata_stable forbids.",
+          "locations": [
+            "tb/axil_checker.sv:52",
+            "rtl/axil_regs.sv:131"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "strobe_ignored",
+      "category": "datapath",
+      "desc": "write strobes ignored (full-word write)",
+      "defectLines": [
+        60
+      ],
+      "detected": true,
+      "failingTasks": [
+        "test:wstrb:1:FAILED",
+        "test:random:1:FAILED",
+        "test:random:2:FAILED",
+        "test:random:3:FAILED",
+        "test:random:4:FAILED",
+        "test:random:5:FAILED",
+        "test:random:6:FAILED",
+        "test:random:7:FAILED",
+        "test:random:8:FAILED"
+      ],
+      "analyses": [
+        {
+          "task": "test:wstrb:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "wstrb (seed 1): 10 self-check failure(s); first: time=150000 read addr=0x08: RDATA=0xff7fffff expected 0x000000ff",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        },
+        {
+          "task": "test:random:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "random (seed 1): 10 self-check failure(s); first: time=360000 read addr=0x04: RDATA=0x177c24dc expected 0xbb7c2400",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        }
+      ]
+    },
+    {
+      "name": "strobe_swapped",
+      "category": "datapath",
+      "desc": "byte lanes of WSTRB reversed",
+      "defectLines": [
+        60
+      ],
+      "detected": true,
+      "failingTasks": [
+        "test:wstrb:1:FAILED",
+        "test:random:1:FAILED",
+        "test:random:2:FAILED",
+        "test:random:3:FAILED",
+        "test:random:4:FAILED",
+        "test:random:5:FAILED",
+        "test:random:6:FAILED",
+        "test:random:7:FAILED",
+        "test:random:8:FAILED"
+      ],
+      "analyses": [
+        {
+          "task": "test:wstrb:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "wstrb (seed 1): 10 self-check failure(s); first: time=150000 read addr=0x08: RDATA=0xff000000 expected 0x000000ff",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        },
+        {
+          "task": "test:random:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "random (seed 1): 10 self-check failure(s); first: time=360000 read addr=0x04: RDATA=0x007c24dd expected 0xbb7c2400",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        }
+      ]
+    },
+    {
+      "name": "id_writable",
+      "category": "decode/response",
+      "desc": "write to ID returns OKAY instead of SLVERR",
+      "defectLines": [
+        92
+      ],
+      "detected": true,
+      "failingTasks": [
+        "test:error_injection:1:FAILED",
+        "test:random:1:FAILED",
+        "test:random:2:FAILED",
+        "test:random:3:FAILED",
+        "test:random:4:FAILED",
+        "test:random:5:FAILED",
+        "test:random:6:FAILED",
+        "test:random:7:FAILED",
+        "test:random:8:FAILED"
+      ],
+      "analyses": [
+        {
+          "task": "test:error_injection:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "error_injection (seed 1): 2 self-check failure(s); first: time=430000 write addr=0x10: BRESP=0 expected 2",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        },
+        {
+          "task": "test:random:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "random (seed 1): 10 self-check failure(s); first: time=150000 write addr=0x10: BRESP=0 expected 2",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        }
+      ]
+    },
+    {
+      "name": "unaligned_ok",
+      "category": "decode/response",
+      "desc": "unaligned read returns OKAY",
+      "defectLines": [
+        109
+      ],
+      "detected": true,
+      "failingTasks": [
+        "test:error_injection:1:FAILED",
+        "test:random:1:FAILED",
+        "test:random:2:FAILED",
+        "test:random:3:FAILED",
+        "test:random:6:FAILED",
+        "test:random:7:FAILED",
+        "test:random:8:FAILED"
+      ],
+      "analyses": [
+        {
+          "task": "test:error_injection:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "error_injection (seed 1): 3 self-check failure(s); first: time=320000 read addr=0x02: RRESP=0 expected 2",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        },
+        {
+          "task": "test:random:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "random (seed 1): 2 self-check failure(s); first: time=7260000 read addr=0x06: RRESP=0 expected 2",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        }
+      ]
+    },
+    {
+      "name": "scratch_reset",
+      "category": "reset",
+      "desc": "SCRATCH reset value wrong",
+      "defectLines": [
+        76
+      ],
+      "detected": true,
+      "failingTasks": [
+        "test:reset:1:FAILED",
+        "test:error_injection:1:FAILED",
+        "test:rw_overlap:1:FAILED",
+        "test:random:1:FAILED",
+        "test:random:2:FAILED",
+        "test:random:3:FAILED",
+        "test:random:4:FAILED",
+        "test:random:5:FAILED",
+        "test:random:6:FAILED",
+        "test:random:7:FAILED",
+        "test:random:8:FAILED"
+      ],
+      "analyses": [
+        {
+          "task": "test:reset:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "reset (seed 1): 3 self-check failure(s); first: time=160000 read addr=0x0c: RDATA=0x00000000 expected 0xa5a50000",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        },
+        {
+          "task": "test:error_injection:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "error_injection (seed 1): 2 self-check failure(s); first: time=580000 read addr=0x0c: RDATA=0x00000000 expected 0xa5a50000",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        },
+        {
+          "task": "test:rw_overlap:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "rw_overlap (seed 1): 2 self-check failure(s); first: time=730000 overlapped read addr=0x0c: RDATA=0x00000000 expected 0xa5a50000 (value at the AR handshake)",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        },
+        {
+          "task": "test:random:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "random (seed 1): 3 self-check failure(s); first: time=700000 read addr=0x0c: RDATA=0x00000000 expected 0xa5a50000",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        }
+      ]
+    },
+    {
+      "name": "bvalid_drop",
+      "category": "protocol/handshake",
+      "desc": "BVALID dropped without BREADY",
+      "defectLines": [
+        98
+      ],
+      "detected": true,
+      "failingTasks": [
+        "test:random:1:FAILED",
+        "test:random:2:FAILED",
+        "test:random:3:FAILED",
+        "test:random:4:FAILED",
+        "test:random:5:FAILED",
+        "test:random:6:FAILED",
+        "test:random:7:FAILED",
+        "test:random:8:FAILED"
+      ],
+      "analyses": [
+        {
+          "task": "test:random:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "random (seed 1): assertion bvalid_stable failed: BVALID dropped or BRESP changed before BREADY",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": [
+            "tb/axil_checker.sv:44",
+            "rtl/axil_regs.sv:68",
+            "rtl/axil_regs.sv:94",
+            "rtl/axil_regs.sv:69",
+            "rtl/axil_regs.sv:90"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rvalid_drop",
+      "category": "protocol/handshake",
+      "desc": "RVALID dropped without RREADY",
+      "defectLines": [
+        128
+      ],
+      "detected": true,
+      "failingTasks": [
+        "test:rw_overlap:1:FAILED",
+        "test:random:1:FAILED",
+        "test:random:2:FAILED",
+        "test:random:3:FAILED",
+        "test:random:4:FAILED",
+        "test:random:5:FAILED",
+        "test:random:6:FAILED",
+        "test:random:7:FAILED",
+        "test:random:8:FAILED"
+      ],
+      "analyses": [
+        {
+          "task": "test:rw_overlap:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": true,
+          "confidence": "low",
+          "summary": "rw_overlap (seed 1): assertion rvalid_stable failed: RVALID dropped before RREADY",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": [
+            "tb/axil_checker.sv:48",
+            "rtl/axil_regs.sv:117",
+            "rtl/axil_regs.sv:123",
+            "rtl/axil_regs.sv:129"
+          ]
+        },
+        {
+          "task": "test:random:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": true,
+          "confidence": "low",
+          "summary": "random (seed 1): assertion rvalid_stable failed: RVALID dropped before RREADY",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": [
+            "tb/axil_checker.sv:48",
+            "rtl/axil_regs.sv:117",
+            "rtl/axil_regs.sv:123",
+            "rtl/axil_regs.sv:129"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "decode_alias",
+      "category": "decode/response",
+      "desc": "read decode ignores address bit 3",
+      "defectLines": [
+        110
+      ],
+      "detected": true,
+      "failingTasks": [
+        "test:smoke:1:FAILED",
+        "test:reset:1:FAILED",
+        "test:wstrb:1:FAILED",
+        "test:error_injection:1:FAILED",
+        "test:rw_overlap:1:FAILED",
+        "test:random:1:FAILED",
+        "test:random:2:FAILED",
+        "test:random:3:FAILED",
+        "test:random:4:FAILED",
+        "test:random:5:FAILED",
+        "test:random:6:FAILED",
+        "test:random:7:FAILED",
+        "test:random:8:FAILED"
+      ],
+      "analyses": [
+        {
+          "task": "test:smoke:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "smoke (seed 1): 3 self-check failure(s); first: time=290000 read addr=0x08: RDATA=0x10000000 expected 0x10000002",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        },
+        {
+          "task": "test:reset:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "reset (seed 1): 3 self-check failure(s); first: time=160000 read addr=0x0c: RDATA=0x00000000 expected 0xa5a50000",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        },
+        {
+          "task": "test:wstrb:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "wstrb (seed 1): 10 self-check failure(s); first: time=150000 read addr=0x08: RDATA=0x00000000 expected 0x000000ff",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        },
+        {
+          "task": "test:error_injection:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "error_injection (seed 1): 2 self-check failure(s); first: time=580000 read addr=0x0c: RDATA=0x00000000 expected 0xa5a50000",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        },
+        {
+          "task": "test:rw_overlap:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "rw_overlap (seed 1): 5 self-check failure(s); first: time=550000 overlapped read addr=0x08: RDATA=0xc0de0000 expected 0x00000000 (value at the AR handshake)",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        },
+        {
+          "task": "test:random:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "random (seed 1): 10 self-check failure(s); first: time=700000 read addr=0x0c: RDATA=0xbb7c2400 expected 0xa5a50000",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        }
+      ]
+    },
+    {
+      "name": "write_wrong_reg",
+      "category": "datapath",
+      "desc": "write to DATA1 (0x08) lands in DATA0 (0x04)",
+      "defectLines": [
+        89
+      ],
+      "detected": true,
+      "failingTasks": [
+        "test:smoke:1:FAILED",
+        "test:wstrb:1:FAILED",
+        "test:rw_overlap:1:FAILED",
+        "test:random:1:FAILED",
+        "test:random:2:FAILED",
+        "test:random:3:FAILED",
+        "test:random:4:FAILED",
+        "test:random:5:FAILED",
+        "test:random:6:FAILED",
+        "test:random:7:FAILED",
+        "test:random:8:FAILED"
+      ],
+      "analyses": [
+        {
+          "task": "test:smoke:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "smoke (seed 1): 3 self-check failure(s); first: time=260000 read addr=0x04: RDATA=0x10000002 expected 0x10000001",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        },
+        {
+          "task": "test:wstrb:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "wstrb (seed 1): 10 self-check failure(s); first: time=150000 read addr=0x08: RDATA=0x00000000 expected 0x000000ff",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        },
+        {
+          "task": "test:rw_overlap:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "rw_overlap (seed 1): 2 self-check failure(s); first: time=580000 read addr=0x08: RDATA=0x00000000 expected 0xc0de0002",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        },
+        {
+          "task": "test:random:1",
+          "state": "FAILED",
+          "verdict": "abstained",
+          "localized": false,
+          "confidence": "low",
+          "summary": "random (seed 1): 10 self-check failure(s); first: time=730000 read addr=0x08: RDATA=0x00000000 expected 0x00a99700",
+          "rootCause": "Insufficient evidence to determine root cause.",
+          "locations": []
+        }
+      ]
+    },
+    {
+      "name": "awready_ungated",
+      "category": "protocol/handshake",
+      "desc": "AWREADY not gated by the held address",
+      "defectLines": [
+        55
+      ],
+      "detected": false,
+      "failingTasks": [],
+      "analyses": []
+    },
+    {
+      "name": "syntax_error",
+      "category": "build",
+      "desc": "missing semicolon",
+      "defectLines": [
+        105
+      ],
+      "detected": true,
+      "failingTasks": [
+        "build:::FAILED"
+      ],
+      "analyses": [
+        {
+          "task": "build::",
+          "state": "FAILED",
+          "verdict": "correct",
+          "localized": true,
+          "confidence": "high",
+          "summary": "Compilation failed: syntax error, unexpected function, expecting ',' or ';'",
+          "rootCause": "The simulator rejected the source at rtl/axil_regs.sv:107: syntax error, unexpected function, expecting ',' or ';'",
+          "locations": [
+            "rtl/axil_regs.sv:107"
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "cases": 12,
+    "detectedByTests": 11,
+    "analyses": 28,
+    "correct": 3,
+    "abstained": 25,
+    "wrong": 0,
+    "errors": 0,
+    "localized": 5,
+    "casesWithAtLeastOneCorrect": 2,
+    "highConfidenceWrong": 0
+  }
+}
