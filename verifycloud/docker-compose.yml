@@ -22,20 +22,26 @@ services:
     restart: unless-stopped
 
   minio:
-    # pinned release; upstream stopped publishing community images in late 2025 —
-    # if this tag is unavailable, use any S3-compatible service (see docs/deployment.md)
-    image: minio/minio:RELEASE.2025-04-22T22-12-26Z
+    # MinIO server RELEASE.2025-04-22T22-12-26Z (commit 0d7408fc). The upstream
+    # `minio/minio` repository is no longer on Docker Hub (checked 2026-10-14:
+    # "repository does not exist"), and quay.io is not reachable from every
+    # network. Bitnami's archived build of the same release is used, pinned by
+    # digest, with its own entrypoint bypassed so the server runs exactly as the
+    # upstream image did. Override MINIO_IMAGE to use another build.
+    image: ${MINIO_IMAGE:-bitnamilegacy/minio:2025.4.22@sha256:50cec18ac4184af4671a78aedd5554942c8ae105d51a465fa82037949046da01}
+    entrypoint: ["/opt/bitnami/minio/bin/minio"]
     command: ["server", "/data", "--console-address", ":9001"]
+    user: "1001:0"
     environment:
       MINIO_ROOT_USER: ${S3_ACCESS_KEY_ID:?set S3_ACCESS_KEY_ID in .env}
-      MINIO_ROOT_PASSWORD: ${S3_SECRET_ACCESS_KEY:?set S3_SECRET_ACCESS_KEY in .env}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_ACCESS_KEY:?set S3_SECRET_ACCESS_KEY in .env (8+ characters)}
     volumes: [miniodata:/data]
     healthcheck:
-      # recent MinIO images ship without curl; `mc` is included
-      test: ["CMD", "mc", "ready", "local"]
+      test: ["CMD", "curl", "-fs", "http://127.0.0.1:9000/minio/health/ready"]
       interval: 5s
       timeout: 3s
-      retries: 20
+      retries: 30
+      start_period: 30s
     restart: unless-stopped
 
   # Builds the simulator image the worker starts for every run (not a service).

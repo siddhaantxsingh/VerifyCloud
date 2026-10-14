@@ -1,10 +1,11 @@
-# CI for this repository. Written for GitHub-hosted runners; it was NOT executed
-# while this project was built (no GitHub access in that environment). The same
-# commands were run locally — see docs/testing.md.
+# CI for this repository. GitHub only runs workflows from the repository root,
+# so this file lives in /.github/workflows and every step runs inside the
+# project directory `verifycloud/` (until 2026-10-14 it sat in
+# verifycloud/.github/workflows and never ran).
 name: ci
 on:
   push:
-    branches: [main]
+    branches: [main, "ccr-*"]
   pull_request:
 permissions:
   contents: read
@@ -12,10 +13,14 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    working-directory: verifycloud
+
 jobs:
   test:
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 60
     services:
       postgres:
         image: postgres:16
@@ -26,23 +31,27 @@ jobs:
     env:
       TEST_DATABASE_ADMIN_URL: postgres://postgres@127.0.0.1:5432/postgres
       TEST_S3_ENDPOINT: http://127.0.0.1:9000
+      # MinIO refuses secrets shorter than 8 characters; the tests read these.
       S3_ACCESS_KEY_ID: test
       S3_SECRET_ACCESS_KEY: testtesttest
+      MINIO_IMAGE: bitnamilegacy/minio:2025.4.22@sha256:50cec18ac4184af4671a78aedd5554942c8ae105d51a465fa82037949046da01
     steps:
       - uses: actions/checkout@v4
       # MinIO runs as a step, not a service container: services cannot pass the
       # `server /data` command, which led to an unpinned third-party image with
-      # no readiness check (audit D5). Same pinned tag as docker-compose.yml.
+      # no readiness check (audit D5). Same pinned image as docker-compose.yml
+      # (minio/minio is no longer on Docker Hub).
       - name: Start MinIO and wait until it is ready
         run: |
-          docker run -d --name minio -p 9000:9000 -e MINIO_ROOT_USER=test -e MINIO_ROOT_PASSWORD=testtesttest minio/minio:RELEASE.2025-04-22T22-12-26Z server /data
+          docker run -d --name minio -p 9000:9000 -e MINIO_ROOT_USER=test -e MINIO_ROOT_PASSWORD=testtesttest --entrypoint /opt/bitnami/minio/bin/minio "$MINIO_IMAGE" server /data
           for i in $(seq 60); do curl -fs http://127.0.0.1:9000/minio/health/ready && exit 0; sleep 1; done
           docker logs minio; exit 1
       - uses: actions/setup-node@v4
-        with: { node-version: "22", cache: npm }
+        with: { node-version: "22", cache: npm, cache-dependency-path: verifycloud/package-lock.json }
       - run: npm ci --no-audit --no-fund
       - run: npm audit --omit=dev --audit-level=high
       - run: npm run typecheck
+      - run: npm run lint
       - run: npm run build
       - name: Build the simulation image (Verilator sandbox)
         run: docker build -t verifycloud-sim:verilator -f deploy/sim-image/Dockerfile .
@@ -52,12 +61,12 @@ jobs:
 
   images-and-e2e:
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 60
     needs: test
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: "22", cache: npm }
+        with: { node-version: "22", cache: npm, cache-dependency-path: verifycloud/package-lock.json }
       - name: Start the stack (docker compose)
         run: |
           cp .env.example .env
