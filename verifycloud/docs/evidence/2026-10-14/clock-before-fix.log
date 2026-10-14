@@ -1,0 +1,73 @@
+
+ RUN  v5.0.3 /home/user/verifycloud/verifycloud
+
+{"level":50,"time":1792010783777,"pid":11875,"hostname":"vm","reqId":"da94d040-919b-426e-9edc-b507fd262cd7","err":"value \"2592000000\" is out of range for type integer","stack":"error: value \"2592000000\" is out of range for type integer\n    at /home/user/verifycloud/verifycloud/node_modules/pg/lib/client.js:694:17\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/packages/server/src/scheduler.ts:333:7\n    at tx (/home/user/verifycloud/verifycloud/packages/server/src/db.ts:24:15)\n    at Scheduler.complete (/home/user/verifycloud/verifycloud/packages/server/src/scheduler.ts:280:17)","msg":"unhandled error"}
+{"level":50,"time":1792010784521,"pid":11875,"hostname":"vm","reqId":"afef7a4f-293b-4585-8064-9e95bd2583eb","err":"invalid input syntax for type integer: \"soon\"","stack":"error: invalid input syntax for type integer: \"soon\"\n    at /home/user/verifycloud/verifycloud/node_modules/pg/lib/client.js:694:17\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/packages/server/src/scheduler.ts:333:7\n    at tx (/home/user/verifycloud/verifycloud/packages/server/src/db.ts:24:15)\n    at Scheduler.complete (/home/user/verifycloud/verifycloud/packages/server/src/scheduler.ts:280:17)","msg":"unhandled error"}
+ ❯ packages/server/test/audit-2026-10-14-clock.test.ts (3 tests | 3 failed) 6504ms
+   ❯ audit 2026-10-14: worker-reported durations (3)
+     × a clock step backwards (negative duration) never records negative usage or duration 1310ms
+     × a clock step forwards (30 days) still records the result, bounded by the server-observed run time 662ms
+     × missing or non-numeric durations do not produce NaN usage; fractional durations are accepted 736ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/server/test/audit-2026-10-14-clock.test.ts > audit 2026-10-14: worker-reported durations > a clock step backwards (negative duration) never records negative usage or duration
+AssertionError: expected -3600000 to be greater than or equal to 0
+ ❯ packages/server/test/audit-2026-10-14-clock.test.ts:57:29
+     55|     expect(r.status, JSON.stringify(r.json)).toBe(200);
+     56|     const row = (await s.db.query("SELECT duration_ms FROM tasks WHERE…
+     57|     expect(row.duration_ms).toBeGreaterThanOrEqual(0);
+       |                             ^
+     58|     for (const u of await usageOf(job.id)) expect(u.q, `${u.kind}=${u.…
+     59|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  packages/server/test/audit-2026-10-14-clock.test.ts > audit 2026-10-14: worker-reported durations > a clock step forwards (30 days) still records the result, bounded by the server-observed run time
+AssertionError: {"error":{"code":"INTERNAL","message":"internal error","requestId":"da94d040-919b-426e-9edc-b507fd262cd7"}}: expected 500 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 500
+
+ ❯ packages/server/test/audit-2026-10-14-clock.test.ts:64:46
+     62|     const { w, t, job } = await heldTest();
+     63|     const r = await w.complete(t.task.id, t.leaseToken, { state: "PASS…
+     64|     expect(r.status, JSON.stringify(r.json)).toBe(200);
+       |                                              ^
+     65|     const row = (await s.db.query("SELECT state, duration_ms FROM task…
+     66|     expect(row.state).toBe("PASSED");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  packages/server/test/audit-2026-10-14-clock.test.ts > audit 2026-10-14: worker-reported durations > missing or non-numeric durations do not produce NaN usage; fractional durations are accepted
+AssertionError: {"error":{"code":"INTERNAL","message":"internal error","requestId":"afef7a4f-293b-4585-8064-9e95bd2583eb"}}: expected 500 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 500
+
+ ❯ packages/server/test/audit-2026-10-14-clock.test.ts:75:48
+     73|     const a = await heldTest();
+     74|     const r1 = await a.w.complete(a.t.task.id, a.t.leaseToken, { state…
+     75|     expect(r1.status, JSON.stringify(r1.json)).toBe(200);
+       |                                                ^
+     76|     for (const u of await usageOf(a.job.id)) expect(u.raw, u.kind).not…
+     77|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  20:46:14
+   Duration  11.40s (tests 60%, transform 25%, import 15%)
+
+  Transform  transforming modules took 2.76s · 25% of tracked time, re-done on every run
+             persist transforms across runs with fsModuleCache: true
+             learn more: https://vitest.dev/guide/improving-performance#caching-between-reruns
+

@@ -188,7 +188,7 @@ export class DockerSandbox implements Sandbox {
       return { exitCode: null, timedOut: false, oomKilled: false, outputExceeded: false, diskExceeded: false, cancelled: false, log: "", droppedBytes: 0, durationMs: 0, cpuSeconds: null, infraError: `docker create failed: ${(created.stderr || "").slice(0, 500)}` };
     const id = created.stdout.trim();
     const out = new OutputCollector(spec.maxLogBytes);
-    const t0 = Date.now();
+    const t0 = performance.now();
     let timedOut = false;
     let outputExceeded = false;
     let diskExceeded = false;
@@ -252,7 +252,7 @@ export class DockerSandbox implements Sandbox {
       cancelled,
       log: out.text(),
       droppedBytes: out.dropped,
-      durationMs: Date.now() - t0,
+      durationMs: Math.round(performance.now() - t0),
       cpuSeconds: cpu,
       infraError: null,
     };
@@ -277,7 +277,7 @@ export class ProcessSandbox implements Sandbox {
         .join(this.harnessDir);
     const argv = spec.command.map(map);
     const out = new OutputCollector(spec.maxLogBytes);
-    const t0 = Date.now();
+    const t0 = performance.now();
     let timedOut = false;
     let outputExceeded = false;
     let diskExceeded = false;
@@ -321,7 +321,7 @@ export class ProcessSandbox implements Sandbox {
         resolve(c ?? (sig ? 128 + 9 : null));
       });
     });
-    return { exitCode: code, timedOut, oomKilled: false, outputExceeded, diskExceeded, cancelled, log: out.text(), droppedBytes: out.dropped, durationMs: Date.now() - t0, cpuSeconds: null, infraError: null };
+    return { exitCode: code, timedOut, oomKilled: false, outputExceeded, diskExceeded, cancelled, log: out.text(), droppedBytes: out.dropped, durationMs: Math.round(performance.now() - t0), cpuSeconds: null, infraError: null };
   }
 }
 
