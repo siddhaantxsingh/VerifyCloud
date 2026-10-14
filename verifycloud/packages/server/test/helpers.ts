@@ -16,6 +16,12 @@ import { snapshotOfDir } from "../src/seed.js";
 
 export const ADMIN_URL = process.env.TEST_DATABASE_ADMIN_URL ?? "postgres://postgres@127.0.0.1:5432/postgres";
 export const S3 = process.env.TEST_S3_ENDPOINT ?? "http://127.0.0.1:9000";
+// Credentials for the test S3 endpoint. Read from the environment so the suite
+// runs against real MinIO (which rejects secrets shorter than 8 characters) as
+// well as against permissive emulators. Before 2026-10-14 these were hard-coded
+// to "test"/"test", so every S3-backed test failed against MinIO and in CI.
+export const S3_KEY = process.env.TEST_S3_ACCESS_KEY_ID ?? process.env.S3_ACCESS_KEY_ID ?? "test";
+export const S3_SECRET = process.env.TEST_S3_SECRET_ACCESS_KEY ?? process.env.S3_SECRET_ACCESS_KEY ?? "test";
 export const ROOT = join(import.meta.dirname, "..", "..", "..");
 export const DEMO_DIR = join(ROOT, "examples", "axi4lite-demo");
 export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -47,15 +53,15 @@ export interface TestServer {
 }
 
 export async function startServer(dbUrl: string, over: Partial<ServerConfig> = {}, opts: { background?: boolean } = {}): Promise<TestServer> {
-  process.env.S3_ACCESS_KEY_ID ??= "test";
-  process.env.S3_SECRET_ACCESS_KEY ??= "test";
+  process.env.S3_ACCESS_KEY_ID ??= S3_KEY;
+  process.env.S3_SECRET_ACCESS_KEY ??= S3_SECRET;
   const app = await createApp(
     {
       databaseUrl: dbUrl,
       port: 0,
       host: "127.0.0.1",
       logLevel: "error",
-      s3: { endpoint: S3, region: "us-east-1", bucket: `vc-${randomBytes(4).toString("hex")}`, accessKeyId: "test", secretAccessKey: "test", forcePathStyle: true },
+      s3: { endpoint: S3, region: "us-east-1", bucket: `vc-${randomBytes(4).toString("hex")}`, accessKeyId: S3_KEY, secretAccessKey: S3_SECRET, forcePathStyle: true },
       ...over,
       limits: { maxUploadBytes: 50 * 1024 * 1024, maxArtifactBytes: 256 * 1024 * 1024, uploadMemoryBudgetBytes: 1024 * 1024 * 1024, leaseSeconds: 30, reaperIntervalMs: 500, apiRatePerMinute: 100_000, authRatePerMinute: 1000, jobCreatePerMinute: 120, ...(over.limits ?? {}) },
     },

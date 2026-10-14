@@ -11,7 +11,7 @@ import { join } from "node:path";
 
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
-import { createTestDatabase, orgWithProject, S3, sleep, snapshotOf, startServer, uploadSnapshot, waitFor, type TestServer } from "../../server/test/helpers.js";
+import { createTestDatabase, orgWithProject, S3, S3_KEY, S3_SECRET, sleep, snapshotOf, startServer, uploadSnapshot, waitFor, type TestServer } from "../../server/test/helpers.js";
 import { startWorker } from "../src/main.js";
 
 const IMAGE = process.env.SIM_IMAGE ?? "verifycloud-sim:verilator";
@@ -91,7 +91,7 @@ let s: TestServer;
 let worker: Awaited<ReturnType<typeof startWorker>>;
 
 const boot = () =>
-  startServer(db.url, { port, s3: { endpoint: `http://127.0.0.1:${proxy.port}`, region: "us-east-1", bucket, accessKeyId: "test", secretAccessKey: "test", forcePathStyle: true } } as any);
+  startServer(db.url, { port, s3: { endpoint: `http://127.0.0.1:${proxy.port}`, region: "us-east-1", bucket, accessKeyId: S3_KEY, secretAccessKey: S3_SECRET, forcePathStyle: true } } as any);
 
 beforeAll(async () => {
   if (!dockerOk) return;

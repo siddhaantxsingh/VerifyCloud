@@ -7,19 +7,19 @@ import { request } from "node:http";
 import { ListObjectsV2Command, S3Client } from "@aws-sdk/client-s3";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
-import { createTestDatabase, FakeWorker, minimalConfig, orgWithProject, S3, sleep, snapshotOf, startServer, uploadSnapshot, waitFor, type TestServer } from "./helpers.js";
+import { createTestDatabase, FakeWorker, minimalConfig, orgWithProject, S3, S3_KEY, S3_SECRET, sleep, snapshotOf, startServer, uploadSnapshot, waitFor, type TestServer } from "./helpers.js";
 
 let db: { url: string; drop: () => Promise<void> };
 let s: TestServer;
 const MB = 1024 * 1024;
 const bucket = `vc-st-${randomBytes(4).toString("hex")}`;
-const s3 = new S3Client({ endpoint: S3, region: "us-east-1", forcePathStyle: true, credentials: { accessKeyId: "test", secretAccessKey: "test" } });
+const s3 = new S3Client({ endpoint: S3, region: "us-east-1", forcePathStyle: true, credentials: { accessKeyId: S3_KEY, secretAccessKey: S3_SECRET } });
 const objectCount = async () => (await s3.send(new ListObjectsV2Command({ Bucket: bucket }))).KeyCount ?? 0;
 
 beforeAll(async () => {
   db = await createTestDatabase();
   s = await startServer(db.url, {
-    s3: { endpoint: S3, region: "us-east-1", bucket, accessKeyId: "test", secretAccessKey: "test", forcePathStyle: true },
+    s3: { endpoint: S3, region: "us-east-1", bucket, accessKeyId: S3_KEY, secretAccessKey: S3_SECRET, forcePathStyle: true },
     limits: { maxArtifactBytes: 64 * MB, uploadMemoryBudgetBytes: 80 * MB } as any,
   });
 });
