@@ -1,0 +1,28 @@
+
+ RUN  v5.0.3 /home/user/verifycloud/verifycloud
+
+ ❯ packages/server/test/integrations.test.ts (19 tests | 1 failed | 11 skipped) 24733ms
+   ❯ GitHub App integration (8)
+     × a new push to a pull request cancels the superseded run and completes its check as cancelled (audit O5, 2026-10-14) 10428ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/server/test/integrations.test.ts > GitHub App integration > a new push to a pull request cancels the superseded run and completes its check as cancelled (audit O5, 2026-10-14)
+Error: timed out waiting for superseded run cancelled
+ ❯ waitFor packages/server/test/helpers.ts:161:44
+    159|     const v = await fn();
+    160|     if (v) return v;
+    161|     if (Date.now() - t0 > timeoutMs) throw new Error(`timed out waitin…
+       |                                            ^
+    162|     await sleep(100);
+    163|   }
+ ❯ packages/server/test/integrations.test.ts:228:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 7 passed | 11 skipped (19)
+   Start at  20:53:10
+   Duration  36.01s (tests 71%, transform 15%, import 14%)
+

@@ -198,6 +198,39 @@ describe("GitHub App integration", () => {
     const r2 = await (await signed({ ref: "refs/heads/main", after: "c".repeat(40), repository: { full_name: "evil/rtl" }, installation: { id: 42 } }, "push", "push-delivery-2")).json();
     expect(r2.status).toBe("no_matching_project");
   });
+
+  it("concurrent redeliveries of one delivery create exactly one job and one queued check (2026-10-14)", async () => {
+    const sha5 = "e".repeat(40);
+    gh.files.set(`verifycloud.yaml@${sha5}`, readExample("verifycloud.yaml"));
+    const pr = { action: "synchronize", number: 11, pull_request: { number: 11, head: { sha: sha5, ref: "f11" } }, repository: { full_name: "acme/rtl" }, installation: { id: 42 } };
+    const rs = await Promise.all(Array.from({ length: 6 }, () => signed(pr, "pull_request", "pr-delivery-race-1").then((r) => r.json())));
+    expect(rs.filter((r) => r.status === "jobs_created")).toHaveLength(1);
+    expect(rs.filter((r) => r.duplicate)).toHaveLength(5);
+    const j = (await s.db.query("SELECT id FROM jobs WHERE commit_sha = $1", [sha5])).rows;
+    expect(j).toHaveLength(1);
+    await waitFor(async () => gh.calls.some((c) => c.method === "POST" && c.body?.head_sha === sha5 && c.body.status === "queued"), 10_000, "queued check");
+    expect(gh.calls.filter((c) => c.method === "POST" && c.path === "/repos/acme/rtl/check-runs" && c.body?.head_sha === sha5)).toHaveLength(1);
+    expect((await owner.c.post(`/api/v1/jobs/${j[0].id}/cancel`)).status).toBe(200);
+  });
+
+  it("a new push to a pull request cancels the superseded run and completes its check as cancelled (audit O5, 2026-10-14)", async () => {
+    const old = "1".repeat(40);
+    const next = "2".repeat(40);
+    for (const x of [old, next]) gh.files.set(`verifycloud.yaml@${x}`, readExample("verifycloud.yaml"));
+    const pr = (sha: string) => ({ action: "synchronize", number: 12, pull_request: { number: 12, head: { sha, ref: "f12" } }, repository: { full_name: "acme/rtl" }, installation: { id: 42 } });
+    // another pull request's run must not be touched
+    const other = "3".repeat(40);
+    gh.files.set(`verifycloud.yaml@${other}`, readExample("verifycloud.yaml"));
+    await signed({ ...pr(other), number: 13, pull_request: { number: 13, head: { sha: other, ref: "f13" } } }, "pull_request", "pr-delivery-o5-other");
+    expect((await (await signed(pr(old), "pull_request", "pr-delivery-o5-1")).json()).status).toBe("jobs_created");
+    expect((await (await signed(pr(next), "pull_request", "pr-delivery-o5-2")).json()).status).toBe("jobs_created");
+    const jobs = async (sha: string) => (await s.db.query("SELECT id, state, cancel_requested FROM jobs WHERE commit_sha = $1", [sha])).rows;
+    await waitFor(async () => (await jobs(old))[0].state === "CANCELLED", 10_000, "superseded run cancelled");
+    expect((await jobs(next))[0].state).toBe("QUEUED");
+    expect((await jobs(other))[0].state).toBe("QUEUED");
+    await waitFor(async () => gh.calls.some((c) => c.method === "PATCH" && c.body?.head_sha === old && c.body.status === "completed" && c.body.conclusion === "cancelled"), 15_000, "cancelled check for the old head");
+    for (const sha of [next, other]) expect((await owner.c.post(`/api/v1/jobs/${(await jobs(sha))[0].id}/cancel`)).status).toBe(200);
+  });
 });
 
 // -------------------------------------------------------------- AI

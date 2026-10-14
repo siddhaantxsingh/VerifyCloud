@@ -103,6 +103,21 @@ export async function webhookRoutes(api: FastifyInstance, ctx: Ctx) {
             ? await scheduler.createFailedJob({ orgId: p.org_id, projectId: p.id, regression, trigger: ref.trigger, source: src, commitSha: ref.sha, branch: ref.branch, prNumber: ref.pr, error: configError, idempotencyKey: idem })
             : (await scheduler.createJob({ orgId: p.org_id, projectId: p.id, regression, trigger: ref.trigger, source: src, config: (v as any).config, configText: configText!, commitSha: ref.sha, branch: ref.branch, prNumber: ref.pr, idempotencyKey: idem })).job;
           jobs.push(job.id);
+          // A new head on a pull request makes earlier runs of the same PR
+          // obsolete: cancel them (their check runs complete as "cancelled"
+          // through the normal post-job path). Audit 2026-10-14, O5.
+          if (ref.trigger === "pull_request" && ref.pr !== null) {
+            const superseded = await db.query(
+              `SELECT id FROM jobs WHERE project_id = $1 AND trigger = 'pull_request' AND pr_number = $2 AND commit_sha <> $3
+                  AND id <> $4 AND state IN ('QUEUED','RUNNING') AND NOT cancel_requested`,
+              [p.id, ref.pr, ref.sha, job.id],
+            );
+            for (const old of superseded.rows) {
+              await db.query("UPDATE jobs SET error = coalesce(error, $2) WHERE id = $1", [old.id, `superseded by ${ref.sha.slice(0, 12)}`]);
+              await scheduler.cancel(old.id);
+              metrics.webhooks.inc({ provider: "github", result: "superseded_cancelled" });
+            }
+          }
           const url = `${cfg.publicUrl}/projects/${p.id}/runs/${job.id}`;
           await tx(db, async (c) => {
             await notifier.enqueue(c, p.org_id, "github_check", configError ? "job_failed_to_start" : "job_queued", {
