@@ -1,0 +1,12 @@
+# pre-fix tree: commit 77fadfe + this test file; 2026-10-14T21:00:45Z uptime:  21:00:45 up 23 min,  0 user,  load average: 30.40, 32.35, 22.43
+
+ RUN  v5.0.3 /tmp/claude-0/-home-user/6fee72ad-dbc2-5262-982a-1a11b9d97e54/scratchpad/vc-prefix/verifycloud
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed | 2 skipped (3)
+   Start at  21:00:48
+   Duration  147.56s (tests 98%, transform 1%, import 1%)
+
+EXIT=0
+# end  21:03:15 up 26 min,  0 user,  load average: 46.35, 37.68, 25.87
