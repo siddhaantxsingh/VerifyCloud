@@ -226,7 +226,7 @@ export class DockerSandbox implements Sandbox {
           cancelled = true;
           void kill();
         }
-      }, 1000);
+      }, 250); // 250 ms: output-file floods overshot a 16 MiB budget by ~7x at 1 s (audit 2026-10-14)
       p.on("close", (code) => {
         clearTimeout(timer);
         clearInterval(monitor);
