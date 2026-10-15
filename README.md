@@ -17,7 +17,7 @@
 </div>
 
 > [!IMPORTANT]
-> **Deployment status:** VerifyCloud is an internally validated beta, **not a certified production service**. The October 2026 audit exercised the platform with real PostgreSQL, Docker and Verilator, but **real GitHub, MinIO/AWS S3, LLM providers, the official-image Compose path and GitHub-hosted CI remain unverified**. See the [audit matrix](docs/audit-2026-10-08/requirements-matrix.md).
+> **Deployment status:** VerifyCloud is an internally validated beta, **not a production service**. The 2026-10-14 audit ran the suite on GitHub-hosted CI, against real MinIO, and through `docker compose up` with the official PostgreSQL image and a pinned MinIO build; gVisor was partly verified. **A real GitHub App, LLM providers and a production deployment remain unverified.** See [AUDIT_2026-10-14](verifycloud/docs/AUDIT_2026-10-14.md) and the [requirements matrix](verifycloud/docs/REQUIREMENTS_MATRIX.md).
 
 ## Why VerifyCloud?
 

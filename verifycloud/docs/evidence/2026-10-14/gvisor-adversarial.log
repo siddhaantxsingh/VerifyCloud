@@ -1,0 +1,13 @@
+# 2026-10-15T08:39:41Z uptime:  08:39:41 up 27 min,  0 user,  load average: 18.30, 23.09, 18.87
+# npx vitest run packages/worker/test/adversarial-rtl.test.ts -t fopen|DPI
+
+ RUN  v5.0.3 /home/user/verifycloud/verifycloud
+
+
+ Test Files  1 passed (1)
+      Tests  2 passed | 4 skipped (6)
+   Start at  08:39:42
+   Duration  161.04s (tests 98%, transform 1%, import 1%)
+
+EXIT=0
+# end 2026-10-15T08:42:23Z uptime:  08:42:23 up 30 min,  0 user,  load average: 16.25, 20.15, 18.41

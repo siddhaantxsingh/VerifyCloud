@@ -1,0 +1,9 @@
+
+ RUN  v5.0.3 /home/user/verifycloud/verifycloud
+
+
+ Test Files  6 passed (6)
+      Tests  78 passed (78)
+   Start at  13:08:10
+   Duration  146.00s (tests 94%, import 4%, transform 2%)
+
