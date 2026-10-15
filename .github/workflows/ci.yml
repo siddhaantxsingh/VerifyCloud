@@ -34,6 +34,7 @@ jobs:
       # MinIO refuses secrets shorter than 8 characters; the tests read these.
       S3_ACCESS_KEY_ID: test
       S3_SECRET_ACCESS_KEY: testtesttest
+      TEST_MINIO_CONTAINER: minio  # the storage test stops and restarts it
       MINIO_IMAGE: bitnamilegacy/minio:2025.4.22@sha256:50cec18ac4184af4671a78aedd5554942c8ae105d51a465fa82037949046da01
     steps:
       - uses: actions/checkout@v4
@@ -43,7 +44,7 @@ jobs:
       # (minio/minio is no longer on Docker Hub).
       - name: Start MinIO and wait until it is ready
         run: |
-          docker run -d --name minio -p 9000:9000 -e MINIO_ROOT_USER=test -e MINIO_ROOT_PASSWORD=testtesttest --entrypoint /opt/bitnami/minio/bin/minio "$MINIO_IMAGE" server /data
+          docker run -d --name minio -p 9000:9000 -e MINIO_ROOT_USER=test -e MINIO_ROOT_PASSWORD=testtesttest --entrypoint /opt/bitnami/minio/bin/minio "$MINIO_IMAGE" server /bitnami/minio/data
           for i in $(seq 60); do curl -fs http://127.0.0.1:9000/minio/health/ready && exit 0; sleep 1; done
           docker logs minio; exit 1
       - uses: actions/setup-node@v4

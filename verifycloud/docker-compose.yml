@@ -30,12 +30,14 @@ services:
     # upstream image did. Override MINIO_IMAGE to use another build.
     image: ${MINIO_IMAGE:-bitnamilegacy/minio:2025.4.22@sha256:50cec18ac4184af4671a78aedd5554942c8ae105d51a465fa82037949046da01}
     entrypoint: ["/opt/bitnami/minio/bin/minio"]
-    command: ["server", "/data", "--console-address", ":9001"]
+    # /bitnami/minio/data is group-writable for the image's non-root user (1001:0);
+    # a plain /data would be root-owned ("file access denied")
+    command: ["server", "/bitnami/minio/data", "--console-address", ":9001"]
     user: "1001:0"
     environment:
       MINIO_ROOT_USER: ${S3_ACCESS_KEY_ID:?set S3_ACCESS_KEY_ID in .env}
       MINIO_ROOT_PASSWORD: ${S3_SECRET_ACCESS_KEY:?set S3_SECRET_ACCESS_KEY in .env (8+ characters)}
-    volumes: [miniodata:/data]
+    volumes: [miniodata:/bitnami/minio/data]
     healthcheck:
       test: ["CMD", "curl", "-fs", "http://127.0.0.1:9000/minio/health/ready"]
       interval: 5s
