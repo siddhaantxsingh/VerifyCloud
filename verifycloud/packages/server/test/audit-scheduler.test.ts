@@ -160,6 +160,9 @@ describe("audit: scheduler correctness", () => {
     const j = (await o.c.post(`/api/v1/projects/${o.project.id}/jobs`, { regression: "smoke", tests: ["t1"] })).json.job;
     const w = await new FakeWorker(s.base).register();
     const b = await waitFor(() => w.claim(), 10_000, "build claim");
+    // the server bounds reported durations by the time the lease was actually
+    // held (audit 2026-10-14), so the fake worker really holds it for 1.5 s
+    await sleep(1600);
     await w.complete(b.task.id, b.leaseToken, { state: "ERROR", retryable: true, error: "infra", durationMs: 1500 });
     await w.complete(b.task.id, b.leaseToken, { state: "ERROR", retryable: true, error: "infra", durationMs: 1500 }); // duplicate report
     const u = (await s.db.query("SELECT kind, quantity FROM usage_records WHERE job_id = $1 AND kind = 'worker_seconds'", [j.id])).rows;
