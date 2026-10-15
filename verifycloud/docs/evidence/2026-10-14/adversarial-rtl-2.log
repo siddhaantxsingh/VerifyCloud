@@ -1,0 +1,5 @@
+# 2026-10-15T08:21:59Z uptime:  08:21:59 up 9 min,  0 user,  load average: 20.18, 11.17, 4.86
+# npx vitest run packages/worker/test/adversarial-rtl.test.ts
+
+ RUN  v5.0.3 /home/user/verifycloud/verifycloud
+

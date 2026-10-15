@@ -1,0 +1,5 @@
+
+> verifycloud@0.1.0 lint
+> tsc -b packages/shared packages/server packages/worker packages/cli --noEmit
+
+EXIT=0

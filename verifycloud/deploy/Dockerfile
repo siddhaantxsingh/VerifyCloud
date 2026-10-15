@@ -12,7 +12,11 @@ COPY packages/server/package.json packages/server/
 COPY packages/worker/package.json packages/worker/
 COPY packages/cli/package.json packages/cli/
 COPY packages/web/package.json packages/web/
-RUN npm ci --no-audit --no-fund
+# Optional: behind a TLS-intercepting proxy, pass its CA as the build secret
+# "extra_ca" (see deploy/build-behind-proxy.yml). Without it nothing changes.
+RUN --mount=type=secret,id=extra_ca,required=false \
+    if [ -s /run/secrets/extra_ca ]; then export NODE_EXTRA_CA_CERTS=/run/secrets/extra_ca; fi; \
+    npm ci --no-audit --no-fund
 COPY packages packages
 RUN npm run build && npm prune --omit=dev --no-audit --no-fund
 
