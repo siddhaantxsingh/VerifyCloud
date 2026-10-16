@@ -1,297 +1,192 @@
-<div align="center">
-
 # VerifyCloud
 
-### Hardware verification, with the engineering discipline of modern CI.
+**A self-hosted CI service for SystemVerilog: it runs Verilator regressions in locked-down containers and turns each failure into evidence (test, seed, assertion, waveform, coverage delta).**
 
-**Self-hosted RTL regression orchestration · isolated Verilator execution · coverage & waveforms · evidence-first debugging**
+[![ci](https://github.com/siddhaantxsingh/VerifyCloud/actions/workflows/ci.yml/badge.svg?branch=ccr-a6e6c567-y4w7k8)](https://github.com/siddhaantxsingh/VerifyCloud/actions/workflows/ci.yml?query=branch%3Accr-a6e6c567-y4w7k8)
+![TypeScript](https://img.shields.io/badge/TypeScript-Node%2022-3178C6?logo=typescript&logoColor=white)
+![Simulator](https://img.shields.io/badge/simulator-Verilator%205.020-5B4B8A)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](verifycloud/LICENSE)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A522-339933?logo=node.js&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-Monorepo-3178C6?logo=typescript&logoColor=white)
-![Simulator](https://img.shields.io/badge/Simulator-Verilator%205.020-5B4B8A)
-![Maturity](https://img.shields.io/badge/Maturity-Internally%20validated%20beta-orange)
+Software teams expect every pull request to be built, tested and explained. VerifyCloud gives RTL the same loop: a push or PR expands into a test × seed matrix, each build and simulation runs in a fresh sandbox, and the results land in a dashboard, CLI and API with logs, assertions, VCD waveforms and merged coverage. A rule-based analyzer points at the likely RTL line without any LLM; LLM help is opt-in.
 
-**[Quick start](#quick-start) · [How it works](#architecture) · [Verification workflow](#verification-workflow) · [Security](#security--trust-boundaries) · [Benchmarks](#measured-performance) · [Documentation](#documentation)**
+**Status:** internally validated beta, not a production service. The real GitHub App, real LLM providers and a production deployment are not verified yet (see [Limitations](#limitations-and-status)).
 
-</div>
+## Highlights
 
-> [!IMPORTANT]
-> **Deployment status:** VerifyCloud is an internally validated beta, **not a production service**. The 2026-10-14 audit ran the suite on GitHub-hosted CI, against real MinIO, and through `docker compose up` with the official PostgreSQL image and a pinned MinIO build; gVisor was partly verified. **A real GitHub App, LLM providers and a production deployment remain unverified.** See [AUDIT_2026-10-14](verifycloud/docs/AUDIT_2026-10-14.md) and the [requirements matrix](verifycloud/docs/REQUIREMENTS_MATRIX.md).
-
-## Why VerifyCloud?
-
-Software teams expect every pull request to be built, tested and explained. RTL verification deserves the same workflow—without treating arbitrary HDL or testbenches as trusted code.
-
-VerifyCloud turns SystemVerilog regressions into repeatable jobs, runs each build and simulation in a constrained container, and collects the evidence needed to understand failures: **test, seed, assertion, source location, logs, waveform context, and coverage changes**. Its deterministic analyzer works without an LLM; optional model-assisted analysis is explicitly opt-in.
-
-### At a glance
-
-| | |
-|---|---|
-| **Simulator** | **Verilator 5.020 only**; no UVM or commercial simulator support |
-| **Execution** | Container-per-build/run; task leases and stale-worker fencing |
-| **Interfaces** | React dashboard, REST/OpenAPI, Server-Sent Events, CLI, GitHub App/Action code |
-| **State** | PostgreSQL 16 for jobs, queue, events, authorization and usage |
-| **Artifacts** | S3-compatible storage adapter for logs, coverage, waveforms and builds |
-| **Debugging** | Evidence-based rules by default; optional redacted LLM context |
-| **Status** | Internally validated beta; external integrations still need live verification |
-
-## Features
-
-| Workflow | Capabilities |
-|---|---|
-| **Run regressions** | Named suites, test × seed expansion, cached builds, parallel runs, retries, flaky detection, cancellation, exact reruns |
-| **Investigate failures** | Assertion and source-location extraction, searchable bounded logs, waveform inspection, run/branch comparisons |
-| **Track verification** | Line/branch/toggle/functional coverage, per-job merging, history and coverage deltas |
-| **Analyze evidence** | Deterministic diagnoses, optional LLM-assisted explanations, redaction previews, patch verification through fresh regressions |
-| **Operate securely** | Organizations, owner/admin/engineer/viewer roles, scoped tokens, audit logs, quotas, retention, usage ledger |
-| **Integrate workflows** | CLI, REST API, SSE, GitHub App/Action implementations, signed outgoing webhooks and email interfaces |
-| **Observe the service** | Health/readiness endpoints, Prometheus metrics, structured logs and recovery tests |
+- **Green CI on GitHub-hosted runners**: run [38740646066](https://github.com/siddhaantxsingh/VerifyCloud/actions/runs/38740646066) passed 157 tests (1 skipped, 158 total, 17 files) against PostgreSQL 16, real MinIO and the Docker sandbox, then started the Compose stack and passed the Playwright browser end-to-end test.
+- **Hostile code stays in the sandbox**: no network, read-only root, all capabilities dropped, non-root, PID/memory/CPU/time limits. Adversarial testbenches (host `$fopen`, absolute `` `include ``, DPI-C calls into libc `system`/`unshare`, elaboration-time infinite loop, oversized design) pass 6/6 locally ([evidence](verifycloud/docs/evidence/2026-10-14/adversarial-rtl-2.log)).
+- **Lease fencing tested with real worker processes**: SIGKILL mid-run, SIGSTOP past the lease (late writes refused), ±2 h clock skew and a 40-day clock step; each result is recorded once (`lease-real.test.ts` 3/3).
+- **No double claims under load**: 0 tasks claimed twice in 8,080 claims; scheduler throughput 46.4–68.8 tasks/s on a 2-vCPU host ([benchmark report](verifycloud/docs/audit-2026-10-08/benchmark-report.md)).
+- **The testbench catches real defects**: 9 of 10 injected RTL mutants detected; the miss is a documented testbench gap ([test report](verifycloud/docs/audit-2026-10-08/test-report.md#5-rtl-bug-injection-phase-7)).
+- **Conservative analyzer**: on a labeled set of 28 analyses it gave 3 correct diagnoses, 25 abstentions and 0 wrong ones ([`ai-eval.json`](verifycloud/docs/benchmarks/ai-eval.json)).
 
 ## Architecture
 
 ```mermaid
-flowchart TB
-    DEV[Engineer / CLI / GitHub] --> API[Fastify API]
-    WEB[React dashboard] <-->|REST + SSE| API
-    API <--> DB[(PostgreSQL 16\nState + queue + events)]
-    API <--> STORE[(S3-compatible artifacts)]
-    API --> SCHED[Lease-based scheduler]
-    SCHED --> DB
-    WORKER[Stateless worker] <-->|Lease-scoped API calls| API
-    WORKER --> DOCKER[Docker daemon on dedicated worker host]
-    DOCKER --> BUILD[Constrained build container]
-    DOCKER --> SIM[Constrained Verilator simulation container]
-    BUILD --> WORKER
-    SIM --> WORKER
+flowchart LR
+  U[Browser / CLI / GitHub App / Action] -->|REST, SSE, webhooks| API
+  subgraph API[API process - Fastify]
+    R[Routes + auth] --> SCH[Lease-based scheduler]
+    R --> AN[Rule-based analyzer<br/>optional LLM]
+  end
+  API <--> PG[(PostgreSQL 16<br/>state, queue, job_events, usage)]
+  API <--> S3[(S3 / MinIO<br/>logs, builds, coverage, VCD)]
+  W[Stateless worker] -->|worker token + task lease| API
+  W --> D[Docker or gVisor runsc]
+  D --> B[[build container<br/>Verilator compile]]
+  D --> S[[simulation container<br/>no network, read-only, limits]]
 ```
 
-**The API does not execute RTL.** Workers claim tasks through lease-scoped endpoints; they do not hold database or object-store credentials. PostgreSQL acts as both durable state store and queue. Task fencing prevents expired workers from committing stale results.
+The API never compiles or runs user code. Workers claim tasks over HTTP with a lease (fencing token); they hold no database or storage credentials, and a worker whose lease expired cannot commit a result. PostgreSQL is both the system of record and the queue (`FOR UPDATE SKIP LOCKED`), so results, coverage, usage and job state commit in one transaction. Live updates flow from `job_events` through `LISTEN/NOTIFY` to Server-Sent Events, with resume. Execution is at-least-once with fenced, idempotent result recording; it is not exactly-once ([ADR-008](verifycloud/docs/adr/ADR-008-leases-fencing-idempotency.md)).
 
-> [!NOTE]
-> **Execution semantics:** VerifyCloud supports retryable, at-least-once physical execution with fenced/idempotent result recording. It does **not** guarantee exactly-once physical execution. See [ADR-008](docs/adr/) and [database design](docs/database.md).
-
-Read the [architecture guide](docs/architecture.md), [database design](docs/database.md) and [ADRs](docs/adr/) for the tradeoffs.
+More: [architecture.md](verifycloud/docs/architecture.md) · [database.md](verifycloud/docs/database.md) · [ADRs](verifycloud/docs/adr/).
 
 ## Quick start
 
-### Requirements
-
-- Linux host recommended; Docker Engine and Docker Compose
-- At least ~4 GB free RAM for the local stack
-- Git and a shell
-- Network access to obtain required images and dependencies
+Requirements: Docker with Compose, about 4 GB free RAM, Linux recommended.
 
 ```bash
-# Clone your fork / repository
- git clone <YOUR_REPOSITORY_URL> verifycloud
- cd verifycloud
-
-# Set real local credentials; do not commit .env
- cp .env.example .env
-
-# Edit every CHANGE-ME value in .env before starting
-# Provision the documented worker directory
- sudo mkdir -p /var/lib/verifycloud-worker
-
-# Start the stack
- docker compose up --build
+git clone https://github.com/siddhaantxsingh/VerifyCloud.git
+cd VerifyCloud/verifycloud
+cp .env.example .env                  # replace every CHANGE-ME value
+sudo mkdir -p /var/lib/verifycloud-worker
+docker compose up --build
 ```
 
-Open **http://localhost:8080** and sign in with the `DEMO_ADMIN_EMAIL` and `DEMO_ADMIN_PASSWORD` configured in `.env`.
+Open <http://localhost:8080> and log in with `DEMO_ADMIN_EMAIL` / `DEMO_ADMIN_PASSWORD` from `.env`. Behind a TLS-intercepting proxy, add `-f deploy/build-behind-proxy.yml` ([deployment.md](verifycloud/docs/deployment.md)).
 
-> [!WARNING]
-> The official-image Compose path was **not fully validated** in the supplied audit because required registries were inaccessible. A substitute-image Compose stack was tested, but that is not equivalent. Follow [deployment.md](docs/deployment.md) and validate the real stack before relying on it. Never expose the demo credentials or Docker worker host to the public internet.
+Verified on 2026-10-14 with `postgres:16.10` and MinIO RELEASE.2025-04-22 (`bitnamilegacy/minio`, because `minio/minio` is no longer on Docker Hub): the demo regression ran end to end and 46 artifacts were byte-identical after restarting MinIO, PostgreSQL and the API ([compose-smoke-persist.log](verifycloud/docs/evidence/2026-10-14/compose-smoke-persist.log)).
 
-For host-process development with existing PostgreSQL and S3-compatible storage, see [local development](docs/local-development.md).
+Build and test from source (needs PostgreSQL and an S3 endpoint for the integration suites, see [testing.md](verifycloud/docs/testing.md)):
 
-## Verification workflow
+```bash
+cd verifycloud
+npm ci
+npm run typecheck && npm run build
+npm test                              # vitest; same suite CI runs
+```
 
-### 1. Describe the RTL project
+Host-process development without Compose: [local-development.md](verifycloud/docs/local-development.md).
 
-Create `verifycloud.yaml` in the design repository:
+### The demo: find a real bug in an AXI4-Lite block
+
+The seeded project ([`examples/axi4lite-demo`](verifycloud/examples/axi4lite-demo)) has one intentional bug: read data is decoded from the live `ARADDR` instead of the address captured at the handshake, so `RDATA` changes while the master applies back-pressure.
+
+1. Run the `full` regression: **FAILED**, 4/13 passed; `rw_overlap` and the `random` seeds fail; in the `random` runs the `rdata_stable` assertion fires.
+2. Open a failing `random` run and click **Analyze**: the rule-based analyzer (no LLM) reports high confidence and cites `rtl/axil_regs.sv:131`, with the assertion and the waveform around the failure as evidence.
+3. Verify the reference fix in a fresh run: **SUCCEEDED**, 13/13, with 0 newly failing tests in the comparison.
+
+This exact flow is the browser end-to-end test ([`demo.spec.ts`](verifycloud/packages/web/e2e/demo.spec.ts)) that runs in CI against the Compose stack.
+
+### Use it on your design
 
 ```yaml
+# verifycloud.yaml
 version: 1
 project: { name: my-ip }
 rtl: { sources: ["rtl/**/*.sv"] }
 testbench: { sources: ["tb/*.sv"], top: tb_top }
-simulator:
-  engine: verilator
-  timing: true
-  coverage: true
-  waveform: on_failure
+simulator: { engine: verilator, timing: true, coverage: true, waveform: on_failure }
 tests:
   smoke: {}
   random: { seeds: { range: [1, 20] } }
 regressions:
-  pr: { tests: [smoke] }
+  pr:   { tests: [smoke] }
   full: { tests: [smoke, random] }
 resources: { cpu: 2, memory_mb: 2048, timeout_seconds: 600 }
 ```
 
-See the complete [verification configuration reference](docs/verification-model.md). Testbenches must be compatible with the supported Verilator backend; **UVM is not supported**.
-
-### 2. Validate and run
-
 ```bash
 verifycloud login --api http://localhost:8080
 verifycloud validate
-verifycloud run --project my-org/my-ip --regression pr --wait
-verifycloud status <job-id>
+verifycloud run --project my-org/my-ip --regression pr --wait   # exit 0 pass, 1 fail, 3 timeout/infra
 verifycloud logs <task-id> --errors
 verifycloud coverage <job-id>
 ```
 
-The CLI supports reproducible reruns and artifact access; consult [CLI usage](docs/local-development.md) and [API reference](docs/api.md) for setup and supported operations.
+Reference: [verification-model.md](verifycloud/docs/verification-model.md) · [GitHub integration](verifycloud/docs/github-integration.md). Testbenches must work with Verilator 5.020; UVM is not supported.
 
-### 3. Inspect the evidence
+## Results
 
-```mermaid
-flowchart LR
-    PR[RTL revision] --> BUILD[Build]
-    BUILD --> TEST[Test × seed matrix]
-    TEST --> RESULT{Result}
-    RESULT -->|Pass| COVER[Coverage history]
-    RESULT -->|Fail| EVIDENCE[Assertions + logs + VCD]
-    EVIDENCE --> ANALYZE[Evidence-based diagnosis]
-    ANALYZE --> FIX[Proposed / manual fix]
-    FIX --> RERUN[Fresh regression]
-    RERUN --> RESULT
-```
+Measured on 2026-10-10 on **one shared 2-vCPU cloud VM** that ran everything at once: API, PostgreSQL 16, an S3 emulator, workers, sandboxes and the load generator. Means of repeated runs; 95% confidence intervals are in the report. These are workload-specific numbers, not capacity promises.
 
-A passing simulation only establishes behavior covered by the supplied tests/assertions; it is **not proof that the RTL has no bugs**.
+| Measurement | Result | n |
+| --- | --- | --- |
+| Scheduler claims, no simulation, 1 / 5 / 10 / 25 workers | 46.4 / 65.5 / 68.8 / 64.4 tasks/s | 5 |
+| Duplicate claims | 0 in 8,080 claims (no lease expired in this workload) | 20 runs |
+| Real Verilator runs in sandboxes, 1 / 5 / 10 / 25 slots | 119 / 208 / 206 / 215 runs/min (CPU-bound at 2 vCPUs) | 3 |
+| Sandbox container start + teardown | 0.23 s median (p95 0.27 s) | 20 |
+| Demo build, cold / cache hit | 17.6 s / 0.015 s median | 5 |
+| `GET /jobs/:id`, 10 concurrent clients | 784 req/s, p95 19 ms | 3 |
 
-## Included AXI4-Lite demo
+Earlier single-run figures (47.7 / 72.5 / 73.0 / 73.9 tasks/s; up to 245 runs/min) did **not** reproduce at 5 and 25 workers; the report says so and keeps both. Benchmarks were not re-run in the 2026-10-14 audit because the host was shared and heavily loaded.
 
-The synthetic demo intentionally contains a read-data stability defect: a register block derives read data from the live address rather than the address captured at handshake, allowing `RDATA` to change under back-pressure.
+Full method and raw data: [benchmark report](verifycloud/docs/audit-2026-10-08/benchmark-report.md) · [performance.md](verifycloud/docs/performance.md) · [`docs/benchmarks/`](verifycloud/docs/benchmarks/).
 
-The documented end-to-end flow runs the seeded regression, identifies the assertion and RTL context, applies a reference correction, and verifies the correction with a **fresh run**. The demo regression was reported to move from **4/12 passing to 12/12 passing** after the fix.
+## How correctness is verified
 
-Explore [`examples/axi4lite-demo`](examples/axi4lite-demo) and the [testing guide](docs/testing.md).
+| Layer | What runs | Evidence |
+| --- | --- | --- |
+| CI (every push / PR) | typecheck, build, simulation image, full vitest suite with PostgreSQL, MinIO and Docker; then Compose + Playwright | run [38740646066](https://github.com/siddhaantxsingh/VerifyCloud/actions/runs/38740646066): 157 passed, 1 skipped |
+| Sandbox and adversarial RTL | hostile testbenches: network/DNS, writes, fork bomb, memory and output exhaustion, host-file reads, DPI-C into libc | `sandbox.test.ts`, `adversarial-rtl.test.ts` |
+| Lease fencing | separate worker processes: SIGKILL, SIGSTOP past lease, clock skew and step | `lease-real.test.ts` 3/3 |
+| Failure injection | API restart and object-storage outage during a running simulation: result recorded once | `recovery.test.ts` |
+| Storage | 60 MB byte-exact round trip, Range reads, interrupted uploads, memory budget, MinIO restart | `audit-storage.test.ts` 4/4 |
+| Property / fuzz | shared schemas and units with `fast-check` | [testing.md](verifycloud/docs/testing.md) |
+| RTL mutation | 10 mutants on the demo design; 9 detected | [test report §5](verifycloud/docs/audit-2026-10-08/test-report.md#5-rtl-bug-injection-phase-7) |
+| Failing-first fixes | each audit fix has a before/after log | [evidence/2026-10-14](verifycloud/docs/evidence/2026-10-14/) |
 
-## Security & trust boundaries
+The 2026-10-14 audit tracks 22 requirements: 16 VERIFIED, 3 PARTIAL, 2 BLOCKED, 1 NOT RUN ([requirements matrix](verifycloud/docs/REQUIREMENTS_MATRIX.md)). It found and fixed, among others, a CI workflow that never ran, test credentials that made 65 of 143 tests fail against real MinIO, and unbounded worker-reported durations that could lose a result ([AUDIT_2026-10-14.md](verifycloud/docs/AUDIT_2026-10-14.md)).
 
-VerifyCloud treats submitted RTL and testbenches as **untrusted executable workloads**. The worker's Docker execution configuration includes:
+## Design decisions
 
-- No network access, non-root user, read-only root and inputs
-- Dropped Linux capabilities, `no-new-privileges`, init/reaping
-- CPU, memory, PID, disk, output and time limits
-- Lease-scoped worker authorization and stale-result fencing
-- Tenant-scoped access controls, hashed credentials and encrypted secrets
-- Artifact file-type/symlink defenses and bounded upload memory
+- **PostgreSQL as the queue, no Redis.** One store, transactional results, `SKIP LOCKED` claims under one advisory lock. Cost: a global claim lock caps throughput at roughly 64–69 claims/s on the test host, fine for second-long simulations. [ADR-002](verifycloud/docs/adr/ADR-002-postgres-queue.md), [ADR-003](verifycloud/docs/adr/ADR-003-no-redis-listen-notify.md)
+- **One container per build and per test run.** Strong per-run limits and clean state at the price of ~0.23 s startup per run. Docker is not a VM-grade boundary, so worker hosts must be dedicated. [ADR-004](verifycloud/docs/adr/ADR-004-container-per-run-sandbox.md)
+- **Leases with fencing tokens, at-least-once execution.** A run may execute twice after a partition, but only one result is ever recorded. [ADR-008](verifycloud/docs/adr/ADR-008-leases-fencing-idempotency.md)
+- **One simulator behind an adapter harness.** Verilator only, done well, instead of thin wrappers around many. [ADR-005](verifycloud/docs/adr/ADR-005-verilator-adapter-harness.md)
+- **Deterministic analysis first, LLM opt-in.** The analyzer abstains rather than guesses; LLM context is minimal, redacted and previewed. [ADR-007](verifycloud/docs/adr/ADR-007-ai-assistant-boundaries.md)
+- **Waveforms indexed by the worker.** The browser shows the signals around the failure without downloading the whole VCD. [ADR-006](verifycloud/docs/adr/ADR-006-object-storage-and-waveform-index.md)
 
-The October 2026 audit documented and remediated critical **artifact symlink disclosure** and **revoked-membership authorization** defects, along with additional scheduler and webhook security issues. Read the [security report](docs/audit-2026-10-08/security-report.md) rather than assuming the controls are a formal guarantee.
+## Limitations and status
 
-> [!CAUTION]
-> Docker isolation is **not a VM-grade security boundary**. A worker has authority over its host Docker daemon. Use **dedicated worker machines** for untrusted workloads, keep the API/database off those hosts, and validate stronger runtimes before accepting arbitrary public submissions. Never deploy the simulation worker as an ordinary serverless function.
+- **Blocked on owner accounts:** a real GitHub App on github.com (tested only against a local fake GitHub API with signed webhooks), real LLM providers (stub tests only), SMTP. Steps: [OWNER_ACTIONS.md](verifycloud/docs/OWNER_ACTIONS.md).
+- **Partial:** gVisor (`runsc`) passes 5/6 selected sandbox tests and the adversarial cases; a fork-bombed container took over 20 s to remove. The output-directory budget is enforced by sampling and overshoots: 154 MiB for a 16 MiB budget on a GitHub runner (open finding F6).
+- **One simulator:** Verilator 5.020 only; no UVM, no commercial simulators, VCD only (no FST).
+- **Not claimed:** production deployment, multi-host scaling, exactly-once physical execution, SSO, billing-provider integration.
+- **MinIO image** is an archived build (`bitnamilegacy/minio`) with no further security updates; choosing a long-term S3 service is an owner decision.
+- **Lint** is `tsc --noEmit` only; test files are not type-checked.
+- A compromised worker can falsify results of tasks it holds; container escape is mitigated by host dedication, not prevented. See [security.md](verifycloud/docs/security.md) and [threat-model.md](verifycloud/docs/threat-model.md).
 
-More: [security model](docs/security.md) · [threat model](docs/threat-model.md) · [worker hardening](docs/worker-security.md).
-
-## Validation & test evidence
-
-The supplied **October 2026 audit** reports the following results. These figures are audit artifacts, **not independently reproduced by this README author**.
-
-| Validation | Reported result | Evidence |
-|---|---:|---|
-| Automated tests | **143 passed** | [Test report](docs/audit-2026-10-08/test-report.md) |
-| Browser E2E | **2 passed** against host and substitute Compose deployment | [Test report](docs/audit-2026-10-08/test-report.md) |
-| Scheduler claim benchmark | **0 duplicate claims across 8,080 claims** | [Benchmark report](docs/audit-2026-10-08/benchmark-report.md) |
-| RTL mutation campaign | **9/10 mutations detected** | [Test report](docs/audit-2026-10-08/test-report.md) |
-| Security remediation | Critical issues reproduced and regression-tested | [Security report](docs/audit-2026-10-08/security-report.md) |
-
-**What this does not establish:** production readiness, absence of vulnerabilities, exactly-once physical execution, or live GitHub/MinIO/AWS/LLM compatibility.
-
-### Reproduce locally
-
-After provisioning the documented development dependencies:
-
-```bash
-npm ci
-npm run typecheck
-npm run test
-npm run build
-```
-
-The `lint` script currently runs TypeScript checks; it is **not** a full ESLint/formatting gate. Integration tests require the services and permissions described in [testing.md](docs/testing.md).
-
-## Measured performance
-
-Audit measurements were collected on a **single 2-vCPU machine** with API, database, storage emulator, workers and load generator competing for resources. Results are workload-specific, not capacity promises.
-
-| Metric | Reported measurement |
-|---|---:|
-| Scheduler claims, 1 / 5 / 10 / 25 workers | **46.4 / 65.5 / 68.8 / 64.4 tasks/s** (five-run means) |
-| Real Verilator simulations, 1 / 5 / 10 / 25 slots | **119 / 208 / 206 / 215 runs/min** (demo workload) |
-| Sandbox startup + teardown | **0.23 s median** |
-| Demo build, cold / cached | **17.6 s / 0.015 s** |
-| `GET /jobs/:id`, 10 concurrent clients | **784 requests/s; p95 19 ms** |
-
-The older single-run scheduler figures were not consistently reproduced. The full methodology and uncertainty are documented in the [benchmark report](docs/audit-2026-10-08/benchmark-report.md) and [performance notes](docs/performance.md).
-
-## Current limitations
-
-- **Verilator 5.020 only**; no UVM, commercial simulator adapters or FST waveform support.
-- **Real GitHub App, MinIO/AWS S3, external LLM providers and GitHub-hosted CI remain unverified**; existing adapter/mock tests do not replace live validation.
-- **Official-image `docker compose up --build` remains unverified**; the audit validated a substitute-image stack.
-- Scheduler contention limits throughput on the benchmark host; multi-host operation and gVisor/rootless isolation were not validated.
-- Rule-based failure analysis is deliberately conservative; the audit's labeled evaluation reported **3 correct diagnoses, 25 abstentions and 0 incorrect diagnoses across 28 cases**.
-- No SSO, payment-provider billing, formal verification job type or production SLA is claimed.
-
-Track exact status in the [requirements matrix](docs/audit-2026-10-08/requirements-matrix.md).
-
-## Roadmap
-
-1. **Complete the reality gap:** official Compose images, real MinIO, real GitHub App/PR checks and GitHub Actions CI.
-2. **Harden execution:** dedicated workers, gVisor/VM isolation tests, extended soak and multi-host failure testing.
-3. **Improve verification depth:** close the remaining mutation-test gap; add FST, lint/formal jobs and simulator adapters where practical.
-4. **Strengthen diagnostics:** expand the labeled failure corpus and measure real LLM providers before broadening AI claims.
-5. **Validate adoption:** onboard external RTL users and prioritize observed failures over speculative features.
-
-## Repository map
+## Repository layout
 
 ```text
-packages/
-  shared/        Shared contracts, schemas and utilities
-  server/        Fastify API, scheduler, database, auth, integrations
-  worker/        Task execution, Docker/Verilator and artifact handling
-  cli/           Developer command-line interface
-  web/           React dashboard
-deploy/          Images and deployment support
-examples/        AXI4-Lite verification demo
-bench/           Benchmark and evaluation harnesses
-action/          GitHub Action integration
-.github/         CI workflow
-docs/            Architecture, security, testing, ADRs and audits
+.github/workflows/ci.yml   CI (runs inside verifycloud/)
+verifycloud/
+  packages/
+    shared/   contracts, schemas, redaction, units
+    server/   Fastify API, scheduler, auth, analyzer, GitHub/webhook integrations
+    worker/   task loop, Docker/gVisor sandbox, Verilator harness, artifacts
+    cli/      verifycloud command-line client
+    web/      React dashboard
+  deploy/     Dockerfiles, simulation image, proxy build override
+  examples/   AXI4-Lite demo and GitHub Actions example
+  action/     GitHub Action wrapper
+  bench/      scheduler, sandbox, API, cost and analyzer benchmarks
+  docs/       design, security, testing, ADRs, audits and evidence
 ```
 
 ## Documentation
 
-| Area | Reference |
-|---|---|
-| Architecture and tradeoffs | [Architecture](docs/architecture.md) · [ADRs](docs/adr/) |
-| Getting started | [Local development](docs/local-development.md) · [Deployment](docs/deployment.md) |
-| RTL configuration | [Verification model](docs/verification-model.md) · [Simulator adapters](docs/simulator-adapters.md) |
-| API and database | [API](docs/api.md) · [OpenAPI](docs/openapi.json) · [Database](docs/database.md) |
-| Security | [Security](docs/security.md) · [Threat model](docs/threat-model.md) · [Worker security](docs/worker-security.md) |
-| Diagnostics | [AI debugging](docs/ai-debugging.md) · [Observability](docs/observability.md) |
-| Operations | [Testing](docs/testing.md) · [Performance](docs/performance.md) · [Troubleshooting](docs/troubleshooting.md) |
-| Integrations | [GitHub integration](docs/github-integration.md) |
-| Independent audit package | [October 2026 audit](docs/audit-2026-10-08/README.md) · [Requirements matrix](docs/audit-2026-10-08/requirements-matrix.md) |
-
-## Contributing
-
-Issues and pull requests are welcome. For substantial changes, include a minimal reproducer, regression tests, and a clear explanation of any security or compatibility impact. Review [testing](docs/testing.md) and [architecture](docs/architecture.md) before modifying scheduler, authorization, or sandbox boundaries.
-
-## License
-
-Released under the [MIT License](LICENSE). The included AXI4-Lite demo is synthetic and created for this repository.
+| Topic | Documents |
+| --- | --- |
+| Design | [Architecture](verifycloud/docs/architecture.md) · [Database](verifycloud/docs/database.md) · [ADRs](verifycloud/docs/adr/) · [Scaling](verifycloud/docs/scaling.md) |
+| Using it | [Local development](verifycloud/docs/local-development.md) · [Deployment](verifycloud/docs/deployment.md) · [Verification model](verifycloud/docs/verification-model.md) · [Simulator adapters](verifycloud/docs/simulator-adapters.md) · [Troubleshooting](verifycloud/docs/troubleshooting.md) |
+| API | [API](verifycloud/docs/api.md) · [OpenAPI](verifycloud/docs/openapi.json) · [GitHub integration](verifycloud/docs/github-integration.md) |
+| Security | [Security](verifycloud/docs/security.md) · [Threat model](verifycloud/docs/threat-model.md) · [Worker security](verifycloud/docs/worker-security.md) |
+| Analysis and ops | [Failure analysis](verifycloud/docs/ai-debugging.md) · [Observability](verifycloud/docs/observability.md) |
+| Testing and performance | [Testing](verifycloud/docs/testing.md) · [Performance](verifycloud/docs/performance.md) · [Benchmark report](verifycloud/docs/audit-2026-10-08/benchmark-report.md) |
+| Audits | [Audit 2026-10-14](verifycloud/docs/AUDIT_2026-10-14.md) (includes scorecard) · [Requirements matrix](verifycloud/docs/REQUIREMENTS_MATRIX.md) · [Audit 2026-10-08](verifycloud/docs/audit-2026-10-08/README.md) · [Owner actions](verifycloud/docs/OWNER_ACTIONS.md) |
 
 ---
 
-<div align="center">
-
-**VerifyCloud — make RTL failures reproducible, inspectable and actionable.**
-
-</div>
+Built by [Siddhant Singh](https://github.com/siddhaantxsingh). Released under the [MIT License](verifycloud/LICENSE); the demo RTL is synthetic and written for this project.
