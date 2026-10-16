@@ -1,0 +1,78 @@
+ 18:18:20 up 12 min,  0 user,  load average: 11.75, 8.17, 3.92
+
+ RUN  v5.0.3 /home/user/verifycloud/verifycloud
+
+stdout | packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+{"time":"2026-10-14T18:25:28.803Z","level":"info","msg":"task finished","task":"749a0ff2-97af-4dd1-b5dc-49f6b2e77ca9","kind":"build","state":"PASSED","ms":158501}
+
+stdout | packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+{"time":"2026-10-14T18:25:31.034Z","level":"info","msg":"task finished","task":"6ae6441f-aad3-4404-874d-05efbbebff92","kind":"test","state":"PASSED","ms":1980}
+
+stdout | packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+{"time":"2026-10-14T18:25:31.955Z","level":"info","msg":"task finished","task":"8a85a222-2a00-4a21-bbc2-75d6e1bc869d","kind":"test","state":"PASSED","ms":2495}
+
+stdout | packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+{"time":"2026-10-14T18:25:33.437Z","level":"info","msg":"task finished","task":"06c3c6f7-e91a-4cc2-b2a3-b755ad9f8761","kind":"test","state":"PASSED","ms":2239}
+
+stdout | packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+{"time":"2026-10-14T18:25:34.221Z","level":"info","msg":"task finished","task":"8d7259ed-7d38-467b-9242-7aae18b22019","kind":"test","state":"PASSED","ms":2103}
+
+stdout | packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+{"time":"2026-10-14T18:25:35.951Z","level":"info","msg":"task finished","task":"966ec651-e3ea-4dc9-99a1-af64ff4c43df","kind":"test","state":"FAILED","ms":2153}
+
+stdout | packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+{"time":"2026-10-14T18:25:36.826Z","level":"info","msg":"task finished","task":"6a96b806-926d-4a66-9093-56ce88c9793a","kind":"test","state":"FAILED","ms":2447}
+
+stdout | packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+{"time":"2026-10-14T18:25:37.840Z","level":"info","msg":"task finished","task":"f254a95f-233c-4802-82b2-0e08129fb2ba","kind":"test","state":"FAILED","ms":1760}
+
+stdout | packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+{"time":"2026-10-14T18:25:38.654Z","level":"info","msg":"task finished","task":"ba4b3ab5-b1ff-4a4a-87bc-dbc6a9697aa0","kind":"test","state":"FAILED","ms":1525}
+
+stdout | packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+{"time":"2026-10-14T18:25:39.769Z","level":"info","msg":"task finished","task":"affc5304-4a85-4751-98f9-387f1c633fec","kind":"test","state":"FAILED","ms":1687}
+
+stdout | packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+{"time":"2026-10-14T18:25:40.353Z","level":"info","msg":"task finished","task":"f5e54d08-b85e-4789-b16b-fc02668ded97","kind":"test","state":"FAILED","ms":1576}
+
+stdout | packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+{"time":"2026-10-14T18:25:41.351Z","level":"info","msg":"task finished","task":"8c6ceec3-900b-4282-a64d-4fd25e5d3b64","kind":"test","state":"FAILED","ms":1490}
+
+stdout | packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+{"time":"2026-10-14T18:25:42.809Z","level":"info","msg":"task finished","task":"b09e9fc0-4d7a-4c91-a805-2fcd2d3c8eff","kind":"test","state":"FAILED","ms":2317}
+
+stdout | packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+{"time":"2026-10-14T18:25:43.493Z","level":"info","msg":"task finished","task":"6c908981-165b-4b64-b4ee-a7e98af375f6","kind":"test","state":"FAILED","ms":1995}
+
+stdout | packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+[demo-e2e] merged coverage of buggy run: {"line":{"covered":7,"total":7},"branch":{"covered":19,"total":22},"toggle":{"covered":238,"total":282},"functional":{"covered":10,"total":10}}
+
+stdout | packages/worker/test/sandbox.test.ts
+{"time":"2026-10-14T18:18:55.010Z","level":"info","msg":"worker registered","workerId":"083e866b-caee-4f39-8d5e-6599e47b8063","sandbox":"docker","cpus":4,"memoryMb":4096,"toolchain":{"sandbox":"docker","image":"verifycloud-sim:verilator","imageDigest":"sha256:ab16d7e7a5043eddd0edba1b0a2d4fdd0407e22146ea3177c4dedde2256eb19d","runtime":"default","verilator":"Verilator 5.020 2024-01-01 rev (Debian 5.020-1)","gcc":"13.3.0","harnessSha256":"29aef5fcfcbeaa2c36e84e33ed4cb8a6348ee47cb643d8ff8e7d1fae2d1fed32"}}
+
+ ❯ packages/worker/test/sandbox.test.ts (12 tests | 1 failed) 421476ms
+   ❯ seeded demo end to end (real Verilator) (1)
+     × buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS 180032ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+Error: Test timed out in 180000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/worker/test/sandbox.test.ts:234:3
+    232|
+    233| d("seeded demo end to end (real Verilator)", () => {
+    234|   it("buggy AXI4-Lite: regression FAILS → evidence-backed analysis → r…
+       |   ^
+    235|     const o = await orgWithProject(s.base, "demo");
+    236|     await uploadSnapshot(o.c, o.project.id, demoSnapshot());
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 13 passed (14)
+      Tests  1 failed | 142 passed (143)
+   Start at  18:18:22
+   Duration  848.46s (tests 98%, import 1%)
+
+EXIT=1

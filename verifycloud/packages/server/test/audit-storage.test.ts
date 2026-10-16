@@ -2,24 +2,25 @@
 // in docker-compose): integrity of a large upload, HTTP Range downloads,
 // interrupted uploads, the size limit, and the upload memory budget (audit S13).
 import { createHash, randomBytes } from "node:crypto";
+import { spawnSync } from "node:child_process";
 import { request } from "node:http";
 
 import { ListObjectsV2Command, S3Client } from "@aws-sdk/client-s3";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
-import { createTestDatabase, FakeWorker, minimalConfig, orgWithProject, S3, sleep, snapshotOf, startServer, uploadSnapshot, waitFor, type TestServer } from "./helpers.js";
+import { createTestDatabase, FakeWorker, minimalConfig, orgWithProject, S3, S3_KEY, S3_SECRET, sleep, snapshotOf, startServer, uploadSnapshot, waitFor, type TestServer } from "./helpers.js";
 
 let db: { url: string; drop: () => Promise<void> };
 let s: TestServer;
 const MB = 1024 * 1024;
 const bucket = `vc-st-${randomBytes(4).toString("hex")}`;
-const s3 = new S3Client({ endpoint: S3, region: "us-east-1", forcePathStyle: true, credentials: { accessKeyId: "test", secretAccessKey: "test" } });
+const s3 = new S3Client({ endpoint: S3, region: "us-east-1", forcePathStyle: true, credentials: { accessKeyId: S3_KEY, secretAccessKey: S3_SECRET } });
 const objectCount = async () => (await s3.send(new ListObjectsV2Command({ Bucket: bucket }))).KeyCount ?? 0;
 
 beforeAll(async () => {
   db = await createTestDatabase();
   s = await startServer(db.url, {
-    s3: { endpoint: S3, region: "us-east-1", bucket, accessKeyId: "test", secretAccessKey: "test", forcePathStyle: true },
+    s3: { endpoint: S3, region: "us-east-1", bucket, accessKeyId: S3_KEY, secretAccessKey: S3_SECRET, forcePathStyle: true },
     limits: { maxArtifactBytes: 64 * MB, uploadMemoryBudgetBytes: 80 * MB } as any,
   });
 });
@@ -102,5 +103,30 @@ describe("artifact storage (audit)", () => {
     const third = await w.upload(t.task.id, t.leaseToken, "log", "d.log", Buffer.alloc(30 * MB));
     expect(third.status).toBe(201);
     expect(s.app.ctx.metrics.uploadsRejected.get()).toBeGreaterThan(0);
+  });
+
+  // Needs a MinIO container this test may restart: TEST_MINIO_CONTAINER=<name>
+  // (2026-10-14; the CI workflow and docs/evidence use "minio" / "vc-minio").
+  const minio = process.env.TEST_MINIO_CONTAINER;
+  it.skipIf(!minio)("artifacts survive a MinIO restart; readiness reports the outage and recovers", async () => {
+    const { o, w, t } = await runningTask();
+    const body = randomBytes(8 * MB);
+    const up = await w.upload(t.task.id, t.leaseToken, "log", "persist.log", body, { contentType: "text/plain" });
+    expect(up.status, JSON.stringify(up.json)).toBe(201);
+    const r1 = spawnSync("docker", ["stop", "-t", "5", minio!], { encoding: "utf8" });
+    expect(r1.status, r1.stderr).toBe(0);
+    try {
+      // while MinIO is down the API stays up but is not ready
+      await waitFor(async () => (await fetch(`${s.base}/ready`)).status === 503, 30_000, "readiness to report the storage outage");
+    } finally {
+      const r2 = spawnSync("docker", ["start", minio!], { encoding: "utf8" });
+      expect(r2.status, r2.stderr).toBe(0);
+    }
+    await waitFor(async () => (await fetch(`${s.base}/ready`)).status === 200, 120_000, "readiness after MinIO restart");
+    const res = await fetch(`${s.base}/api/v1/artifacts/${up.json.id}/download`, { headers: { Cookie: o.c.cookie } });
+    expect(res.status).toBe(200);
+    const got = Buffer.from(await res.arrayBuffer());
+    expect(createHash("sha256").update(got).digest("hex")).toBe(createHash("sha256").update(body).digest("hex"));
+    expect(await objectCount()).toBeGreaterThan(0);
   });
 });

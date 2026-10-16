@@ -1,0 +1,10 @@
+ 12:59:35 up 4 min,  0 user,  load average: 6.10, 2.47, 0.98
+2026-10-15T12:59:49.412Z logged in; demo project 60027e21-dc9a-4a99-b352-3408630ed25e
+2026-10-15T12:59:51.485Z started job fa58f8bd-6a43-4fd5-807f-e19a16b6b4c3
+2026-10-15T13:07:35.761Z job FAILED in 466 s; 13 tests, failed: rw_overlap, random
+2026-10-15T13:07:35.781Z coverage available: true {"line":{"covered":7,"total":7},"branch":{"covered":19,"total":22},"toggle":{"covered":238,"total":282},"functional":{"covered":10,"total":10}}
+2026-10-15T13:07:35.860Z analysis: succeeded high tb/axil_checker.sv:52 (verified), rtl/axil_regs.sv:131 (verified)
+2026-10-15T13:07:36.585Z recorded 46 artifact hashes in /tmp/claude-0/-home-user/6fee72ad-dbc2-5262-982a-1a11b9d97e54/scratchpad/smoke-state.json
+JOB_ID=fa58f8bd-6a43-4fd5-807f-e19a16b6b4c3
+SMOKE_RESULT=PASS
+EXIT=0

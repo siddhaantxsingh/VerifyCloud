@@ -1,0 +1,49 @@
+# 2026-10-15T08:32:01Z  08:32:01 up 19 min,  0 user,  load average: 30.28, 26.00, 15.90
+/dev/vda        252G   37G  2.5G  94% /
+
+#7 [sim-image internal] load build context
+#7 transferring context: 163B 0.3s done
+#7 DONE 0.4s
+
+#52 [sim-image 4/5] RUN { echo "verilator=$(verilator --version | head -1)"; echo "gcc=$(g++ -dumpfullversion)"; } > /opt/verifycloud/toolchain.txt
+#52 CACHED
+
+#53 [sim-image 2/5] RUN apt-get update  && apt-get install -y --no-install-recommends verilator g++ make libc6-dev  && rm -rf /var/lib/apt/lists/*  && groupadd --gid 10001 sim && useradd --uid 10001 --gid 10001 --no-create-home --shell /usr/sbin/nologin sim
+#53 CACHED
+
+#54 [sim-image 3/5] COPY packages/worker/harness/vc_main.cpp /opt/verifycloud/harness/vc_main.cpp
+#54 CACHED
+
+#55 [sim-image 5/5] WORKDIR /work
+#55 CACHED
+
+#56 [sim-image] exporting to image
+#56 exporting layers done
+#56 exporting manifest sha256:97d1f3bdb35c476ce63944608b3bd6d079ba6f2183dd8804411786cb9d22de98 done
+#56 exporting config sha256:23d2420ee75c823a91a4bc7c5d15ca44edfc106cf911a7a5cfc2bab0e15347f9 done
+#56 exporting attestation manifest sha256:b132d61baee56672e1e3b8b50bc8a17ddfed6d89363900ad154a76c1586b09e0
+#56 exporting attestation manifest sha256:b132d61baee56672e1e3b8b50bc8a17ddfed6d89363900ad154a76c1586b09e0 0.1s done
+#56 exporting manifest list sha256:50897bc1af2883d6f58d1ecfaa83dd42fe1c2456eb5fbccc577ce3c36452f97a 0.0s done
+#56 naming to docker.io/library/verifycloud-sim:verilator
+#56 naming to docker.io/library/verifycloud-sim:verilator 0.0s done
+#56 unpacking to docker.io/library/verifycloud-sim:verilator 0.0s done
+#56 DONE 0.3s
+
+#57 [worker] resolving provenance for metadata file
+#57 DONE 0.0s
+
+#58 [api] resolving provenance for metadata file
+#58 DONE 0.0s
+
+#59 [sim-image] resolving provenance for metadata file
+#59 DONE 0.0s
+ Image verifycloud-sim:verilator Built 
+ Image verifycloud-worker:local Built 
+ Image verifycloud-api:local Built 
+
+real	0m2.517s
+user	0m0.381s
+sys	0m0.185s
+BUILD_EXIT=0
+/dev/vda        252G   37G  2.4G  94% /
+# note: this log is the second compose build; the first (npm ci in parallel api/worker builds) failed with 'Exit handler never called', after which the build stage was built once with docker build --secret extra_ca and this run reused its cache.

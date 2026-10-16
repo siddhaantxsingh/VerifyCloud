@@ -1,0 +1,1097 @@
+ 18:14:42 up 9 min,  0 user,  load average: 7.39, 4.79, 2.01
+
+ RUN  v5.0.3 /home/user/verifycloud/verifycloud
+
+{"level":50,"time":1792001687652,"pid":9876,"hostname":"vm","reqId":"2831b0f0-fb4a-4e9c-8056-b2e0fd20bd49","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001694780,"pid":9876,"hostname":"vm","reqId":"dddad848-1add-4853-928b-5411041cf909","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001695502,"pid":9876,"hostname":"vm","reqId":"7b43e24a-f826-4c6d-b96e-abd61ac74d52","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001696057,"pid":9876,"hostname":"vm","reqId":"2bbcb59a-5bb6-4b66-8e8c-eda8c970f44c","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001696627,"pid":9876,"hostname":"vm","reqId":"202d7ff7-cf6f-4778-a165-f1333111fb11","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001697238,"pid":9876,"hostname":"vm","reqId":"4b709323-1d23-4b78-949a-39060a9a1957","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001697500,"pid":9876,"hostname":"vm","reqId":"e5bf877a-5cdf-4afc-a889-1114b6182342","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001698428,"pid":9876,"hostname":"vm","reqId":"00602490-3c6d-4645-9513-828324031f33","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001699811,"pid":9876,"hostname":"vm","reqId":"61c93f35-a29c-432d-a473-1d7518cca800","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001702623,"pid":9876,"hostname":"vm","reqId":"79b35431-b7d1-43fd-af79-b8d3eaea70c4","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001703325,"pid":9876,"hostname":"vm","reqId":"81b35aa4-61c9-4e1a-93d8-be5d2600a8b4","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001705536,"pid":9876,"hostname":"vm","reqId":"72b1197e-a29f-4884-b74d-b160d2ff9c80","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+ ❯ packages/server/test/integrations.test.ts (17 tests | 11 failed) 22458ms
+   ❯ AI failure analysis (7)
+     × rule-based analyzer: evidence-backed diagnosis from assertion, RTL and waveform; nothing leaves the deployment 2422ms
+     × refuses external providers unless the project allows it 717ms
+     × LLM provider: delimited untrusted context, redaction, invented locations marked unverified, token usage recorded 561ms
+     × AUDIT P1: injected delimiters in logs cannot close a data block early 564ms
+     × AUDIT P2: a model-generated patch may only edit shown RTL files, never the failing checker or the config 611ms
+     × handles provider timeouts, errors and invalid output as failed analyses (never fabricated) 262ms
+     × patch flow: user patch must apply; verification runs as a separate patch job 928ms
+   ❯ real-time events (SSE) (1)
+     × streams job events, resumes after Last-Event-ID without gaps or duplicates, and isolates tenants 1387ms
+   ❯ notifications (1)
+     × delivers signed webhooks with retries, and refuses private targets unless allowed 2809ms
+   ❯ worker failure notifications (1)
+     × notifies when runs exhaust their retries for infrastructure reasons (not for failing tests) 713ms
+   ❯ retention (1)
+     × deletes expired artifacts from object storage, also when a project is deleted 2202ms
+{"level":50,"time":1792001710542,"pid":10139,"hostname":"vm","reqId":"8c1cff0c-e0d1-4389-97e4-578bc870acad","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001710869,"pid":10139,"hostname":"vm","reqId":"43725af5-0418-4923-aa54-0c78a8fad6e2","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001711191,"pid":10139,"hostname":"vm","reqId":"9be9bb49-049b-4bdc-b4fa-d3e624033d09","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001711567,"pid":10139,"hostname":"vm","reqId":"1fd85d9a-0fc5-4b47-9ddc-c710e2a0280d","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001717147,"pid":10139,"hostname":"vm","reqId":"7f43be4a-4ec0-4159-8cd8-da323187439b","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+(node:10139) [DEP0066] DeprecationWarning: OutgoingMessage.prototype._headers is deprecated
+(Use `node --trace-deprecation ...` to show where the warning was created)
+ ❯ packages/server/test/security.test.ts (16 tests | 6 failed) 14043ms
+   ❯ multi-tenancy (3)
+     × user A cannot read, modify or even detect any of organization B's resources 499ms
+     × an organization API key never reaches another organization 311ms
+     × workers can only touch artifacts of the task they hold a lease for 319ms
+   ❯ role-based access control (2)
+     × enforces viewer < engineer < admin < owner on the server 378ms
+   ❯ web security (5)
+     × never returns secret values, and protects /metrics 236ms
+   ❯ public demo mode (1)
+     × anonymous demo users can run the seeded project but cannot upload code, create projects, submit or generate patches 686ms
+{"level":50,"time":1792001725872,"pid":10391,"hostname":"vm","reqId":"e3ea9b73-3a57-45b4-9aef-8fccbe8a3e19","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001726142,"pid":10391,"hostname":"vm","reqId":"3cc43206-0cbe-4b6d-aee2-23c8ae0a8dd2","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001726359,"pid":10391,"hostname":"vm","reqId":"4e6e0ea7-d803-4427-bbc4-b542058fc921","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001726548,"pid":10391,"hostname":"vm","reqId":"dd3ecdcf-0f37-489b-addb-55d0d524948a","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001726749,"pid":10391,"hostname":"vm","reqId":"ce0e9540-de50-4854-8fca-c41adf68b507","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001726941,"pid":10391,"hostname":"vm","reqId":"60f6ce6b-6973-4a2a-ba2a-4ebe508ee44b","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001727155,"pid":10391,"hostname":"vm","reqId":"089f5679-cecc-406e-8088-d778ea8aa71c","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001727354,"pid":10391,"hostname":"vm","reqId":"84dd6168-56f5-4590-b048-fc4e7111024e","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001727545,"pid":10391,"hostname":"vm","reqId":"ae7767f5-abfc-48db-ada6-20d05dec4c45","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001727760,"pid":10391,"hostname":"vm","reqId":"33551b60-15b7-4ef9-a0c6-8a51973de5ad","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001728157,"pid":10391,"hostname":"vm","reqId":"5d084c80-69a5-49a6-9c84-e88442d49729","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+ ❯ packages/server/test/audit-scheduler.test.ts (12 tests | 11 failed) 77387ms
+   ❯ audit: scheduler correctness (12)
+     × H2: a failing test with retries left is not re-queued into a job that already timed out 434ms
+     × H3: completion and cancellation take locks in the same order (no deadlock, real result kept) 246ms
+     × H11: cancel does not deadlock with a claim (task row locked, then an event row that references the job) 217ms
+     × M5: a retried completion (response lost) gets the recorded outcome, not LEASE_LOST 187ms
+     × M6: an upload by a worker whose lease is gone is rejected and leaves no artifact 204ms
+     × M7: usage of attempts that are retried is recorded (and never twice) 189ms
+     × flaky re-runs do not consume the infrastructure retry budget 219ms
+     × M8: an event committed after a later-numbered event is still delivered 193ms
+     × M8b: with thousands of recent events, a new event is still delivered promptly (no window stall) 194ms
+     × M9: post-job side effects happen once, and a lost post-processing run is recoverable 213ms
+     × chaos: random completions, crashes, duplicate and stale reports, infra errors and cancels keep every invariant 381ms
+{"level":50,"time":1792001820272,"pid":12391,"hostname":"vm","reqId":"b5aa189d-6983-4f95-bb4a-2ecf6aeac97a","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001820758,"pid":12391,"hostname":"vm","reqId":"9867b78f-171a-43f9-b949-b69360b759b1","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001821324,"pid":12391,"hostname":"vm","reqId":"9ba40301-8436-4e37-ba1f-a72618840556","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001821963,"pid":12391,"hostname":"vm","reqId":"a5ab33ea-175c-4ac5-a2ac-b741587a314b","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001822232,"pid":12391,"hostname":"vm","reqId":"facbd32e-ec71-4412-9ff6-040f99fa50e8","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001822674,"pid":12391,"hostname":"vm","reqId":"35f499ce-5b09-4ea7-9e68-6998e86a521e","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001822882,"pid":12391,"hostname":"vm","reqId":"016dcbfa-dbad-49b3-8431-0ec70f6eda82","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001827670,"pid":12391,"hostname":"vm","reqId":"742216fb-e1e2-4cd4-b9ee-68cccb67ca97","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001828157,"pid":12391,"hostname":"vm","reqId":"cba14479-7dc7-49cf-9f07-9904235878fc","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001828489,"pid":12391,"hostname":"vm","reqId":"054b79c3-df14-4324-a219-97d57f3dab50","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001828839,"pid":12391,"hostname":"vm","reqId":"1f25fa4e-ff04-48d6-87aa-720993fa8e0a","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+stdout | packages/worker/test/sandbox.test.ts
+{"time":"2026-10-14T18:16:59.536Z","level":"info","msg":"worker registered","workerId":"f4573015-a53d-4c5d-8087-4ce6fd348fe8","sandbox":"docker","cpus":4,"memoryMb":4096,"toolchain":{"sandbox":"docker","image":"verifycloud-sim:verilator","imageDigest":"sha256:ab16d7e7a5043eddd0edba1b0a2d4fdd0407e22146ea3177c4dedde2256eb19d","runtime":"default","verilator":"Verilator 5.020 2024-01-01 rev (Debian 5.020-1)","gcc":"13.3.0","harnessSha256":"29aef5fcfcbeaa2c36e84e33ed4cb8a6348ee47cb643d8ff8e7d1fae2d1fed32"}}
+
+ ❯ packages/worker/test/sandbox.test.ts (12 tests | 11 failed) 26458ms
+   ❯ Verilator in the Docker sandbox (11)
+     × passing test; second identical run reuses the compiled model from the build cache 730ms
+     × compile error: build FAILED with a file:line diagnostic, tests SKIPPED, job FAILED (not retried as infrastructure error) 462ms
+     × simulation that never finishes is killed at its time limit: TIMED_OUT 570ms
+     × memory exhaustion is stopped by the cgroup limit: RESOURCE_EXCEEDED 643ms
+     × output flood is cut off: run killed, log truncated, RESOURCE_EXCEEDED 261ms
+     × hostile testbench: no network, read-only sources and root, no capabilities, non-root, no secrets in env, no docker socket 448ms
+     × fork bomb is contained by the PID limit; the container is removed and the worker keeps serving 201ms
+     × AUDIT C1: a symlink planted in the output directory cannot make the worker read host files 439ms
+     × AUDIT C2: a FIFO planted in the output directory does not hang the worker 488ms
+     × simulator crash (SIGSEGV) is a FAILED test with the signal reported, not an infrastructure retry 318ms
+   ❯ seeded demo end to end (real Verilator) (1)
+     × buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS 350ms
+{"level":50,"time":1792001837269,"pid":13201,"hostname":"vm","reqId":"e33688de-2156-4a08-82c9-c80390342980","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001837921,"pid":13201,"hostname":"vm","reqId":"08c2b7aa-b5d2-4037-bde5-3828f422249f","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001838249,"pid":13201,"hostname":"vm","reqId":"07c38c28-d6bf-43b2-a613-3e6e14a72342","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001838610,"pid":13201,"hostname":"vm","reqId":"9b9c5e4c-c7ad-4412-8d5a-1a560e801637","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001839062,"pid":13201,"hostname":"vm","reqId":"5ee8142d-681a-4710-ad74-57c84fc39095","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001840061,"pid":13201,"hostname":"vm","reqId":"45dfc09f-f10d-4653-9687-7441e165fcea","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001840881,"pid":13201,"hostname":"vm","reqId":"70ffd618-5234-4b3f-a020-96d0f841f4a5","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001842039,"pid":13201,"hostname":"vm","reqId":"8a900106-3735-4fb6-8142-ca088bc0909e","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001842599,"pid":13201,"hostname":"vm","reqId":"5cdb63db-d041-4cba-9c60-8ce33e7708df","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001843181,"pid":13201,"hostname":"vm","reqId":"f5288e18-5819-4916-8a40-adacb15e1bc7","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001843772,"pid":13201,"hostname":"vm","reqId":"33f7b36f-e292-4f71-a7ea-34747dec3fc3","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001844129,"pid":13201,"hostname":"vm","reqId":"cb9e9850-fdbf-47c6-ad01-7f766ab8efce","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001844521,"pid":13201,"hostname":"vm","reqId":"d8c0668d-57d9-4800-b5bb-e7b3d6ffc556","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001844936,"pid":13201,"hostname":"vm","reqId":"a28da679-48b2-4c7f-8dd1-3975f7d9f3bb","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001845542,"pid":13201,"hostname":"vm","reqId":"be16a2a8-d524-4b1a-ab97-8c7d48b493ce","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001846049,"pid":13201,"hostname":"vm","reqId":"1cd9d468-6fc7-4040-96d2-69460006123e","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+ ❯ packages/server/test/scheduler.test.ts (16 tests | 16 failed) 13533ms
+   ❯ job creation (3)
+     × a snapshot with a valid configuration makes its regressions runnable before any job exists 852ms
+     × is idempotent per Idempotency-Key, also under concurrent requests 566ms
+     × refuses an invalid configuration with line-numbered issues 327ms
+   ❯ execution (7)
+     × never hands one task to two workers, and runs a job to completion 361ms
+     × rejects reports with a stale lease token (duplicate execution after lease loss) 452ms
+     × recovers from a crashed worker and gives up after max attempts 1001ms
+     × retries infrastructure errors on another worker but not test failures 818ms
+     × reports partial regression failures precisely 1160ms
+     × re-runs a failing test as configured and marks it flaky when it then passes 561ms
+     × skips tests when the build fails 589ms
+   ❯ cancellation and timeouts (2)
+     × cancels queued tasks immediately and signals running ones through the heartbeat 580ms
+     × times out a job that exceeds its plan's maximum duration 360ms
+   ❯ fairness and quotas (3)
+     × serves the organization using the smallest share of its quota first 389ms
+     × enforces the organization's concurrent task quota 417ms
+     × refuses regressions larger than the plan allows 603ms
+   ❯ reproducibility (1)
+     × re-run creates a new job from the exact recorded source and configuration 533ms
+{"level":50,"time":1792001854990,"pid":13485,"hostname":"vm","reqId":"3a6a6fce-b87d-4f20-a113-f9a62c239e5b","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+ ❯ packages/server/test/audit-security.test.ts (12 tests | 1 failed) 12442ms
+   ❯ audit: request hardening (3)
+     × S8: re-runs and patch verifications count against the job-creation rate limit 299ms
+{"level":50,"time":1792001866727,"pid":13726,"hostname":"vm","reqId":"7d5bd1bd-0fd6-4a36-bb30-cec0f1ddc038","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001867536,"pid":13726,"hostname":"vm","reqId":"d0f1dc48-9376-45d0-a69d-fb6a929387f8","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+ ❯ packages/cli/test/cli.test.ts (7 tests | 2 failed) 5502ms
+   ❯ verifycloud CLI (4)
+     × project list/create, run --wait with a failing test (exit 1), status, logs, coverage, artifacts 978ms
+   ❯ GitHub Action wrapper (action/run.sh, executed locally — not on a GitHub runner) (1)
+     × runs the regression, writes outputs and a step summary, exits 1 on failing tests, masks the token 499ms
+{"level":50,"time":1792001872293,"pid":13919,"hostname":"vm","reqId":"ad796e3f-611d-4c1e-9ccd-96144a251117","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+stdout | packages/worker/test/recovery.test.ts > failure injection during a running simulation > AUDIT H1: a worker marked offline after a long outage re-registers and keeps working
+{"time":"2026-10-14T18:17:51.978Z","level":"warn","msg":"re-registered after being marked offline","workerId":"e3649862-3a0c-4567-9107-ef47bb5c32b0"}
+
+{"level":50,"time":1792001872569,"pid":13919,"hostname":"vm","reqId":"175df0eb-7689-4ef0-aa52-3e1338f71ed8","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001872880,"pid":13919,"hostname":"vm","reqId":"5f075e9b-a0e8-4a84-959b-8254da2c0c86","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001873197,"pid":13919,"hostname":"vm","reqId":"81eae805-d758-4a39-81d6-8292784de585","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+stdout | packages/worker/test/recovery.test.ts
+{"time":"2026-10-14T18:17:51.711Z","level":"info","msg":"worker registered","workerId":"60bf4163-85c5-4905-9760-5f2517064bfa","sandbox":"docker","cpus":2,"memoryMb":4096,"toolchain":{"sandbox":"docker","image":"verifycloud-sim:verilator","imageDigest":"sha256:ab16d7e7a5043eddd0edba1b0a2d4fdd0407e22146ea3177c4dedde2256eb19d","runtime":"default","verilator":"Verilator 5.020 2024-01-01 rev (Debian 5.020-1)","gcc":"13.3.0","harnessSha256":"29aef5fcfcbeaa2c36e84e33ed4cb8a6348ee47cb643d8ff8e7d1fae2d1fed32"}}
+
+ ❯ packages/worker/test/recovery.test.ts (4 tests | 4 failed) 5436ms
+   ❯ failure injection during a running simulation (4)
+     × AUDIT H1: a worker marked offline after a long outage re-registers and keeps working 568ms
+     × API restart: the worker rides it out, the result is recorded once 267ms
+     × object storage outage: readiness reports it, uploads are retried, the run completes once 315ms
+     × PostgreSQL restart: readiness reports it, the run completes once, the event stream reconnects 312ms
+{"level":50,"time":1792001878899,"pid":14167,"hostname":"vm","reqId":"dd45c042-27fb-4c75-82e3-ec12a077eb0a","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001879354,"pid":14167,"hostname":"vm","reqId":"56a20747-f95a-4540-a739-b5cac0222642","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+{"level":50,"time":1792001879602,"pid":14167,"hostname":"vm","reqId":"b9ef12ff-e6a5-4ca3-930a-69dcb745e19c","err":"The request signature we calculated does not match the signature you provided. Check your key and signing method.","stack":"SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.\n    at ProtocolLib.getErrorSchemaOrThrowBaseException (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67)\n    at S3RestXmlProtocol.handleError (/home/user/verifycloud/verifycloud/node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65)\n    at S3RestXmlProtocol.deserializeResponse (/home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20\n    at /home/user/verifycloud/verifycloud/node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28\n    at /home/user/verifycloud/verifycloud/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20","msg":"unhandled error"}
+ ❯ packages/server/test/audit-storage.test.ts (3 tests | 3 failed) 3476ms
+   ❯ artifact storage (audit) (3)
+     × a 60 MB artifact round-trips byte-exact; Range requests return exact slices 453ms
+     × an interrupted upload leaves no artifact row and no stored object; over-limit uploads are refused 444ms
+     × S13: concurrent uploads beyond the memory budget get 503 + Retry-After; the budget is released when an upload is aborted 241ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 65 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/cli/test/cli.test.ts > verifycloud CLI > project list/create, run --wait with a failing test (exit 1), status, logs, coverage, artifacts
+AssertionError: uploading 6 files (7.2 KiB compressed)
+error: internal error (INTERNAL, HTTP 500, request 7d5bd1bd-0fd6-4a36-bb30-cec0f1ddc038)
+: expected 3 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 3
+
+ ❯ packages/cli/test/cli.test.ts:129:31
+    127|     stop.v = true;
+    128|     await loop;
+    129|     expect(run.code, run.err).toBe(1);
+       |                               ^
+    130|     expect(run.out).toMatch(/state\s+FAILED/);
+    131|     expect(run.out).toMatch(/FAILED\s+random seed=2/);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/65]⎯
+
+ FAIL  packages/cli/test/cli.test.ts > GitHub Action wrapper (action/run.sh, executed locally — not on a GitHub runner) > runs the regression, writes outputs and a step summary, exits 1 on failing tests, masks the token
+AssertionError: ::add-mask::vc_pat_9RVrphSX2Dl1GmyIInUC4dRzBX2SLq2wWsNWfPVr1uQ
+error: internal error (INTERNAL, HTTP 500, request d0f1dc48-9376-45d0-a69d-fb6a929387f8)
+: expected 3 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 3
+
+ ❯ packages/cli/test/cli.test.ts:204:27
+    202|     stop.v = true;
+    203|     await loop;
+    204|     expect(r.code, r.out).toBe(1);
+       |                           ^
+    205|     const outputs = readFileSync(outFile, "utf8");
+    206|     expect(outputs).toMatch(/^job-id=[0-9a-f-]{36}$/m);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/65]⎯
+
+ FAIL  packages/server/test/audit-scheduler.test.ts > audit: scheduler correctness > H2: a failing test with retries left is not re-queued into a job that already timed out
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"e3ea9b73-3a57-45b4-9aef-8fccbe8a3e19"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ packages/server/test/audit-scheduler.test.ts:53:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/65]⎯
+
+ FAIL  packages/server/test/audit-scheduler.test.ts > audit: scheduler correctness > H3: completion and cancellation take locks in the same order (no deadlock, real result kept)
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"3cc43206-0cbe-4b6d-aee2-23c8ae0a8dd2"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/audit-scheduler.test.ts:28:3
+ ❯ packages/server/test/audit-scheduler.test.ts:70:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/65]⎯
+
+ FAIL  packages/server/test/audit-scheduler.test.ts > audit: scheduler correctness > H11: cancel does not deadlock with a claim (task row locked, then an event row that references the job)
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"4e6e0ea7-d803-4427-bbc4-b542058fc921"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/audit-scheduler.test.ts:28:3
+ ❯ packages/server/test/audit-scheduler.test.ts:101:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/65]⎯
+
+ FAIL  packages/server/test/audit-scheduler.test.ts > audit: scheduler correctness > M5: a retried completion (response lost) gets the recorded outcome, not LEASE_LOST
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"dd3ecdcf-0f37-489b-addb-55d0d524948a"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/audit-scheduler.test.ts:28:3
+ ❯ packages/server/test/audit-scheduler.test.ts:132:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/65]⎯
+
+ FAIL  packages/server/test/audit-scheduler.test.ts > audit: scheduler correctness > M6: an upload by a worker whose lease is gone is rejected and leaves no artifact
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"ce0e9540-de50-4854-8fca-c41adf68b507"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/audit-scheduler.test.ts:28:3
+ ❯ packages/server/test/audit-scheduler.test.ts:147:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/65]⎯
+
+ FAIL  packages/server/test/audit-scheduler.test.ts > audit: scheduler correctness > M7: usage of attempts that are retried is recorded (and never twice)
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"60f6ce6b-6973-4a2a-ba2a-4ebe508ee44b"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/audit-scheduler.test.ts:28:3
+ ❯ packages/server/test/audit-scheduler.test.ts:159:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/65]⎯
+
+ FAIL  packages/server/test/audit-scheduler.test.ts > audit: scheduler correctness > flaky re-runs do not consume the infrastructure retry budget
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"089f5679-cecc-406e-8088-d778ea8aa71c"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ packages/server/test/audit-scheduler.test.ts:173:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/65]⎯
+
+ FAIL  packages/server/test/audit-scheduler.test.ts > audit: scheduler correctness > M8: an event committed after a later-numbered event is still delivered
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"84dd6168-56f5-4590-b048-fc4e7111024e"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/audit-scheduler.test.ts:28:3
+ ❯ packages/server/test/audit-scheduler.test.ts:187:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/65]⎯
+
+ FAIL  packages/server/test/audit-scheduler.test.ts > audit: scheduler correctness > M8b: with thousands of recent events, a new event is still delivered promptly (no window stall)
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"ae7767f5-abfc-48db-ada6-20d05dec4c45"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/audit-scheduler.test.ts:28:3
+ ❯ packages/server/test/audit-scheduler.test.ts:217:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/65]⎯
+
+ FAIL  packages/server/test/audit-scheduler.test.ts > audit: scheduler correctness > M9: post-job side effects happen once, and a lost post-processing run is recoverable
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"33551b60-15b7-4ef9-a0c6-8a51973de5ad"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/audit-scheduler.test.ts:28:3
+ ❯ packages/server/test/audit-scheduler.test.ts:236:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/65]⎯
+
+ FAIL  packages/server/test/audit-scheduler.test.ts > audit: scheduler correctness > chaos: random completions, crashes, duplicate and stale reports, infra errors and cancels keep every invariant
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"5d084c80-69a5-49a6-9c84-e88442d49729"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ packages/server/test/audit-scheduler.test.ts:265:7
+ ❯ packages/server/test/audit-scheduler.test.ts:263:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/65]⎯
+
+ FAIL  packages/server/test/audit-security.test.ts > audit: request hardening > S8: re-runs and patch verifications count against the job-creation rate limit
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"3a6a6fce-b87d-4f20-a113-f9a62c239e5b"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ packages/server/test/audit-security.test.ts:122:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/65]⎯
+
+ FAIL  packages/server/test/audit-storage.test.ts > artifact storage (audit) > a 60 MB artifact round-trips byte-exact; Range requests return exact slices
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"dd45c042-27fb-4c75-82e3-ec12a077eb0a"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ runningTask packages/server/test/audit-storage.test.ts:33:3
+ ❯ packages/server/test/audit-storage.test.ts:54:25
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/65]⎯
+
+ FAIL  packages/server/test/audit-storage.test.ts > artifact storage (audit) > an interrupted upload leaves no artifact row and no stored object; over-limit uploads are refused
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"56a20747-f95a-4540-a739-b5cac0222642"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ runningTask packages/server/test/audit-storage.test.ts:33:3
+ ❯ packages/server/test/audit-storage.test.ts:77:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/65]⎯
+
+ FAIL  packages/server/test/audit-storage.test.ts > artifact storage (audit) > S13: concurrent uploads beyond the memory budget get 503 + Retry-After; the budget is released when an upload is aborted
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"b9ef12ff-e6a5-4ca3-930a-69dcb745e19c"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ runningTask packages/server/test/audit-storage.test.ts:33:3
+ ❯ packages/server/test/audit-storage.test.ts:92:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/65]⎯
+
+ FAIL  packages/server/test/integrations.test.ts > AI failure analysis > rule-based analyzer: evidence-backed diagnosis from assertion, RTL and waveform; nothing leaves the deployment
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"dddad848-1add-4853-928b-5411041cf909"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ failedDemoTask packages/server/test/integrations.test.ts:208:3
+ ❯ packages/server/test/integrations.test.ts:245:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/65]⎯
+
+ FAIL  packages/server/test/integrations.test.ts > AI failure analysis > refuses external providers unless the project allows it
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"7b43e24a-f826-4c6d-b96e-abd61ac74d52"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ failedDemoTask packages/server/test/integrations.test.ts:208:3
+ ❯ packages/server/test/integrations.test.ts:263:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/65]⎯
+
+ FAIL  packages/server/test/integrations.test.ts > AI failure analysis > LLM provider: delimited untrusted context, redaction, invented locations marked unverified, token usage recorded
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"2bbcb59a-5bb6-4b66-8e8c-eda8c970f44c"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ failedDemoTask packages/server/test/integrations.test.ts:208:3
+ ❯ packages/server/test/integrations.test.ts:270:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/65]⎯
+
+ FAIL  packages/server/test/integrations.test.ts > AI failure analysis > AUDIT P1: injected delimiters in logs cannot close a data block early
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"202d7ff7-cf6f-4778-a165-f1333111fb11"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ failedDemoTask packages/server/test/integrations.test.ts:208:3
+ ❯ packages/server/test/integrations.test.ts:293:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/65]⎯
+
+ FAIL  packages/server/test/integrations.test.ts > AI failure analysis > AUDIT P2: a model-generated patch may only edit shown RTL files, never the failing checker or the config
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"4b709323-1d23-4b78-949a-39060a9a1957"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ failedDemoTask packages/server/test/integrations.test.ts:208:3
+ ❯ packages/server/test/integrations.test.ts:308:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/65]⎯
+
+ FAIL  packages/server/test/integrations.test.ts > AI failure analysis > handles provider timeouts, errors and invalid output as failed analyses (never fabricated)
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"e5bf877a-5cdf-4afc-a889-1114b6182342"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ failedDemoTask packages/server/test/integrations.test.ts:208:3
+ ❯ packages/server/test/integrations.test.ts:339:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/65]⎯
+
+ FAIL  packages/server/test/integrations.test.ts > AI failure analysis > patch flow: user patch must apply; verification runs as a separate patch job
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"00602490-3c6d-4645-9513-828324031f33"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ failedDemoTask packages/server/test/integrations.test.ts:208:3
+ ❯ packages/server/test/integrations.test.ts:353:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/65]⎯
+
+ FAIL  packages/server/test/integrations.test.ts > real-time events (SSE) > streams job events, resumes after Last-Event-ID without gaps or duplicates, and isolates tenants
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"61c93f35-a29c-432d-a473-1d7518cca800"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ packages/server/test/integrations.test.ts:373:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/65]⎯
+
+ FAIL  packages/server/test/integrations.test.ts > notifications > delivers signed webhooks with retries, and refuses private targets unless allowed
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"79b35431-b7d1-43fd-af79-b8d3eaea70c4"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ packages/server/test/integrations.test.ts:427:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/65]⎯
+
+ FAIL  packages/server/test/integrations.test.ts > worker failure notifications > notifies when runs exhaust their retries for infrastructure reasons (not for failing tests)
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"81b35aa4-61c9-4e1a-93d8-be5d2600a8b4"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ packages/server/test/integrations.test.ts:468:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[27/65]⎯
+
+ FAIL  packages/server/test/integrations.test.ts > retention > deletes expired artifacts from object storage, also when a project is deleted
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"72b1197e-a29f-4884-b74d-b160d2ff9c80"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ packages/server/test/integrations.test.ts:490:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[28/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > job creation > a snapshot with a valid configuration makes its regressions runnable before any job exists
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"e33688de-2156-4a08-82c9-c80390342980"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/scheduler.test.ts:23:3
+ ❯ packages/server/test/scheduler.test.ts:30:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[29/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > job creation > is idempotent per Idempotency-Key, also under concurrent requests
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"08c2b7aa-b5d2-4037-bde5-3828f422249f"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/scheduler.test.ts:23:3
+ ❯ packages/server/test/scheduler.test.ts:36:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[30/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > job creation > refuses an invalid configuration with line-numbered issues
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"07c38c28-d6bf-43b2-a613-3e6e14a72342"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ packages/server/test/scheduler.test.ts:47:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[31/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > execution > never hands one task to two workers, and runs a job to completion
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"9b9c5e4c-c7ad-4412-8d5a-1a560e801637"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/scheduler.test.ts:23:3
+ ❯ packages/server/test/scheduler.test.ts:57:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[32/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > execution > rejects reports with a stale lease token (duplicate execution after lease loss)
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"5ee8142d-681a-4710-ad74-57c84fc39095"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/scheduler.test.ts:23:3
+ ❯ packages/server/test/scheduler.test.ts:85:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[33/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > execution > recovers from a crashed worker and gives up after max attempts
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"45dfc09f-f10d-4653-9687-7441e165fcea"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/scheduler.test.ts:23:3
+ ❯ packages/server/test/scheduler.test.ts:112:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[34/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > execution > retries infrastructure errors on another worker but not test failures
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"70ffd618-5234-4b3f-a020-96d0f841f4a5"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/scheduler.test.ts:23:3
+ ❯ packages/server/test/scheduler.test.ts:129:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[35/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > execution > reports partial regression failures precisely
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"8a900106-3735-4fb6-8142-ca088bc0909e"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/scheduler.test.ts:23:3
+ ❯ packages/server/test/scheduler.test.ts:141:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[36/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > execution > re-runs a failing test as configured and marks it flaky when it then passes
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"5cdb63db-d041-4cba-9c60-8ce33e7708df"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ packages/server/test/scheduler.test.ts:153:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[37/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > execution > skips tests when the build fails
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"f5288e18-5819-4916-8a40-adacb15e1bc7"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/scheduler.test.ts:23:3
+ ❯ packages/server/test/scheduler.test.ts:163:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[38/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > cancellation and timeouts > cancels queued tasks immediately and signals running ones through the heartbeat
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"33f7b36f-e292-4f71-a7ea-34747dec3fc3"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/scheduler.test.ts:23:3
+ ❯ packages/server/test/scheduler.test.ts:177:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[39/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > cancellation and timeouts > times out a job that exceeds its plan's maximum duration
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"cb9e9850-fdbf-47c6-ad01-7f766ab8efce"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/scheduler.test.ts:23:3
+ ❯ packages/server/test/scheduler.test.ts:191:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[40/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > fairness and quotas > serves the organization using the smallest share of its quota first
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"d8c0668d-57d9-4800-b5bb-e7b3d6ffc556"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/scheduler.test.ts:23:3
+ ❯ packages/server/test/scheduler.test.ts:200:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[41/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > fairness and quotas > enforces the organization's concurrent task quota
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"a28da679-48b2-4c7f-8dd1-3975f7d9f3bb"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/scheduler.test.ts:23:3
+ ❯ packages/server/test/scheduler.test.ts:216:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[42/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > fairness and quotas > refuses regressions larger than the plan allows
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"be16a2a8-d524-4b1a-ab97-8c7d48b493ce"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ packages/server/test/scheduler.test.ts:239:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[43/65]⎯
+
+ FAIL  packages/server/test/scheduler.test.ts > reproducibility > re-run creates a new job from the exact recorded source and configuration
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"1cd9d468-6fc7-4040-96d2-69460006123e"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ project packages/server/test/scheduler.test.ts:23:3
+ ❯ packages/server/test/scheduler.test.ts:248:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[44/65]⎯
+
+ FAIL  packages/server/test/security.test.ts > multi-tenancy > user A cannot read, modify or even detect any of organization B's resources
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"8c1cff0c-e0d1-4389-97e4-578bc870acad"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ victim packages/server/test/security.test.ts:25:3
+ ❯ packages/server/test/security.test.ts:50:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[45/65]⎯
+
+ FAIL  packages/server/test/security.test.ts > multi-tenancy > an organization API key never reaches another organization
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"43725af5-0418-4923-aa54-0c78a8fad6e2"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ victim packages/server/test/security.test.ts:25:3
+ ❯ packages/server/test/security.test.ts:100:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[46/65]⎯
+
+ FAIL  packages/server/test/security.test.ts > multi-tenancy > workers can only touch artifacts of the task they hold a lease for
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"9be9bb49-049b-4bdc-b4fa-d3e624033d09"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ victim packages/server/test/security.test.ts:25:3
+ ❯ packages/server/test/security.test.ts:111:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[47/65]⎯
+
+ FAIL  packages/server/test/security.test.ts > role-based access control > enforces viewer < engineer < admin < owner on the server
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"1fd85d9a-0fc5-4b47-9ddc-c710e2a0280d"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ packages/server/test/security.test.ts:126:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[48/65]⎯
+
+ FAIL  packages/server/test/security.test.ts > web security > never returns secret values, and protects /metrics
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"7f43be4a-4ec0-4159-8cd8-da323187439b"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ victim packages/server/test/security.test.ts:25:3
+ ❯ packages/server/test/security.test.ts:255:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[49/65]⎯
+
+ FAIL  packages/server/test/security.test.ts > public demo mode > anonymous demo users can run the seeded project but cannot upload code, create projects, submit or generate patches
+SignatureDoesNotMatch: The request signature we calculated does not match the signature you provided. Check your key and signing method.
+ ❯ ProtocolLib.getErrorSchemaOrThrowBaseException node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:68:67
+ ❯ S3RestXmlProtocol.handleError node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js:2826:65
+ ❯ S3RestXmlProtocol.deserializeResponse node_modules/@smithy/core/dist-cjs/submodules/protocols/index.js:406:24
+ ❯ node_modules/@smithy/core/dist-cjs/submodules/schema/index.js:23:24
+ ❯ node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:366:20
+ ❯ node_modules/@smithy/core/dist-cjs/submodules/retry/index.js:175:50
+ ❯ node_modules/@aws-sdk/checksums/dist-cjs/submodules/flexible-checksums/index.js:234:24
+ ❯ node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:62:28
+ ❯ node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/submodules/s3/index.js:89:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[50/65]⎯
+
+ FAIL  packages/worker/test/recovery.test.ts > failure injection during a running simulation > AUDIT H1: a worker marked offline after a long outage re-registers and keeps working
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"ad796e3f-611d-4c1e-9ccd-96144a251117"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ startJob packages/worker/test/recovery.test.ts:125:3
+ ❯ packages/worker/test/recovery.test.ts:147:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[51/65]⎯
+
+ FAIL  packages/worker/test/recovery.test.ts > failure injection during a running simulation > API restart: the worker rides it out, the result is recorded once
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"175df0eb-7689-4ef0-aa52-3e1338f71ed8"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ startJob packages/worker/test/recovery.test.ts:125:3
+ ❯ packages/worker/test/recovery.test.ts:153:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[52/65]⎯
+
+ FAIL  packages/worker/test/recovery.test.ts > failure injection during a running simulation > object storage outage: readiness reports it, uploads are retried, the run completes once
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"5f075e9b-a0e8-4a84-959b-8254da2c0c86"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ startJob packages/worker/test/recovery.test.ts:125:3
+ ❯ packages/worker/test/recovery.test.ts:164:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[53/65]⎯
+
+ FAIL  packages/worker/test/recovery.test.ts > failure injection during a running simulation > PostgreSQL restart: readiness reports it, the run completes once, the event stream reconnects
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"81eae805-d758-4a39-81d6-8292784de585"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ startJob packages/worker/test/recovery.test.ts:125:3
+ ❯ packages/worker/test/recovery.test.ts:181:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[54/65]⎯
+
+ FAIL  packages/worker/test/sandbox.test.ts > Verilator in the Docker sandbox > passing test; second identical run reuses the compiled model from the build cache
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"b5aa189d-6983-4f95-bb4a-2ecf6aeac97a"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ packages/worker/test/sandbox.test.ts:93:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[55/65]⎯
+
+ FAIL  packages/worker/test/sandbox.test.ts > Verilator in the Docker sandbox > compile error: build FAILED with a file:line diagnostic, tests SKIPPED, job FAILED (not retried as infrastructure error)
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"9867b78f-171a-43f9-b949-b69360b759b1"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ runProject packages/worker/test/sandbox.test.ts:63:3
+ ❯ packages/worker/test/sandbox.test.ts:106:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[56/65]⎯
+
+ FAIL  packages/worker/test/sandbox.test.ts > Verilator in the Docker sandbox > simulation that never finishes is killed at its time limit: TIMED_OUT
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"9ba40301-8436-4e37-ba1f-a72618840556"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ runProject packages/worker/test/sandbox.test.ts:63:3
+ ❯ packages/worker/test/sandbox.test.ts:115:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[57/65]⎯
+
+ FAIL  packages/worker/test/sandbox.test.ts > Verilator in the Docker sandbox > memory exhaustion is stopped by the cgroup limit: RESOURCE_EXCEEDED
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"a5ab33ea-175c-4ac5-a2ac-b741587a314b"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ runProject packages/worker/test/sandbox.test.ts:63:3
+ ❯ packages/worker/test/sandbox.test.ts:123:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[58/65]⎯
+
+ FAIL  packages/worker/test/sandbox.test.ts > Verilator in the Docker sandbox > output flood is cut off: run killed, log truncated, RESOURCE_EXCEEDED
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"facbd32e-ec71-4412-9ff6-040f99fa50e8"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ runProject packages/worker/test/sandbox.test.ts:63:3
+ ❯ packages/worker/test/sandbox.test.ts:134:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[59/65]⎯
+
+ FAIL  packages/worker/test/sandbox.test.ts > Verilator in the Docker sandbox > hostile testbench: no network, read-only sources and root, no capabilities, non-root, no secrets in env, no docker socket
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"35f499ce-5b09-4ea7-9e68-6998e86a521e"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ runProject packages/worker/test/sandbox.test.ts:63:3
+ ❯ packages/worker/test/sandbox.test.ts:156:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[60/65]⎯
+
+ FAIL  packages/worker/test/sandbox.test.ts > Verilator in the Docker sandbox > fork bomb is contained by the PID limit; the container is removed and the worker keeps serving
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"016dcbfa-dbad-49b3-8431-0ec70f6eda82"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ runProject packages/worker/test/sandbox.test.ts:63:3
+ ❯ packages/worker/test/sandbox.test.ts:175:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[61/65]⎯
+
+ FAIL  packages/worker/test/sandbox.test.ts > Verilator in the Docker sandbox > AUDIT C1: a symlink planted in the output directory cannot make the worker read host files
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"742216fb-e1e2-4cd4-b9ee-68cccb67ca97"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ runProject packages/worker/test/sandbox.test.ts:63:3
+ ❯ packages/worker/test/sandbox.test.ts:201:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[62/65]⎯
+
+ FAIL  packages/worker/test/sandbox.test.ts > Verilator in the Docker sandbox > AUDIT C2: a FIFO planted in the output directory does not hang the worker
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"cba14479-7dc7-49cf-9f07-9904235878fc"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ runProject packages/worker/test/sandbox.test.ts:63:3
+ ❯ packages/worker/test/sandbox.test.ts:218:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[63/65]⎯
+
+ FAIL  packages/worker/test/sandbox.test.ts > Verilator in the Docker sandbox > simulator crash (SIGSEGV) is a FAILED test with the signal reported, not an infrastructure retry
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"054b79c3-df14-4324-a219-97d57f3dab50"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ runProject packages/worker/test/sandbox.test.ts:63:3
+ ❯ packages/worker/test/sandbox.test.ts:226:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[64/65]⎯
+
+ FAIL  packages/worker/test/sandbox.test.ts > seeded demo end to end (real Verilator) > buggy AXI4-Lite: regression FAILS → evidence-backed analysis → reference fix verified in a fresh job → PASS
+Error: snapshot upload failed 500 {"error":{"code":"INTERNAL","message":"internal error","requestId":"1f25fa4e-ff04-48d6-87aa-720993fa8e0a"}}
+ ❯ uploadSnapshot packages/server/test/helpers.ts:146:31
+    144| export async function uploadSnapshot(c: Client, projectId: string, gz:…
+    145|   const r = await c.req("POST", `/api/v1/projects/${projectId}/snapsho…
+    146|   if (r.status !== 201) throw new Error(`snapshot upload failed ${r.st…
+       |                               ^
+    147|   return r.json;
+    148| }
+ ❯ packages/worker/test/sandbox.test.ts:236:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[65/65]⎯
+
+
+ Test Files  9 failed | 5 passed (14)
+      Tests  65 failed | 78 passed (143)
+   Start at  18:14:43
+   Duration  198.64s (tests 93%, import 5%, transform 1%)
+
+EXIT=1

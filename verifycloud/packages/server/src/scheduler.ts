@@ -31,6 +31,22 @@ import { E } from "./errors.js";
 import { emit } from "./events.js";
 import type { Metrics } from "./metrics.js";
 
+/**
+ * Bound worker-reported run times by what the server observed: 0 ≤ duration ≤
+ * time since the lease was granted (database clock) + 1 s; CPU seconds ≤ that
+ * time × the task's CPUs. Non-numbers fall back to the observed time / null.
+ * Exported for unit tests.
+ */
+export function boundDurations(rep: { durationMs?: unknown; cpuSeconds?: unknown }, elapsedMs: number, cpus: number) {
+  const observed = Number.isFinite(elapsedMs) && elapsedMs > 0 ? elapsedMs : 0;
+  const maxMs = observed + 1000;
+  const d = Number(rep.durationMs);
+  const durationMs = Math.round(Number.isFinite(d) && typeof rep.durationMs === "number" ? Math.min(Math.max(d, 0), maxMs) : observed);
+  let cpuSeconds: number | null = null;
+  if (typeof rep.cpuSeconds === "number" && Number.isFinite(rep.cpuSeconds)) cpuSeconds = Math.min(Math.max(rep.cpuSeconds, 0), (maxMs / 1000) * Math.max(1, cpus || 1));
+  return { durationMs, cpuSeconds };
+}
+
 export interface JobSource {
   type: "snapshot" | "github";
   snapshotId?: string;
@@ -245,7 +261,10 @@ export class Scheduler {
 
   /** Validate a worker's lease. Returns the task row, or throws 409 for a stale lease. */
   private async checkLease(c: Q, taskId: string, workerId: string, leaseToken: string, lock = false) {
-    const r = await c.query(`SELECT * FROM tasks WHERE id = $1 ${lock ? "FOR UPDATE" : ""}`, [taskId]);
+    const r = await c.query(
+      `SELECT *, (extract(epoch FROM clock_timestamp() - started_at) * 1000)::float8 AS elapsed_ms FROM tasks WHERE id = $1 ${lock ? "FOR UPDATE" : ""}`,
+      [taskId],
+    );
     const t = r.rows[0];
     if (!t) throw E.notFound("task");
     if (t.state !== "RUNNING" || t.lease_token !== leaseToken || t.lease_worker !== workerId) {
@@ -293,6 +312,11 @@ export class Scheduler {
         return { state: prior.state as TaskState, requeued: false, duplicate: true };
       const t = await this.checkLease(c, taskId, workerId, leaseToken, false);
       const base = { orgId: t.org_id, projectId: t.project_id, jobId: t.job_id };
+      // Durations come from the worker's clock and are not trusted: a clock
+      // step, a hostile worker or a missing field gave negative or NaN usage,
+      // or overflowed tasks.duration_ms (500, result lost). Clamp them to the
+      // time since the database granted this lease (audit 2026-10-14, L1).
+      rep = { ...rep, ...boundDurations(rep, Number(t.elapsed_ms), t.cpu) };
 
       // usage of this attempt is recorded whatever happens next (also for
       // attempts that are retried; idempotent by source key — audit M7)

@@ -1,0 +1,11 @@
+# docker compose restart minio postgres api
+ Container verifycloud-minio-1 Restarting 
+ Container verifycloud-postgres-1 Restarting 
+ Container verifycloud-api-1 Restarting 
+ Container verifycloud-api-1 Started 
+ Container verifycloud-postgres-1 Started 
+ Container verifycloud-minio-1 Started 
+ready after restart
+2026-10-15T13:07:50.250Z checked 46 artifacts of job fa58f8bd-6a43-4fd5-807f-e19a16b6b4c3; 0 bad
+PERSIST_RESULT=PASS
+EXIT=0

@@ -1,0 +1,13 @@
+# 2026-10-14T20:49:49Z uptime:  20:49:49 up 12 min,  0 user,  load average: 17.96, 16.99, 9.44
+# npx vitest run packages/worker/test/lease-real.test.ts
+
+ RUN  v5.0.3 /home/user/verifycloud/verifycloud
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  20:49:50
+   Duration  509.58s (tests 99%)
+
+EXIT=0
+# end 2026-10-14T20:58:19Z uptime:  20:58:19 up 21 min,  0 user,  load average: 35.95, 34.31, 21.30

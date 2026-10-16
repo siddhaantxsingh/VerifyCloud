@@ -1,0 +1,20 @@
+# Build the images on a network that only allows HTTPS through a proxy which
+# re-terminates TLS (used for the 2026-10-14 audit run). Not needed elsewhere.
+#   HTTPS_PROXY=http://127.0.0.1:3128 EXTRA_CA_FILE=/path/proxy-ca.crt \
+#     docker compose -f docker-compose.yml -f deploy/build-behind-proxy.yml build
+services:
+  api:
+    build:
+      network: host
+      args: { HTTPS_PROXY: "${HTTPS_PROXY}" }
+      secrets: [extra_ca]
+  worker:
+    build:
+      network: host
+      args: { HTTPS_PROXY: "${HTTPS_PROXY}" }
+      secrets: [extra_ca]
+  sim-image:
+    build: { network: host }
+secrets:
+  extra_ca:
+    file: ${EXTRA_CA_FILE:?set EXTRA_CA_FILE to the proxy CA bundle}

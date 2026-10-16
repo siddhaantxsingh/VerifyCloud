@@ -285,5 +285,5 @@ d("seeded demo end to end (real Verilator)", () => {
     expect(cmp.fixed).toHaveLength(failed.length);
     // eslint-disable-next-line no-console
     console.log(`[demo-e2e] buggy: ${failed.length}/${tests.length} failed; fixed job ${fixed.state}`);
-  });
+  }, 1_500_000); // its own waits allow 600 s per job; the 180 s global default cut it off on a shared host (baseline 2026-10-14)
 });

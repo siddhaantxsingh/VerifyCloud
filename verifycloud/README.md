@@ -18,7 +18,7 @@ claim that could not be tested here is marked as such.
 | Execution | one locked-down Docker container per build/test run |
 | Interfaces | web dashboard, REST API + OpenAPI, SSE, CLI, GitHub App, GitHub Action |
 | Stack | TypeScript (Fastify, React), PostgreSQL, S3-compatible storage |
-| Tests | 81 automated tests + browser E2E, all passing ([docs/testing.md](docs/testing.md)) |
+| Tests | 158 automated tests (vitest), run on GitHub Actions; status and evidence in [docs/AUDIT_2026-10-14.md](docs/AUDIT_2026-10-14.md) |
 
 ## Contents
 
@@ -99,10 +99,11 @@ docker compose up --build
 Open <http://localhost:8080> and log in with `DEMO_ADMIN_EMAIL` /
 `DEMO_ADMIN_PASSWORD` from `.env`.
 
-> The API and worker images, the simulator image, and the browser E2E against
-> them were verified. The full `docker compose up` with the official
-> `postgres` and `minio` images could not be executed where this was built
-> (Docker Hub unreachable) — see [docs/deployment.md](docs/deployment.md).
+> Verified on 2026-10-14 with `postgres:16.10` and MinIO RELEASE.2025-04-22
+> (`bitnamilegacy/minio`, because `minio/minio` is no longer on Docker Hub):
+> the demo regression ran end to end and artifacts survived restarts
+> (`docs/evidence/2026-10-14/compose-*.log`). Behind a TLS-intercepting proxy,
+> build with `deploy/build-behind-proxy.yml`.
 
 Without Docker Compose (host processes, existing PostgreSQL and S3 endpoint):
 see [docs/local-development.md](docs/local-development.md).
@@ -218,10 +219,11 @@ Full tables and method: [docs/performance.md](docs/performance.md).
 
 * **One simulator**: Verilator only (2-state, no UVM in 5.020, SVA subset).
   No Questa/Xcelium/VCS/Icarus adapters.
-* **Unverified here**: real GitHub (tested against a fake API), real LLMs
-  (stub), MinIO/AWS S3 (S3 emulator), `docker compose` with official images,
-  the CI workflow, gVisor/rootless Docker, multi-host scaling. No production
-  deployment is claimed.
+* **Unverified**: real GitHub (tested against a fake API with signed
+  webhooks), real LLMs (stub), AWS S3, multi-host scaling. gVisor is partly
+  verified (fork-bomb cleanup is slow). No production deployment is claimed.
+* The output-directory budget is enforced by sampling and can be overshot
+  several-fold by a fast writer (audit F6).
 * Global claim lock: ~64–69 claims/s on the test machine (fine for second-long
   simulations, not for millions of tiny tasks).
 * Container escape on a worker host is mitigated by host dedication, not

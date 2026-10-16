@@ -28,12 +28,12 @@ export class WorkerApi {
    * bounded by the lease, so a retry cannot double-apply a result.
    */
   private async req(method: string, path: string, opts: { body?: unknown; raw?: Buffer; lease?: string; query?: Record<string, string>; timeoutMs?: number; retryForMs?: number; retryOn5xx?: boolean } = {}) {
-    const deadline = Date.now() + (opts.retryForMs ?? 0);
+    const deadline = performance.now() + (opts.retryForMs ?? 0);
     for (let attempt = 0; ; attempt++) {
       try {
         return await this.once(method, path, opts);
       } catch (e) {
-        if (!(e instanceof TransientError) || Date.now() >= deadline) throw e;
+        if (!(e instanceof TransientError) || performance.now() >= deadline) throw e;
         await new Promise((r) => setTimeout(r, Math.min(500 * 2 ** attempt, 5000)));
       }
     }

@@ -1,0 +1,41 @@
+# 2026-10-15T08:34:02Z uptime:  08:34:02 up 21 min,  0 user,  load average: 29.06, 26.95, 17.48
+# npx vitest run packages/worker/test/sandbox.test.ts -t hostile|fork bomb|memory exhaustion|never finishes|AUDIT C1|passing test
+
+ RUN  v5.0.3 /home/user/verifycloud/verifycloud
+
+stdout | packages/worker/test/sandbox.test.ts > Verilator in the Docker sandbox > fork bomb is contained by the PID limit; the container is removed and the worker keeps serving
+{"time":"2026-10-15T08:38:40.607Z","level":"info","msg":"task finished","task":"8ec5dc76-5757-40e7-adb1-961e87f04635","kind":"build","state":"PASSED","ms":32758}
+
+stdout | packages/worker/test/sandbox.test.ts > Verilator in the Docker sandbox > fork bomb is contained by the PID limit; the container is removed and the worker keeps serving
+{"time":"2026-10-15T08:38:45.017Z","level":"info","msg":"task finished","task":"fc77c41d-3599-46a2-94b7-a3a450301398","kind":"test","state":"FAILED","ms":4217}
+
+stdout | packages/worker/test/sandbox.test.ts
+{"time":"2026-10-15T08:34:13.598Z","level":"info","msg":"worker registered","workerId":"5834a125-7536-4eea-a4a2-64656fda16d0","sandbox":"docker","cpus":4,"memoryMb":4096,"toolchain":{"sandbox":"docker","image":"verifycloud-sim:verilator","imageDigest":"sha256:50897bc1af2883d6f58d1ecfaa83dd42fe1c2456eb5fbccc577ce3c36452f97a","runtime":"runsc","verilator":"Verilator 5.020 2024-01-01 rev (Debian 5.020-1)","gcc":"13.3.0","harnessSha256":"29aef5fcfcbeaa2c36e84e33ed4cb8a6348ee47cb643d8ff8e7d1fae2d1fed32"}}
+
+ ❯ packages/worker/test/sandbox.test.ts (12 tests | 1 failed | 6 skipped) 330987ms
+   ❯ Verilator in the Docker sandbox (11)
+     × fork bomb is contained by the PID limit; the container is removed and the worker keeps serving 57798ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  packages/worker/test/sandbox.test.ts > Verilator in the Docker sandbox > fork bomb is contained by the PID limit; the container is removed and the worker keeps serving
+Error: timed out waiting for sandbox containers to be removed
+ ❯ waitFor packages/server/test/helpers.ts:161:44
+    159|     const v = await fn();
+    160|     if (v) return v;
+    161|     if (Date.now() - t0 > timeoutMs) throw new Error(`timed out waitin…
+       |                                            ^
+    162|     await sleep(100);
+    163|   }
+ ❯ packages/worker/test/sandbox.test.ts:179:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed | 6 skipped (12)
+   Start at  08:34:05
+   Duration  335.18s (tests 99%, transform 1%)
+
+EXIT=1
+# end 2026-10-15T08:39:41Z uptime:  08:39:41 up 27 min,  0 user,  load average: 18.30, 23.09, 18.87

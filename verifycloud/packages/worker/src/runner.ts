@@ -48,7 +48,7 @@ export async function runTask(tc: TaskContext, claim: ClaimedTask): Promise<void
       }
     }
   }, Math.max(2000, (claim.leaseSeconds * 1000) / 3));
-  const t0 = Date.now();
+  const t0 = performance.now();
   try {
     const report = task.kind === "build" ? await build(tc, claim, dir, () => cancel) : await test(tc, claim, dir, () => cancel);
     if (lost) {
@@ -56,7 +56,7 @@ export async function runTask(tc: TaskContext, claim: ClaimedTask): Promise<void
       return;
     }
     await api.complete(task.id, lease, report);
-    log.info("task finished", { task: task.id, kind: task.kind, state: report.state, ms: Date.now() - t0 });
+    log.info("task finished", { task: task.id, kind: task.kind, state: report.state, ms: Math.round(performance.now() - t0) });
   } catch (e) {
     if (e instanceof LeaseLostError || e instanceof ReregisterError || lost) {
       log.warn("lease lost; result discarded", { task: task.id });
@@ -67,7 +67,7 @@ export async function runTask(tc: TaskContext, claim: ClaimedTask): Promise<void
     log.warn("task failed", { task: task.id, err: msg });
     // source/config problems are the user's (not retryable); anything else is infrastructure
     await api
-      .complete(task.id, lease, { state: userError ? "FAILED" : "ERROR", retryable: !userError, error: msg.slice(0, 1000), durationMs: Date.now() - t0, result: { summary: msg.slice(0, 500) } })
+      .complete(task.id, lease, { state: userError ? "FAILED" : "ERROR", retryable: !userError, error: msg.slice(0, 1000), durationMs: Math.round(performance.now() - t0), result: { summary: msg.slice(0, 500) } })
       .catch((err) => log.warn("could not report failure", { task: task.id, err: (err as Error).message }));
   } finally {
     clearInterval(hb);
@@ -158,7 +158,7 @@ async function build(tc: TaskContext, claim: ClaimedTask, dir: string, shouldCan
   if (!adapter) throw new SourceError(`no adapter for simulator "${config.simulator.engine}"`);
   const problems = adapter.validate(config);
   if (problems.length) throw new SourceError(problems.join("; "));
-  const t0 = Date.now();
+  const t0 = performance.now();
   const { srcDir, sourceArtifactId } = await obtainSources(tc, claim, dir);
   const src = resolveSources(srcDir, config);
   const waveforms = config.simulator.waveform !== "never";
@@ -169,7 +169,7 @@ async function build(tc: TaskContext, claim: ClaimedTask, dir: string, shouldCan
   const hit = await api.cacheLookup(task.id, lease, key);
   if (hit.hit && hit.artifactId) {
     return {
-      state: "PASSED", durationMs: Date.now() - t0, modelArtifactId: hit.artifactId, sourceArtifactId, cacheKey: key, cacheHit: true, toolchain: tcInfo,
+      state: "PASSED", durationMs: Math.round(performance.now() - t0), modelArtifactId: hit.artifactId, sourceArtifactId, cacheKey: key, cacheHit: true, toolchain: tcInfo,
       result: { summary: "build cache hit (model reused)", command: plan.display, files: src.files, cacheHit: true, diagnostics: [] },
     };
   }
@@ -197,11 +197,11 @@ async function build(tc: TaskContext, claim: ClaimedTask, dir: string, shouldCan
     env: { TMPDIR: "/work/scratch/tmp" },
     shouldCancel,
   });
-  if (r.infraError) return { state: "ERROR", retryable: true, error: r.infraError, durationMs: Date.now() - t0 };
+  if (r.infraError) return { state: "ERROR", retryable: true, error: r.infraError, durationMs: Math.round(performance.now() - t0) };
   const logId = await uploadLog(tc, claim, "build.log", r);
   const sb = sandboxState(r);
   const parsed = adapter.parseBuild(r.log, r.exitCode);
-  const base = { durationMs: Date.now() - t0, cpuSeconds: r.cpuSeconds, exitCode: r.exitCode, sourceArtifactId, cacheKey: key, toolchain: tcInfo };
+  const base = { durationMs: Math.round(performance.now() - t0), cpuSeconds: r.cpuSeconds, exitCode: r.exitCode, sourceArtifactId, cacheKey: key, toolchain: tcInfo };
   const result = { summary: resourceNote(r, task) ?? parsed.summary, diagnostics: parsed.diagnostics, command: plan.display, files: src.files, logArtifactId: logId, logTruncated: r.droppedBytes > 0 };
   if (sb) return { ...base, state: sb, result, error: resourceNote(r, task) };
   if (!parsed.ok) return { ...base, state: "FAILED", result, error: parsed.summary };
@@ -227,7 +227,7 @@ async function test(tc: TaskContext, claim: ClaimedTask, dir: string, shouldCanc
   const { task, leaseToken: lease, job } = claim;
   const config = job.config as ProjectConfig;
   const adapter = ADAPTERS[config.simulator.engine]!;
-  const t0 = Date.now();
+  const t0 = performance.now();
   const { srcDir } = await obtainSources(tc, claim, dir);
   if (!task.modelArtifactId) throw new Error("test task without a compiled model");
   const modelDir = join(dir, "model");
@@ -258,7 +258,7 @@ async function test(tc: TaskContext, claim: ClaimedTask, dir: string, shouldCanc
     env: { TMPDIR: "/work/scratch" },
     shouldCancel,
   });
-  if (r.infraError) return { state: "ERROR", retryable: true, error: r.infraError, durationMs: Date.now() - t0 };
+  if (r.infraError) return { state: "ERROR", retryable: true, error: r.infraError, durationMs: Math.round(performance.now() - t0) };
   const logId = await uploadLog(tc, claim, `${task.testName}-seed${task.seed}.log`, r);
   const parsed = adapter.parseRun(r.log, r.exitCode);
   const sb = sandboxState(r);
@@ -298,7 +298,7 @@ async function test(tc: TaskContext, claim: ClaimedTask, dir: string, shouldCanc
   return {
     state,
     exitCode: r.exitCode,
-    durationMs: Date.now() - t0,
+    durationMs: Math.round(performance.now() - t0),
     cpuSeconds: r.cpuSeconds,
     error: resNote,
     assertions: parsed.assertions,
